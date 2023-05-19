@@ -1,4 +1,3 @@
-#include "./ui_viewer.h"
 #include "view.h"
 
 void View::initializeGL() {
@@ -22,15 +21,15 @@ void View::resizeGL(int w, int h) {
 
 void View::paintGL() {
   resize(1440, 1080);
-  glClearColor(backgroundColor.redF(), backgroundColor.greenF(),
-               backgroundColor.blueF(), 1.0f);
+  glClearColor(backgroundColor.redF(), backgroundColor.greenF(), backgroundColor.blueF(), 1.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
 
   updateValues();
   if (projectionType) {
-    glVertexPointer(3, GL_DOUBLE, 0, model.vertexCoord);
+    std::vector<double> vertexCoord = controller->getVertexCoord();
+    glVertexPointer(3, GL_DOUBLE, 0, vertexCoord.data());
     glEnableClientState(GL_VERTEX_ARRAY);
     setProjectionType();
 
@@ -47,59 +46,51 @@ void View::paintGL() {
 }
 
 void View::updateValues() {
-  // projection type
-  if (ui->radioButton_parallel_type->isChecked())
-    projectionType = PARALLEL;
-  else if (ui->radioButton_central_type->isChecked())
-    projectionType = CENTRAL;
+    // projection type
+    projectionType = ui->radioButton_parallel_type->isChecked() ? PARALLEL : CENTRAL;
 
-  // edge type
-  if (ui->radioButton_edgeType_solid->isChecked())
-    edgeType = SOLID;
-  else
-    edgeType = DASHED;
+    // edge type
+    edgeType = ui->radioButton_edgeType_solid->isChecked() ? SOLID : DASHED;
 
-  edgeWidth = (float)ui->edgeThickness->value();
-  pointSize = (float)ui->vertexSize->value() * 2;
+    edgeWidth = (float)ui->edgeThickness->value();
+    pointSize = (float)ui->vertexSize->value() * 2;
 
-  if (ui->radioButton_vertexType_novertex->isChecked()) {
-    pointVisibility = NOVERTEX;
-  } else {
-    pointVisibility = AVERTEX;
+    if (ui->radioButton_vertexType_novertex->isChecked()) {
+      pointVisibility = NOVERTEX;
+    } else {
+      pointVisibility = AVERTEX;
 
-    if (ui->radioButton_vertexType_circle->isChecked())
-      pointType = CIRCLE;
-    else
-      pointType = SQUARE;
-  }
+      pointType = ui->radioButton_vertexType_circle->isChecked() ? CIRCLE : SQUARE;
+    }
 }
 
 void View::setEdges() {
-  // setting the edge type
   if (edgeType == DASHED) {
-    glLineStipple(1, 0x3333);  // 0x0101
+    glLineStipple(1, 0x3333);
     glEnable(GL_LINE_STIPPLE);
   } else if (edgeType == SOLID) {
     glDisable(GL_LINE_STIPPLE);
   }
 
   glLineWidth(edgeWidth);  // setting the edge thickness
-  glColor3f(edgeColor.redF(), edgeColor.greenF(),
-            edgeColor.blueF());  // setting the edge color
-  glDrawElements(GL_LINES, model.countIndex, GL_UNSIGNED_INT,
-                 model.vertexIndex);
+  glColor3f(edgeColor.redF(), edgeColor.greenF(), edgeColor.blueF());  // setting the edge color
+  std::vector<int> vertexIndex = controller->getVertexIndex();
+  glDrawElements(GL_LINES, controller->getVertexIndex().size(), GL_UNSIGNED_INT, vertexIndex.data());
 }
 
 void View::setVertices() {
   glPointSize(pointSize);
   glColor3f(vertexColor.redF(), vertexColor.greenF(), vertexColor.blueF());
 
-  if (pointType == CIRCLE) {
+  if (pointType == CIRCLE) 
+  {
     glEnable(GL_POINT_SMOOTH);
-    glDrawArrays(GL_POINTS, 0, model.countVertex);
+    glDrawArrays(GL_POINTS, 0, controller->getVertexCoord().size() / 3);
     glDisable(GL_POINT_SMOOTH);
-  } else {
-    glDrawArrays(GL_POINTS, 0, model.countVertex);
+  } 
+  else 
+  {
+    glDrawArrays(GL_POINTS, 0, controller->getVertexCoord().size() / 3);
   }
 }
 
