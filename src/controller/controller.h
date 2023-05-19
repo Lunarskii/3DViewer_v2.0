@@ -7,10 +7,9 @@ public:
 
     void setFileName(std::string fileName);
     int getError();
-    long getCountVertex();
-    long getCountIndex();
     std::vector<int> getVertexIndex();
     std::vector<double> getVertexCoord();
+    void transform(int&& strategyType, double value, int&& axis = 0);
 private:
     Model* model;
 };

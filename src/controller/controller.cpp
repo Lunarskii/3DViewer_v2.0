@@ -11,16 +11,6 @@ int Controller::getError()
     return model->getError();
 }
 
-long Controller::getCountVertex()
-{
-    return model->getCountVertex();
-}
-
-long Controller::getCountIndex()
-{
-    return model->getCountIndex();
-}
-
 std::vector<int> Controller::getVertexIndex()
 {
     return model->getVertexIndex();
@@ -29,4 +19,9 @@ std::vector<int> Controller::getVertexIndex()
 std::vector<double> Controller::getVertexCoord()
 {
     return model->getVertexCoord();
+}
+
+void Controller::transform(int&& strategyType, double value, int&& axis)
+{
+    model->transform(strategyType, value, axis);
 }
