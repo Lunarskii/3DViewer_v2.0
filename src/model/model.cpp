@@ -5,8 +5,6 @@ Model::Model(std::string fileName)
     setFileName(fileName);
 }
 
-int Model::isNum(char c) { return c >= '0' && c <= '9'; }
-
 void Model::parser()
 {
     if (errorCode != FILE_HAS_WRONG_EXTENSION)
@@ -28,7 +26,7 @@ void Model::parser()
             }
             else if (!line.compare(0, 2, "f "))
             {
-                edgesParser(line);
+                edgesParser(std::string(line.begin() + 2, line.end()));
             }
         }
         file.close();
@@ -37,76 +35,43 @@ void Model::parser()
 
 void Model::vertexParser(std::string line)
 {
-    size_t numPos = 0, dotPos = 0;
-    double coord = 0;
-    double coord_temp[3]{};
-    int coord_num = 0;
+    double d1 = 0, d2 = 0, d3 = 0;
+    char j = 0;
 
-    for (size_t i = 2; i < line.size() && coord_num != 3; ++i)
+    if (sscanf(line.c_str(), "%c %lf %lf %lf %c", &j, &d1, &d2, &d3, &j) == 4)
     {
-        while (isNum(line[i]) || line[i] == '.')
-        {
-            if (numPos == 0) numPos = i;
-            if (line[i] == '.')
-            {
-                dotPos = i;
-            }
-            else
-            {
-                coord = coord * 10 + (line[i++] - '0');
-            }
-        }
-        if (numPos != 0)
-        {
-            if (dotPos != 0) dotPos = i - dotPos - 1;
-            coord = coord / pow(10, dotPos);
-            if (line[numPos - 1] == '-') coord = -coord;
-            coord_temp[coord_num++] = coord;
-        }
-        if (coord_num == 3)
-        {
-            vertexCoord.insert(vertexCoord.end(), coord_temp, coord_temp + 3);
-        }
-        coord = 0;
-        numPos = 0;
-        dotPos = 0;
+        vertexCoord.insert(vertexCoord.end(), {d1, d2, d3});
+    }
+    else
+    {
+        errorCode = INCORRECT_ENTRY_OF_THE_VERTEX_COORDINATE;
     }
 }
 
 void Model::edgesParser(std::string line)
 {
-    long countIndex_temp = countIndex;
-    long firstIndex = 0, tempIndex = 0;
-    int checkOrder = 0, checkSpace;
-    bool checkNum = false;
+    std::istringstream iss(line);
+    std::string token;
+    int first = 0, firstIndex = 0;
+    int index = 0;
 
-    for (size_t i = 2; i < line.size(); ++i)
+    while (std::getline(iss, token, ' '))
     {
-        checkSpace = line[i - 1];
-        while (isNum(line[i]) && checkSpace == ' ')
+        sscanf(token.c_str(), "%d", &index);
+        --index;
+
+        if (first == 0)
         {
-            checkNum = true;
-            tempIndex = tempIndex * 10 + (line[i++] - '0');
+            vertexIndex.push_back(index);
+            firstIndex = index;
+            first = 1;
         }
-        if (checkNum != false)
+        else
         {
-            ++checkOrder;
-            vertexIndex[++countIndex_temp - 1] = --tempIndex;
-            if (checkOrder == 1)
-            {
-                firstIndex = tempIndex;
-            }
-            else
-            {
-                vertexIndex[++countIndex_temp - 1] = tempIndex;
-            }
-            tempIndex = 0;
-            checkNum = false;
+            vertexIndex.insert(vertexIndex.end(), {index, index});
         }
     }
-    ++countIndex_temp;
-    vertexIndex[countIndex_temp - 1] = firstIndex;
-    countIndex = countIndex_temp;
+    vertexIndex.push_back(firstIndex);
 }
 
 void Model::setFileName(std::string fileName)
@@ -117,6 +82,9 @@ void Model::setFileName(std::string fileName)
     } 
     else 
     {
+        vertexCoord.clear();
+        vertexIndex.clear();
+        errorCode = 0;
         this->fileName = fileName;
     }
 }
@@ -124,16 +92,6 @@ void Model::setFileName(std::string fileName)
 int Model::getError()
 {
     return errorCode;
-}
-
-long Model::getCountVertex()
-{
-    return countVertex;
-}
-
-long Model::getCountIndex()
-{
-    return countIndex;
 }
 
 std::vector<int> Model::getVertexIndex()
@@ -144,4 +102,27 @@ std::vector<int> Model::getVertexIndex()
 std::vector<double> Model::getVertexCoord()
 {
     return vertexCoord;
+}
+
+void Model::transform(int& strategyType, double& value, int& axis)
+{
+    if (strategyType == MOVE)
+    {
+        transformationModel.setStrategy(new MoveStrategy());
+    }
+    else if (strategyType == ROTATE)
+    {
+        transformationModel.setStrategy(new RotateStrategy());
+    }
+    else if (strategyType == SCALE)
+    {
+        transformationModel.setStrategy(new ScaleStrategy());
+    }
+    transformationModel.performTransformation(vertexCoord, value, axis);
+}
+
+typename Model::Model& Model::getInstance()
+{
+    static Model instance;
+    return instance;
 }
