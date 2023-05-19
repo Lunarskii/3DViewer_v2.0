@@ -13,11 +13,8 @@
 #include <QWheelEvent>    // library for receiving mouse wheel signals
 #include <QWidget>        // library for using widgets
 #include "../controller/controller.h"
-
-// coordinates
-#define X 1
-#define Y 2
-#define Z 3
+// #include "QtGifImage/gifimage/qgifimage.h"
+#include "ui_view.h"
 
 // projection type
 #define PARALLEL 1
@@ -44,7 +41,7 @@
 #define VERTEX_COLOR "vertexColor"
 #define STEP "step"
 #define ANGLE "angle"
-#define SCALE "scale"
+#define SCALE_BOX "scale"
 
 #define GL_SILENCE_DEPRECATION // проверить эту штуку, чзх
 
@@ -67,17 +64,17 @@ private slots:
     void scaling();
     void setColor();
 
-    // methods for saving images
-    void on_actionSave_as_GIF_triggered();
-    void on_actionSave_as_bmp_triggered();
-    void on_actionSave_as_jpeg_triggered();
-    void saveImage();
+    // Methods for saving images
+    // void on_actionSave_as_GIF_triggered();
+    // void on_actionSave_as_bmp_triggered();
+    // void on_actionSave_as_jpeg_triggered();
+    // void saveImage();
 
 private:
     Ui::View *ui;
     Controller* controller;
 
-    // model rendering methods
+    // Model rendering methods
     void initializeGL() override;
     void resizeGL(int w, int h) override;
     void paintGL() override;
@@ -86,31 +83,31 @@ private:
     void setEdges();
     void setVertices();
 
-    // methods for saving and restoring settings
+    // Methods for saving and restoring settings
     QSettings *lastSettings;
     void saveSettings();
     void restoreSettings();
 
-    // colors
+    // Colors
     QColor backgroundColor;
     QColor edgeColor;
     QColor vertexColor;
 
     // GIF
-    QGifImage *gif;
-    QTimer *timer;
-    int frames;
+    // QGifImage *gif;
+    // QTimer *timer;
+    // int frames;
 
-    // mouse events
+    // Mouse events
     QPoint clickPosition;
     bool leftButton;
     bool rightButton;
     void mouseMoveEvent(QMouseEvent *cursorPosition) override;
     void mousePressEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *cursorPosition) override;
-    void wheelEvent(QWheelEvent *event) override;
+    // void wheelEvent(QWheelEvent *event) override;
 
-    void keyPressEvent(QKeyEvent *event) override;  // keys for calling saving gif, jpeg and bmp
+    // void keyPressEvent(QKeyEvent *event) override;  // keys for calling saving gif, jpeg and bmp
 
     // удалить, если не будет использоваться
     QScrollArea *scrollArea;

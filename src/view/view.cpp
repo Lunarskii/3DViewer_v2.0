@@ -1,11 +1,11 @@
 #include "view.h"
-#include "./ui_view.h"
 
 View::View(Controller* c, QWidget *parent)
     : controller(c)
     , QOpenGLWidget(parent)
     , ui(new Ui::View)
 {
+    setlocale(LC_NUMERIC, "C");
     ui->setupUi(this);
     this->resize(1440, 1080);
     initDefaultValues();
@@ -57,21 +57,28 @@ View::~View()
     delete ui;
 }
 
-void View::initDefaultValues() {
+void View::initDefaultValues() 
+{
     // setting the color
     backgroundColor.setRgb(255, 255, 255);
     edgeColor.setRgb(0, 0, 255);
     vertexColor.setRgb(255, 0, 0);
 }
 
-void View::setColor() {
+void View::setColor() 
+{
     QPushButton *button = (QPushButton *)sender();
 
-    if (button == ui->pushButton_backgroundColor) {
+    if (button == ui->pushButton_backgroundColor) 
+    {
         backgroundColor = QColorDialog::getColor();
-    } else if (button == ui->pushButton_edgeColor) {
+    } 
+    else if (button == ui->pushButton_edgeColor) 
+    {
         edgeColor = QColorDialog::getColor();
-    } else if (button == ui->pushButton_vertexColor) {
+    } 
+    else if (button == ui->pushButton_vertexColor) 
+    {
         vertexColor = QColorDialog::getColor();
     }
 
@@ -87,8 +94,8 @@ void View::on_pushButton_selectFile_clicked() {
         if (controller->getError() == 0)
         {
             ui->fileName->setText((QFileInfo(filePath)).fileName());
-            ui->numberOfVertices->setText(QString::number(model.countVertex));
-            ui->numberOfEdges->setText(QString::number(model.countIndex / 2));
+            ui->numberOfVertices->setText(QString::number(controller->getVertexCoord().size() / 3));
+            ui->numberOfEdges->setText(QString::number(controller->getVertexIndex().size() / 2));
             update();
         }
         else
@@ -96,5 +103,64 @@ void View::on_pushButton_selectFile_clicked() {
             // создать окно с ошибкой
         }
     }
+}
+
+void View::moving() 
+{
+  double step = ui->step->value();
+  QPushButton *button = (QPushButton *)sender();
+
+  if (button == ui->pushButton_moving_x_minus) {
+    controller->transform(MOVE, -step, X);
+  } else if (button == ui->pushButton_moving_x_plus) {
+    controller->transform(MOVE, step, X);
+  } else if (button == ui->pushButton_moving_y_minus) {
+    controller->transform(MOVE, -step, Y);
+  } else if (button == ui->pushButton_moving_y_plus) {
+    controller->transform(MOVE, step, Y);
+  } else if (button == ui->pushButton_moving_z_minus) {
+    controller->transform(MOVE, -step, Z);
+  } else if (button == ui->pushButton_moving_z_plus) {
+    controller->transform(MOVE, step, Z);
+  }
+
+  update();
+}
+
+void View::rotation() 
+{
+  int angle = ui->angle->value();
+  QPushButton *button = (QPushButton *)sender();
+
+  if (button == ui->pushButton_rotation_x_minus) {
+    controller->transform(ROTATE, -angle, X);
+  } else if (button == ui->pushButton_rotation_x_plus) {
+    controller->transform(ROTATE, angle, X);
+  } else if (button == ui->pushButton_rotation_y_minus) {
+    controller->transform(ROTATE, -angle, Y);
+  } else if (button == ui->pushButton_rotation_y_plus) {
+    controller->transform(ROTATE, angle, Y);
+  } else if (button == ui->pushButton_rotation_z_minus) {
+    controller->transform(ROTATE, -angle, Z);
+  } else if (button == ui->pushButton_rotation_z_plus) {
+    controller->transform(ROTATE, angle, Z);
+  }
+
+  update();
+}
+
+void View::scaling() 
+{
+  int scale = ui->scale->value();
+  QPushButton *button = (QPushButton *)sender();
+  QString buttonText = button->text();
+
+  if (buttonText == "-") {
+    controller->transform(SCALE, -scale);
+  } else {
+    controller->transform(SCALE, scale);
+  }
+
+  update();
 }
 
