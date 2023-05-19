@@ -1,4 +1,3 @@
-#include "./ui_viewer.h"
 #include "view.h"
 
 void View::saveSettings() {
@@ -10,13 +9,11 @@ void View::saveSettings() {
   // saving step settings
   lastSettings->setValue(STEP, ui->step->value());
   lastSettings->setValue(ANGLE, ui->angle->value());
-  lastSettings->setValue(SCALE, ui->scale->value());
+  lastSettings->setValue(SCALE_BOX, ui->scale->value());
 
   // saving projection settings
-  if (ui->radioButton_parallel_type->isChecked())
-    lastSettings->setValue(PROJECTION_TYPE, PARALLEL);
-  if (ui->radioButton_central_type->isChecked())
-    lastSettings->setValue(PROJECTION_TYPE, CENTRAL);
+  if (ui->radioButton_parallel_type->isChecked()) lastSettings->setValue(PROJECTION_TYPE, PARALLEL);
+  if (ui->radioButton_central_type->isChecked()) lastSettings->setValue(PROJECTION_TYPE, CENTRAL);
 
   // saving edge settings
   lastSettings->setValue(EDGE_THICKNESS, ui->edgeThickness->value());
@@ -55,7 +52,7 @@ void View::restoreSettings() {
     ui->step->setValue(tempStep);
   if (int tempAngle = lastSettings->value(ANGLE, -1).toInt(); tempAngle != -1)
     ui->angle->setValue(tempAngle);
-  if (int tempScale = lastSettings->value(SCALE, -1).toInt(); tempScale != -1)
+  if (int tempScale = lastSettings->value(SCALE_BOX, -1).toInt(); tempScale != -1)
     ui->scale->setValue(tempScale);
 
   // restoring projection settings
