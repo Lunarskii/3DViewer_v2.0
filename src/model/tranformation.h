@@ -1,3 +1,6 @@
+#ifndef CPP4_3DVIEWER_V2_0_MODEL_TRANSFORMATION_H_
+#define CPP4_3DVIEWER_V2_0_MODEL_TRANSFORMATION_H_
+
 #include <vector>
 #include <cmath>
 
@@ -89,3 +92,5 @@ public:
 private:
     TransformationStrategy* strategy;
 };
+
+#endif  // CPP4_3DVIEWER_V2_0_MODEL_TRANSFORMATION_H_
