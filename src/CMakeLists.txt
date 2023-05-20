@@ -19,28 +19,38 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS OpenGLWidgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
-
-set(PROJECT_SOURCES
-        model/model.cpp
-        model/model.h
-
-        view/view.cpp
-        view/view.h
-        view/view.ui
-        view/events.cpp
-        view/OpenGLfunctions.cpp
-        view/saveFormat.cpp
-        view/saveSettings.cpp
-
-        controller/controller.cpp
-        controller/controller.h
-
-        main.cpp
+find_library(
+            giflib
+            NAMES libgiflib giflib
+            HINTS "${CMAKE_SOURCE_DIR}"
 )
 
-set(TEST_SOURCES
-
+set(SOURCE_DIRS
+        model/
+        controller/
+        view/
+        view/QtGifImage/gifimage
 )
+set(TEST_DIRS
+        model/
+        tests/
+)
+set(PROJECT_SOURCES main.cpp)
+set(TEST_SOURCES "")
+
+foreach(dir ${SOURCE_DIRS})
+    file(GLOB CPP_SOURCES "${dir}/*.cpp")
+    file(GLOB C_SOURCES "${dir}/*.c")
+    file(GLOB HEADER_SOURCES "${dir}/*.h")
+    file(GLOB UI_SOURCES "${dir}/*.ui")
+    list(APPEND PROJECT_SOURCES ${CPP_SOURCES} ${C_SOURCES} ${HEADER_SOURCES} ${UI_SOURCES})
+endforeach()
+
+foreach(dir ${TEST_DIRS})
+    file(GLOB_RECURSE CPP_SOURCES "${dir}/*.cpp")
+    file(GLOB_RECURSE HEADER_SOURCES "${dir}/*.h")
+    list(APPEND TEST_SOURCES ${CPP_SOURCES} ${HEADER_SOURCES})
+endforeach()
 
 add_executable(tests 
         ${TEST_SOURCES}
@@ -69,10 +79,11 @@ else()
     endif()
 endif()
 
-target_link_libraries(3DViewer PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
-target_link_libraries(3DViewer PRIVATE Qt${QT_VERSION_MAJOR}::Gui)
-target_link_libraries(3DViewer PRIVATE Qt${QT_VERSION_MAJOR}::OpenGLWidgets)
-target_link_libraries(3DViewer PRIVATE Qt${QT_VERSION_MAJOR}::Core)
+target_link_libraries(untitled PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(untitled PRIVATE Qt${QT_VERSION_MAJOR}::Gui)
+target_link_libraries(untitled PRIVATE Qt${QT_VERSION_MAJOR}::OpenGLWidgets)
+target_link_libraries(untitled PRIVATE Qt${QT_VERSION_MAJOR}::Core)
+target_link_libraries(untitled PRIVATE ${giflib})
 target_link_libraries(tests PRIVATE ${GTEST_LIBRARIES} pthread)
 
 include(GoogleTest)
