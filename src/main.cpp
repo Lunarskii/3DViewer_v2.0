@@ -5,8 +5,7 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    Model model;
-    Controller controller(&model);
+    Controller controller;
     View view(&controller);
     view.show();
     return a.exec();
