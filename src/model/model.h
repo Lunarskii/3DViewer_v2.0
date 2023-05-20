@@ -1,3 +1,6 @@
+#ifndef CPP4_3DVIEWER_V2_0_MODEL_MODEL_H_
+#define CPP4_3DVIEWER_V2_0_MODEL_MODEL_H_
+
 #include <string>
 #include <cstring>
 #include <iostream>
@@ -14,8 +17,6 @@
 class Model 
 {
 public:
-    Model() = default;
-    Model(std::string fileName);
     void parser();
     void vertexParser(std::string line);
     void edgesParser(std::string line);
@@ -28,9 +29,13 @@ public:
     
     static Model& getInstance();
 private:
+    Model() = default;
+    
     std::string fileName;
     std::vector<double> vertexCoord{};
     std::vector<int> vertexIndex{};
     int errorCode{};
     Strategy transformationModel;
 };
+
+#endif  // CPP4_3DVIEWER_V2_0_MODEL_MODEL_H_

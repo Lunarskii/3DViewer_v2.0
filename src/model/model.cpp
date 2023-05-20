@@ -1,10 +1,5 @@
 #include "model.h"
 
-Model::Model(std::string fileName)
-{
-    setFileName(fileName);
-}
-
 void Model::parser()
 {
     if (errorCode != FILE_HAS_WRONG_EXTENSION)
