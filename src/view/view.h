@@ -1,5 +1,5 @@
-#ifndef VIEW_H
-#define VIEW_H
+#ifndef CPP4_3DVIEWER_V2_0_VIEW_VIEW_H_
+#define CPP4_3DVIEWER_V2_0_VIEW_VIEW_H_
 
 #include <QColor>         // library for using colors
 #include <QColorDialog>   // library for dialog windows
@@ -13,7 +13,7 @@
 #include <QWheelEvent>    // library for receiving mouse wheel signals
 #include <QWidget>        // library for using widgets
 #include "../controller/controller.h"
-// #include "QtGifImage/gifimage/qgifimage.h"
+#include "QtGifImage/gifimage/qgifimage.h"
 #include "ui_view.h"
 
 // projection type
@@ -46,7 +46,11 @@
 #define GL_SILENCE_DEPRECATION // проверить эту штуку, чзх
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class View; }
+namespace Ui 
+{ 
+    class View;
+    class Facade;
+}
 QT_END_NAMESPACE
 
 class View : public QOpenGLWidget
@@ -59,16 +63,14 @@ public:
 
 private slots:
     void on_pushButton_selectFile_clicked();
-    void moving();
-    void rotation();
-    void scaling();
+    void transformModel();
     void setColor();
 
     // Methods for saving images
-    // void on_actionSave_as_GIF_triggered();
-    // void on_actionSave_as_bmp_triggered();
-    // void on_actionSave_as_jpeg_triggered();
-    // void saveImage();
+    void on_actionSave_as_GIF_triggered();
+    void on_actionSave_as_bmp_triggered();
+    void on_actionSave_as_jpeg_triggered();
+    void saveImage();
 
 private:
     Ui::View *ui;
@@ -94,11 +96,11 @@ private:
     QColor vertexColor;
 
     // GIF
-    // QGifImage *gif;
-    // QTimer *timer;
-    // int frames;
+    QGifImage *gif;
+    QTimer *timer;
+    int frames;
 
-    // Mouse events
+    // Events
     QPoint clickPosition;
     bool leftButton;
     bool rightButton;
@@ -106,7 +108,6 @@ private:
     void mousePressEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *cursorPosition) override;
     // void wheelEvent(QWheelEvent *event) override;
-
     // void keyPressEvent(QKeyEvent *event) override;  // keys for calling saving gif, jpeg and bmp
 
     // удалить, если не будет использоваться
@@ -122,5 +123,32 @@ private:
     int pointVisibility;
 
     float x_angle, y_angle, z_angle;
+
+public:
+    class Facade
+    {
+    public:
+        Facade() : ui(nullptr), controller(nullptr) {}
+        Facade(Ui::View* ui, Controller* c) : ui(ui), controller(c) {}
+
+        void setFacadeData(Ui::View* ui, Controller* c)
+        {
+            this->ui = ui;
+            this->controller = c;
+        }
+
+        void moveModel(QPushButton* button);
+        void rotateModel(QPushButton* button);
+        void scaleModel(QString buttonText);
+        void transformModel(QPushButton* button);
+
+    private:
+        Ui::View* ui;
+        Controller* controller;
+    };
+
+private:
+    Facade facade{ui, controller};
 };
-#endif // VIEW_H
+
+#endif  // CPP4_3DVIEWER_V2_0_VIEW_VIEW_H_

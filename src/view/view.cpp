@@ -10,25 +10,40 @@ View::View(Controller* c, QWidget *parent)
     this->resize(1440, 1080);
     initDefaultValues();
 
-    // connecting the movement buttons
-    connect(ui->pushButton_moving_x_minus, SIGNAL(clicked()), this, SLOT(moving()));
-    connect(ui->pushButton_moving_x_plus, SIGNAL(clicked()), this, SLOT(moving()));
-    connect(ui->pushButton_moving_y_minus, SIGNAL(clicked()), this, SLOT(moving()));
-    connect(ui->pushButton_moving_y_plus, SIGNAL(clicked()), this, SLOT(moving()));
-    connect(ui->pushButton_moving_z_minus, SIGNAL(clicked()), this, SLOT(moving()));
-    connect(ui->pushButton_moving_z_plus, SIGNAL(clicked()), this, SLOT(moving()));
+    QList<QPushButton*> transformButtons = 
+    { 
+        ui->pushButton_moving_x_minus,
+        ui->pushButton_moving_x_plus,
+        ui->pushButton_moving_y_minus,
+        ui->pushButton_moving_y_plus,
+        ui->pushButton_moving_z_minus,
+        ui->pushButton_moving_z_plus,
+        ui->pushButton_rotation_x_minus,
+        ui->pushButton_rotation_x_plus,
+        ui->pushButton_rotation_y_minus,
+        ui->pushButton_rotation_y_plus,
+        ui->pushButton_rotation_z_minus,
+        ui->pushButton_rotation_z_plus,
+        ui->pushButton_scaling_minus,
+        ui->pushButton_scaling_plus,
+    };
 
-    // connecting the rotation buttons
-    connect(ui->pushButton_rotation_x_minus, SIGNAL(clicked()), this, SLOT(rotation()));
-    connect(ui->pushButton_rotation_x_plus, SIGNAL(clicked()), this, SLOT(rotation()));
-    connect(ui->pushButton_rotation_y_minus, SIGNAL(clicked()), this, SLOT(rotation()));
-    connect(ui->pushButton_rotation_y_plus, SIGNAL(clicked()), this, SLOT(rotation()));
-    connect(ui->pushButton_rotation_z_minus, SIGNAL(clicked()), this, SLOT(rotation()));
-    connect(ui->pushButton_rotation_z_plus, SIGNAL(clicked()), this, SLOT(rotation()));
+    // QList<QPushButton*> propertyButtons = { ui->radioButton_parallel_type,
+    //                                         ui->radioButton_central_type, 
+    //                                         ui->radioButton_edgeType_dashed, 
+    //                                         ui->radioButton_edgeType_solid, 
+    //                                         ui->radioButton_vertexType_circle,
+    //                                         ui->radioButton_vertexType_square,
+    //                                         ui->radioButton_vertexType_novertex };
 
-    // connecting zoom buttons
-    connect(ui->pushButton_scaling_minus, SIGNAL(clicked()), this, SLOT(scaling()));
-    connect(ui->pushButton_scaling_plus, SIGNAL(clicked()), this, SLOT(scaling()));
+    foreach (QPushButton* button, transformButtons) 
+    {
+        connect(button, SIGNAL(clicked()), this, SLOT(transformModel()));
+    }
+    // foreach (QPushButton* button, propertyButtons) 
+    // {
+    //     connect(button, SIGNAL(clicked()), this, SLOT(update()));
+    // }
 
     // connecting colors
     connect(ui->pushButton_backgroundColor, SIGNAL(clicked()), this, SLOT(setColor()));
@@ -67,22 +82,27 @@ void View::initDefaultValues()
 
 void View::setColor() 
 {
-    QPushButton *button = (QPushButton *)sender();
+    QColor color = QColorDialog::getColor();
 
-    if (button == ui->pushButton_backgroundColor) 
+    if (color.isValid())
     {
-        backgroundColor = QColorDialog::getColor();
-    } 
-    else if (button == ui->pushButton_edgeColor) 
-    {
-        edgeColor = QColorDialog::getColor();
-    } 
-    else if (button == ui->pushButton_vertexColor) 
-    {
-        vertexColor = QColorDialog::getColor();
+        QPushButton *button = (QPushButton *)sender();
+        
+        if (button == ui->pushButton_backgroundColor) 
+        {
+            backgroundColor = color;
+        } 
+        else if (button == ui->pushButton_edgeColor) 
+        {
+            edgeColor = color;
+        } 
+        else if (button == ui->pushButton_vertexColor) 
+        {
+            vertexColor = color;
+        }
+
+        update();
     }
-
-    update();
 }
 
 void View::on_pushButton_selectFile_clicked() {
@@ -105,62 +125,10 @@ void View::on_pushButton_selectFile_clicked() {
     }
 }
 
-void View::moving() 
+void View::transformModel() 
 {
-  double step = ui->step->value();
-  QPushButton *button = (QPushButton *)sender();
+    QPushButton *button = (QPushButton *)sender();
+    facade.transformModel(button);
 
-  if (button == ui->pushButton_moving_x_minus) {
-    controller->transform(MOVE, -step, X);
-  } else if (button == ui->pushButton_moving_x_plus) {
-    controller->transform(MOVE, step, X);
-  } else if (button == ui->pushButton_moving_y_minus) {
-    controller->transform(MOVE, -step, Y);
-  } else if (button == ui->pushButton_moving_y_plus) {
-    controller->transform(MOVE, step, Y);
-  } else if (button == ui->pushButton_moving_z_minus) {
-    controller->transform(MOVE, -step, Z);
-  } else if (button == ui->pushButton_moving_z_plus) {
-    controller->transform(MOVE, step, Z);
-  }
-
-  update();
+    update();
 }
-
-void View::rotation() 
-{
-  int angle = ui->angle->value();
-  QPushButton *button = (QPushButton *)sender();
-
-  if (button == ui->pushButton_rotation_x_minus) {
-    controller->transform(ROTATE, -angle, X);
-  } else if (button == ui->pushButton_rotation_x_plus) {
-    controller->transform(ROTATE, angle, X);
-  } else if (button == ui->pushButton_rotation_y_minus) {
-    controller->transform(ROTATE, -angle, Y);
-  } else if (button == ui->pushButton_rotation_y_plus) {
-    controller->transform(ROTATE, angle, Y);
-  } else if (button == ui->pushButton_rotation_z_minus) {
-    controller->transform(ROTATE, -angle, Z);
-  } else if (button == ui->pushButton_rotation_z_plus) {
-    controller->transform(ROTATE, angle, Z);
-  }
-
-  update();
-}
-
-void View::scaling() 
-{
-  int scale = ui->scale->value();
-  QPushButton *button = (QPushButton *)sender();
-  QString buttonText = button->text();
-
-  if (buttonText == "-") {
-    controller->transform(SCALE, -scale);
-  } else {
-    controller->transform(SCALE, scale);
-  }
-
-  update();
-}
-
