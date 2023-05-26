@@ -6,7 +6,6 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <QString>
 
 #include "tranformation.h"
 
