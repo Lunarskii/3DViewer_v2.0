@@ -101,12 +101,12 @@ private:
     int frames;
 
     // Events
-    QPoint clickPosition;
-    bool leftButton;
-    bool rightButton;
-    void mouseMoveEvent(QMouseEvent *cursorPosition) override;
-    void mousePressEvent(QMouseEvent *event) override;
-    void mouseReleaseEvent(QMouseEvent *cursorPosition) override;
+    // QPoint clickPosition;
+    // bool leftButton;
+    // bool rightButton;
+    // void mouseMoveEvent(QMouseEvent *cursorPosition) override;
+    // void mousePressEvent(QMouseEvent *event) override;
+    // void mouseReleaseEvent(QMouseEvent *cursorPosition) override;
     // void wheelEvent(QWheelEvent *event) override;
     // void keyPressEvent(QKeyEvent *event) override;  // keys for calling saving gif, jpeg and bmp
 
