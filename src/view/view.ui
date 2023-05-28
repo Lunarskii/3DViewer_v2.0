@@ -6,1693 +6,1409 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1440</width>
-    <height>1080</height>
+    <width>1200</width>
+    <height>670</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>1200</width>
+    <height>670</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1200</width>
+    <height>670</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>viewer</string>
+   <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget" native="true">
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>20</y>
-     <width>241</width>
-     <height>872</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
      <y>0</y>
-     <width>1920</width>
-     <height>22</height>
+     <width>1203</width>
+     <height>650</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuFile">
-    <property name="title">
-     <string>File</string>
-    </property>
-    <addaction name="actionSave_as_GIF"/>
-    <addaction name="actionSave_as_bmp"/>
-    <addaction name="actionSave_as_jpeg"/>
-   </widget>
-   <addaction name="menuFile"/>
-  </widget>
-  <widget class="QStatusBar" name="statusbar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>3</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QWidget" name="widget" native="true">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>30</y>
-     <width>241</width>
-     <height>852</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(222, 221, 218);
-</string>
-   </property>
-   <widget class="QGroupBox" name="groupBox_2">
+   <widget class="QWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>44</y>
-      <width>201</width>
-      <height>171</height>
+      <x>0</x>
+      <y>15</y>
+      <width>1000</width>
+      <height>630</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">
-	font: 14pt &quot;Pastelova Demo&quot;;
-	border: 1px solid grey;
-	border-bottom: 1px solid grey;
-	background-color: rgb(246, 245, 244);
-	color: rgb(154, 153, 150);
-	border-radius:10px;</string>
+     <string notr="true"/>
     </property>
-    <property name="title">
-     <string> FILE INFO</string>
-    </property>
-    <widget class="QLabel" name="label_1">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>20</y>
-       <width>201</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QLabel {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	qproperty-alignment: 'AlignVCenter | AlignCenter';
-	border-radius: 0px;
-	border-bottom: 0px solid grey;
-	border-top: 1px solid grey;
-	color: rgb(94, 92, 100);
-}</string>
-     </property>
-     <property name="text">
-      <string>FIle name</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="fileName">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>45</y>
-       <width>201</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QLabel {
-	font: 700 14pt &quot;Pastelova Demo&quot;;
-	qproperty-alignment: 'AlignVCenter | AlignCenter';
-	border-radius: 0px;
-	border-top: 0px solid grey;
-	color: rgb(0, 0, 0);
-}</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_9">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>70</y>
-       <width>201</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QLabel {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	qproperty-alignment: 'AlignVCenter | AlignCenter';
-	border-radius: 0px;
-	border-bottom: 0px solid grey;
-	border-top: 0px solid grey;
-	color: rgb(94, 92, 100);
-}</string>
-     </property>
-     <property name="text">
-      <string>Number of vertices</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="numberOfVertices">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>95</y>
-       <width>201</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QLabel {
-	font: 700 14pt &quot;Pastelova Demo&quot;;
-	qproperty-alignment: 'AlignVCenter | AlignCenter';
-	border-radius: 0px;
-	border-top: 0px solid grey;
-	color: rgb(0, 0, 0);
-}</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_11">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>120</y>
-       <width>201</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QLabel {
-	
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	qproperty-alignment: 'AlignVCenter | AlignCenter';
-	border-radius: 0px;
-	border-bottom: 0px solid grey;
-	border-top: 0px solid grey;
-	color: rgb(94, 92, 100);
-}</string>
-     </property>
-     <property name="text">
-      <string>Number of edges</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="numberOfEdges">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>146</y>
-       <width>201</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QLabel {
-	font: 700 14pt &quot;Pastelova Demo&quot;;
-	qproperty-alignment: 'AlignVCenter | AlignCenter';
-	border-top: 0px solid grey;
-	border-bottom: 1px solid grey;
-	border-top-right-radius:0px;
-	border-top-left-radius:0px;
-	color: rgb(0, 0, 0);
-}</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
    </widget>
-   <widget class="QPushButton" name="pushButton_selectFile">
+   <widget class="QLabel" name="_down_line">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>10</y>
-      <width>201</width>
-      <height>30</height>
+      <x>0</x>
+      <y>645</y>
+      <width>1001</width>
+      <height>25</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(30, 32, 34);
+border: 1px solid rgb(0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_projection">
+    <property name="geometry">
+     <rect>
+      <x>25</x>
+      <y>646</y>
+      <width>45</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	background-color: rgb(224, 170, 255);
-	color: rgb(94, 92, 100);
+	text-align: left;
+	background-color: rgb(30, 30, 30);
+	color: rgb(190, 190, 190);
+	border-radius: 1px;
 }
-
- QPushButton:hover {
-	background-color: rgb(226, 179, 255);
+QPushButton:hover {
+	color: rgb(210, 210, 210);
 }
-
-QPushButton:pressed {
-	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-											  stop: 0 #dadbde, stop: 1 #f6f7fa);
-}</string>
+</string>
     </property>
     <property name="text">
-     <string>SELECT MODEL</string>
+     <string>Parallel</string>
     </property>
    </widget>
-   <widget class="QGroupBox" name="groupBox_moving">
+   <widget class="QLabel" name="_top_line">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>217</y>
-      <width>201</width>
-      <height>96</height>
+      <x>165</x>
+      <y>0</y>
+      <width>1035</width>
+      <height>20</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <family>Pastelova Demo</family>
-      <pointsize>14</pointsize>
-      <italic>false</italic>
-      <bold>false</bold>
-     </font>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(30, 32, 34);
+border: 1px solid rgb(0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>990</x>
+      <y>-25</y>
+      <width>213</width>
+      <height>700</height>
+     </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QGroupBox {
-	font: 14pt &quot;Pastelova Demo&quot;;
-	border: 1px solid grey;
-	background-color: rgb(246, 245, 244);
-	color: rgb(154, 153, 150);
-
-	border-radius:10px;
-	border-bottom-right-radius:0px;
-	border-bottom-left-radius:0px;
-}</string>
+     <string notr="true">background-color: rgb(30, 32, 34);
+border: 1px solid rgb(0, 0, 0);</string>
     </property>
-    <property name="title">
-     <string> MOVING</string>
+    <property name="currentIndex">
+     <number>0</number>
     </property>
-    <widget class="QLabel" name="label_moving_x">
-     <property name="geometry">
-      <rect>
-       <x>85</x>
-       <y>20</y>
-       <width>25</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Pastelova Demo</family>
-       <pointsize>16</pointsize>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QLabel {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	qproperty-alignment: 'AlignVCenter | AlignCenter';
-	border: 1px solid grey;
-	color: rgb(0, 0, 0);
-	background-color: rgb(246, 245, 244);
-}</string>
-     </property>
-     <property name="text">
-      <string>X</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_moving_x_plus">
-     <property name="geometry">
-      <rect>
-       <x>155</x>
-       <y>20</y>
-       <width>45</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	background-color: rgb(94, 92, 100);
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Tab 1</string>
+     </attribute>
+     <widget class="QPushButton" name="_pushButton_transformation1">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>25</y>
+        <width>103</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(59, 73, 153);
+color: rgb(255, 255, 255);
+border: 1px solid rgb(0, 0, 0);
+</string>
+      </property>
+      <property name="text">
+       <string>Transformation</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_settings1">
+      <property name="geometry">
+       <rect>
+        <x>103</x>
+        <y>25</y>
+        <width>102</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	background-color: rgb(52, 53, 56);
 	color: rgb(255, 255, 255);
+	border: 1px solid rgb(0, 0, 0);
 }
-
- QPushButton:hover {
-	background-color: rgb(154, 153, 150)
-}
-
-QPushButton:pressed {
-	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-											  stop: 0 #dadbde, stop: 1 #f6f7fa);
-}</string>
-     </property>
-     <property name="text">
-      <string>⇨</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_moving_x_minus">
-     <property name="geometry">
-      <rect>
-       <x>110</x>
-       <y>20</y>
-       <width>45</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	background-color: rgb(94, 92, 100);
-	color: rgb(255, 255, 255);
-}
-
 QPushButton:hover {
-	background-color: rgb(154, 153, 150)
+	background-color: rgb(59, 73, 153);
 }
 
-QPushButton:pressed {
-	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-											  stop: 0 #dadbde, stop: 1 #f6f7fa);
+</string>
+      </property>
+      <property name="text">
+       <string>Settings</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="_label_move">
+      <property name="geometry">
+       <rect>
+        <x>15</x>
+        <y>70</y>
+        <width>58</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(30, 32, 34);
+color: rgb(255, 255, 255);
+border: 1px;</string>
+      </property>
+      <property name="text">
+       <string>Move</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="_label_rotate">
+      <property name="geometry">
+       <rect>
+        <x>15</x>
+        <y>200</y>
+        <width>58</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(30, 32, 34);
+color: rgb(255, 255, 255);
+border: 1px;</string>
+      </property>
+      <property name="text">
+       <string>Rotate</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="_label_scale">
+      <property name="geometry">
+       <rect>
+        <x>15</x>
+        <y>330</y>
+        <width>58</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(30, 32, 34);
+color: rgb(255, 255, 255);
+border: 1px;</string>
+      </property>
+      <property name="text">
+       <string>Scale</string>
+      </property>
+     </widget>
+     <widget class="QSlider" name="horizontalSlider_move_x">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>100</y>
+        <width>140</width>
+        <height>7</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSlider {
+	height: 6;
+}
+
+QSlider::groove:horizontal {
+	background-color: rgb(59, 73, 153);
+	height: 6 px;
+	border-radius: 3px;
+}
+
+QSlider::handle:horizontal {
+	background: rgb(217, 217, 217);
+	width: 7px;
+	height: 7px;
+  	border-radius: 3px;
 }</string>
-     </property>
-     <property name="text">
-      <string>⇦</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_2">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>20</y>
-       <width>85</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Pastelova Demo</family>
-       <pointsize>16</pointsize>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QLabel {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	border: 1px solid grey;
-	color: rgb(94, 92, 100);
-	background-color: rgb(246, 245, 244);
+      </property>
+      <property name="minimum">
+       <number>-12</number>
+      </property>
+      <property name="maximum">
+       <number>12</number>
+      </property>
+      <property name="value">
+       <number>0</number>
+      </property>
+      <property name="tracking">
+       <bool>true</bool>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="invertedAppearance">
+       <bool>false</bool>
+      </property>
+      <property name="invertedControls">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QSlider" name="horizontalSlider_move_y">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>130</y>
+        <width>140</width>
+        <height>7</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSlider {
+	height: 6;
+}
+
+QSlider::groove:horizontal {
+	background-color: rgb(59, 73, 153);
+	height: 6 px;
+	border-radius: 3px;
+}
+
+QSlider::handle:horizontal {
+	background: rgb(217, 217, 217);
+	width: 7px;
+	height: 7px;
+  	border-radius: 3px;
 }</string>
-     </property>
-     <property name="text">
-      <string>Step:</string>
-     </property>
+      </property>
+      <property name="minimum">
+       <number>-12</number>
+      </property>
+      <property name="maximum">
+       <number>12</number>
+      </property>
+      <property name="value">
+       <number>0</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QSlider" name="horizontalSlider_move_z">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>160</y>
+        <width>140</width>
+        <height>7</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSlider {
+	height: 6;
+}
+
+QSlider::groove:horizontal {
+	background-color: rgb(59, 73, 153);
+	height: 6 px;
+	border-radius: 3px;
+}
+
+QSlider::handle:horizontal {
+	background: rgb(217, 217, 217);
+	width: 7px;
+	height: 7px;
+  	border-radius: 3px;
+}</string>
+      </property>
+      <property name="minimum">
+       <number>-12</number>
+      </property>
+      <property name="maximum">
+       <number>12</number>
+      </property>
+      <property name="value">
+       <number>0</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QSlider" name="horizontalSlider_rotate_x">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>230</y>
+        <width>140</width>
+        <height>7</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSlider {
+	height: 6;
+}
+
+QSlider::groove:horizontal {
+	background-color: rgb(59, 73, 153);
+	height: 6 px;
+	border-radius: 3px;
+}
+
+QSlider::handle:horizontal {
+	background: rgb(217, 217, 217);
+	width: 7px;
+	height: 7px;
+  	border-radius: 3px;
+}</string>
+      </property>
+      <property name="minimum">
+       <number>-360</number>
+      </property>
+      <property name="maximum">
+       <number>360</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QSlider" name="horizontalSlider_rotate_y">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>260</y>
+        <width>140</width>
+        <height>7</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSlider {
+	height: 6;
+}
+
+QSlider::groove:horizontal {
+	background-color: rgb(59, 73, 153);
+	height: 6 px;
+	border-radius: 3px;
+}
+
+QSlider::handle:horizontal {
+	background: rgb(217, 217, 217);
+	width: 7px;
+	height: 7px;
+  	border-radius: 3px;
+}</string>
+      </property>
+      <property name="minimum">
+       <number>-360</number>
+      </property>
+      <property name="maximum">
+       <number>360</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QSlider" name="horizontalSlider_rotate_z">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>290</y>
+        <width>140</width>
+        <height>7</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSlider {
+	height: 6;
+}
+
+QSlider::groove:horizontal {
+	background-color: rgb(59, 73, 153);
+	height: 6 px;
+	border-radius: 3px;
+}
+
+QSlider::handle:horizontal {
+	background: rgb(217, 217, 217);
+	width: 7px;
+	height: 7px;
+  	border-radius: 3px;
+}</string>
+      </property>
+      <property name="minimum">
+       <number>-360</number>
+      </property>
+      <property name="maximum">
+       <number>360</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QSlider" name="horizontalSlider_scale">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>360</y>
+        <width>140</width>
+        <height>7</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSlider {
+	height: 6;
+}
+
+QSlider::groove:horizontal {
+	background-color: rgb(59, 73, 153);
+	height: 6 px;
+	border-radius: 3px;
+}
+
+QSlider::handle:horizontal {
+	background: rgb(217, 217, 217);
+	width: 7px;
+	height: 7px;
+  	border-radius: 3px;
+}</string>
+      </property>
+      <property name="minimum">
+       <number>5</number>
+      </property>
+      <property name="maximum">
+       <number>200</number>
+      </property>
+      <property name="value">
+       <number>20</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="_label_x_1">
+      <property name="geometry">
+       <rect>
+        <x>19</x>
+        <y>94</y>
+        <width>10</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(30, 32, 34);
+color: rgb(255, 255, 255);
+border: 1px;</string>
+      </property>
+      <property name="text">
+       <string>x</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="_label_x_2">
+      <property name="geometry">
+       <rect>
+        <x>19</x>
+        <y>224</y>
+        <width>10</width>
+        <height>15</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(30, 32, 34);
+color: rgb(255, 255, 255);
+border: 1px;</string>
+      </property>
+      <property name="text">
+       <string>x</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="_label_y_1">
+      <property name="geometry">
+       <rect>
+        <x>19</x>
+        <y>124</y>
+        <width>10</width>
+        <height>15</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(30, 32, 34);
+color: rgb(255, 255, 255);
+border: 1px;</string>
+      </property>
+      <property name="text">
+       <string>y</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="_label_y_2">
+      <property name="geometry">
+       <rect>
+        <x>19</x>
+        <y>254</y>
+        <width>10</width>
+        <height>15</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(30, 32, 34);
+color: rgb(255, 255, 255);
+border: 1px;</string>
+      </property>
+      <property name="text">
+       <string>y</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="_label_z_1">
+      <property name="geometry">
+       <rect>
+        <x>19</x>
+        <y>154</y>
+        <width>10</width>
+        <height>15</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(30, 32, 34);
+color: rgb(255, 255, 255);
+border: 1px;</string>
+      </property>
+      <property name="text">
+       <string>z</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="_label_z_2">
+      <property name="geometry">
+       <rect>
+        <x>19</x>
+        <y>284</y>
+        <width>10</width>
+        <height>15</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(30, 32, 34);
+color: rgb(255, 255, 255);
+border: 1px;</string>
+      </property>
+      <property name="text">
+       <string>z</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_reset">
+      <property name="geometry">
+       <rect>
+        <x>15</x>
+        <y>400</y>
+        <width>70</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"> background-color: rgb(59, 73, 153);
+ color: rgb(255, 255, 255);
+ border-radius: 4px;</string>
+      </property>
+      <property name="text">
+       <string>Reset</string>
+      </property>
+     </widget>
     </widget>
-    <widget class="QDoubleSpinBox" name="step">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>43</y>
-       <width>85</width>
-       <height>54</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Pastelova Demo</family>
-       <pointsize>12</pointsize>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">font: 700 12pt &quot;Pastelova Demo&quot;;
-background-color: rgb(246, 245, 244);</string>
-     </property>
-     <property name="minimum">
-      <double>0.100000000000000</double>
-     </property>
-     <property name="maximum">
-      <double>10.000000000000000</double>
-     </property>
-     <property name="singleStep">
-      <double>0.500000000000000</double>
-     </property>
-     <property name="value">
-      <double>0.500000000000000</double>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_moving_y_plus">
-     <property name="geometry">
-      <rect>
-       <x>155</x>
-       <y>45</y>
-       <width>45</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	background-color: rgb(119, 118, 123);
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Tab 2</string>
+     </attribute>
+     <widget class="QPushButton" name="pushButton_settings2">
+      <property name="geometry">
+       <rect>
+        <x>103</x>
+        <y>25</y>
+        <width>102</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(59, 73, 153);
+color: rgb(255, 255, 255);
+border: 1px solid rgb(0, 0, 0);
+</string>
+      </property>
+      <property name="text">
+       <string>Settings</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="_pushButton_transformation2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>25</y>
+        <width>103</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	background-color: rgb(52, 53, 56);
 	color: rgb(255, 255, 255);
+	border: 1px solid rgb(0, 0, 0);
 }
-
- QPushButton:hover {
-	background-color: rgb(154, 153, 150)
-}
-
-QPushButton:pressed {
-	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-											  stop: 0 #dadbde, stop: 1 #f6f7fa);
-}</string>
-     </property>
-     <property name="text">
-      <string>⇧</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_moving_z_plus">
-     <property name="geometry">
-      <rect>
-       <x>155</x>
-       <y>70</y>
-       <width>45</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	background-color: rgb(154, 153, 150);
-	color: rgb(255, 255, 255);
-}
-
- QPushButton:hover {
-	background-color: rgb(154, 153, 150)
-}
-
-QPushButton:pressed {
-	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-											  stop: 0 #dadbde, stop: 1 #f6f7fa);
-}</string>
-     </property>
-     <property name="text">
-      <string>⬂</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_moving_y_minus">
-     <property name="geometry">
-      <rect>
-       <x>110</x>
-       <y>45</y>
-       <width>45</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	background-color: rgb(119, 118, 123);
-	color: rgb(255, 255, 255);
-
-}
-
- QPushButton:hover {
-	background-color: rgb(154, 153, 150)
-}
-
-QPushButton:pressed {
-	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-											  stop: 0 #dadbde, stop: 1 #f6f7fa);
-}</string>
-     </property>
-     <property name="text">
-      <string>⇩</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_moving_z_minus">
-     <property name="geometry">
-      <rect>
-       <x>110</x>
-       <y>70</y>
-       <width>45</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	background-color: rgb(154, 153, 150);
-	color: rgb(255, 255, 255);
-
-}
-
- QPushButton:hover {
-	background-color: rgb(154, 153, 150)
-}
-
-QPushButton:pressed {
-	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-											  stop: 0 #dadbde, stop: 1 #f6f7fa);
-}</string>
-     </property>
-     <property name="text">
-      <string>⬁ </string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_moving_y">
-     <property name="geometry">
-      <rect>
-       <x>85</x>
-       <y>45</y>
-       <width>25</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Pastelova Demo</family>
-       <pointsize>16</pointsize>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QLabel {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	qproperty-alignment: 'AlignVCenter | AlignCenter';
-	border: 1px solid grey;
-	color: rgb(0, 0, 0);
-	background-color: rgb(246, 245, 244);
-}</string>
-     </property>
-     <property name="text">
-      <string>Y</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_moving_z">
-     <property name="geometry">
-      <rect>
-       <x>85</x>
-       <y>70</y>
-       <width>25</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Pastelova Demo</family>
-       <pointsize>16</pointsize>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QLabel {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	qproperty-alignment: 'AlignVCenter | AlignCenter';
-	border: 1px solid grey;
-	color: rgb(0, 0, 0);
-	background-color: rgb(246, 245, 244);
-}</string>
-     </property>
-     <property name="text">
-      <string>Z</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="groupBox_moving_2">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>312</y>
-      <width>201</width>
-      <height>96</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Pastelova Demo</family>
-      <pointsize>14</pointsize>
-      <italic>false</italic>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QGroupBox {
-	font: 14pt &quot;Pastelova Demo&quot;;
-	border: 1px solid grey;
-	background-color: rgb(246, 245, 244);
-	color: rgb(154, 153, 150);
-}</string>
-    </property>
-    <property name="title">
-     <string> ROTATION</string>
-    </property>
-    <widget class="QLabel" name="label_moving_x_2">
-     <property name="geometry">
-      <rect>
-       <x>85</x>
-       <y>20</y>
-       <width>25</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Pastelova Demo</family>
-       <pointsize>16</pointsize>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QLabel {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	qproperty-alignment: 'AlignVCenter | AlignCenter';
-	border: 1px solid grey;
-	color: rgb(0, 0, 0);
-	background-color: rgb(246, 245, 244);
-}</string>
-     </property>
-     <property name="text">
-      <string>X</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_rotation_x_plus">
-     <property name="geometry">
-      <rect>
-       <x>155</x>
-       <y>20</y>
-       <width>45</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	background-color: rgb(94, 92, 100);
-	color: rgb(255, 255, 255);
-}
-
- QPushButton:hover {
-	background-color: rgb(154, 153, 150)
-}
-
-QPushButton:pressed {
-	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-											  stop: 0 #dadbde, stop: 1 #f6f7fa);
-}</string>
-     </property>
-     <property name="text">
-      <string>⇨</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_rotation_x_minus">
-     <property name="geometry">
-      <rect>
-       <x>110</x>
-       <y>20</y>
-       <width>45</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	background-color: rgb(94, 92, 100);
-	color: rgb(255, 255, 255);
-}
-
 QPushButton:hover {
-	background-color: rgb(154, 153, 150)
+	background-color: rgb(59, 73, 153);
 }
 
-QPushButton:pressed {
-	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-											  stop: 0 #dadbde, stop: 1 #f6f7fa);
+</string>
+      </property>
+      <property name="text">
+       <string>Transformation</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="_label_edges">
+      <property name="geometry">
+       <rect>
+        <x>15</x>
+        <y>70</y>
+        <width>58</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(30, 32, 34);
+color: rgb(255, 255, 255);
+border: 1px;</string>
+      </property>
+      <property name="text">
+       <string>Edges</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="_label_vertices">
+      <property name="geometry">
+       <rect>
+        <x>15</x>
+        <y>240</y>
+        <width>58</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(30, 32, 34);
+color: rgb(255, 255, 255);
+border: 1px;</string>
+      </property>
+      <property name="text">
+       <string>Vertices</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="_label_other">
+      <property name="geometry">
+       <rect>
+        <x>15</x>
+        <y>410</y>
+        <width>58</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(30, 32, 34);
+color: rgb(255, 255, 255);
+border: 1px;</string>
+      </property>
+      <property name="text">
+       <string>Other</string>
+      </property>
+     </widget>
+     <widget class="QSlider" name="horizontalSlider_edges_thick">
+      <property name="geometry">
+       <rect>
+        <x>25</x>
+        <y>115</y>
+        <width>140</width>
+        <height>7</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSlider {
+	height: 6;
+}
+
+QSlider::groove:horizontal {
+	background-color: rgb(59, 73, 153);
+	height: 6 px;
+	border-radius: 3px;
+}
+
+QSlider::handle:horizontal {
+	background: rgb(217, 217, 217);
+	width: 7px;
+	height: 7px;
+  	border-radius: 3px;
 }</string>
-     </property>
-     <property name="text">
-      <string>⇦</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_3">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>20</y>
-       <width>85</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Pastelova Demo</family>
-       <pointsize>16</pointsize>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QLabel {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	border: 1px solid grey;
-	color: rgb(94, 92, 100);
-	background-color: rgb(246, 245, 244);
+      </property>
+      <property name="maximum">
+       <number>99</number>
+      </property>
+      <property name="value">
+       <number>50</number>
+      </property>
+      <property name="tracking">
+       <bool>true</bool>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="invertedAppearance">
+       <bool>false</bool>
+      </property>
+      <property name="invertedControls">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QSlider" name="horizontalSlider_vert_size">
+      <property name="geometry">
+       <rect>
+        <x>25</x>
+        <y>285</y>
+        <width>140</width>
+        <height>7</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSlider {
+	height: 6;
+}
+
+QSlider::groove:horizontal {
+	background-color: rgb(59, 73, 153);
+	height: 6 px;
+	border-radius: 3px;
+}
+
+QSlider::handle:horizontal {
+	background: rgb(217, 217, 217);
+	width: 7px;
+	height: 7px;
+  	border-radius: 3px;
 }</string>
-     </property>
-     <property name="text">
-      <string>Angle°:</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_rotation_y_plus">
-     <property name="geometry">
-      <rect>
-       <x>155</x>
-       <y>45</y>
-       <width>45</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	background-color: rgb(119, 118, 123);
-	color: rgb(255, 255, 255);
+      </property>
+      <property name="maximum">
+       <number>99</number>
+      </property>
+      <property name="value">
+       <number>50</number>
+      </property>
+      <property name="tracking">
+       <bool>true</bool>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="invertedAppearance">
+       <bool>false</bool>
+      </property>
+      <property name="invertedControls">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="_label_edges_type">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>130</y>
+        <width>58</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(30, 32, 34);
+color: rgb(255, 255, 255);
+border: 1px;</string>
+      </property>
+      <property name="text">
+       <string>Type</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="_label_edges_color">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>175</y>
+        <width>58</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(30, 32, 34);
+color: rgb(255, 255, 255);
+border: 1px;</string>
+      </property>
+      <property name="text">
+       <string>Color</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="_label_vertex_disp_method">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>300</y>
+        <width>90</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(30, 32, 34);
+color: rgb(255, 255, 255);
+border: 1px;</string>
+      </property>
+      <property name="text">
+       <string>Display method</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="_label_vertex_color">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>345</y>
+        <width>40</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(30, 32, 34);
+color: rgb(255, 255, 255);
+border: 1px;</string>
+      </property>
+      <property name="text">
+       <string>Color</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="_label_project_type">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>435</y>
+        <width>110</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(30, 32, 34);
+color: rgb(255, 255, 255);
+border: 1px;</string>
+      </property>
+      <property name="text">
+       <string>Projection type</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="_label_bg_color">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>480</y>
+        <width>110</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(30, 32, 34);
+color: rgb(255, 255, 255);
+border: 1px;</string>
+      </property>
+      <property name="text">
+       <string>Background color</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBox">
+      <property name="geometry">
+       <rect>
+        <x>25</x>
+        <y>150</y>
+        <width>80</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QComboBox {
+  background-color: rgb(59, 73, 153);
+  color: rgb(255, 255, 255);
+  padding-right: 15px;
+  border-radius: 4px;
 }
 
- QPushButton:hover {
-	background-color: rgb(154, 153, 150)
+QComboBox::drop-down {
+  subcontrol-origin: padding;
+  subcontrol-position: left;
+  width: 15px;
+  background: transparent;
 }
 
-QPushButton:pressed {
-	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-											  stop: 0 #dadbde, stop: 1 #f6f7fa);
+QComboBox::down-arrow {
+  image: none;
 }</string>
-     </property>
-     <property name="text">
-      <string>⇧</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_rotation_z_plus">
-     <property name="geometry">
-      <rect>
-       <x>155</x>
-       <y>70</y>
-       <width>45</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	background-color: rgb(154, 153, 150);
-	color: rgb(255, 255, 255);
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <property name="minimumContentsLength">
+       <number>0</number>
+      </property>
+      <item>
+       <property name="text">
+        <string>Solid</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Dashed</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QPushButton" name="pushButton_edges_color">
+      <property name="geometry">
+       <rect>
+        <x>25</x>
+        <y>195</y>
+        <width>18</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(60, 80, 180);
+border-radius: 3px;
+border: 1px solid;
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBox_disp_method">
+      <property name="geometry">
+       <rect>
+        <x>25</x>
+        <y>320</y>
+        <width>80</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QComboBox {
+  background-color: rgb(59, 73, 153);
+  color: rgb(255, 255, 255);
+  padding-right: 15px;
+  border-radius: 4px;
 }
 
- QPushButton:hover {
-	background-color: rgb(154, 153, 150)
+QComboBox::drop-down {
+  subcontrol-origin: padding;
+  subcontrol-position: left;
+  width: 15px;
+  background: transparent;
 }
 
-QPushButton:pressed {
-	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-											  stop: 0 #dadbde, stop: 1 #f6f7fa);
+QComboBox::down-arrow {
+  image: none;
 }</string>
-     </property>
-     <property name="text">
-      <string>⬂</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_rotation_y_minus">
-     <property name="geometry">
-      <rect>
-       <x>110</x>
-       <y>45</y>
-       <width>45</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	background-color: rgb(119, 118, 123);
-	color: rgb(255, 255, 255);
-
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <property name="minimumContentsLength">
+       <number>0</number>
+      </property>
+      <item>
+       <property name="text">
+        <string>Circle</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Square</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>None</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QPushButton" name="pushButton_vertex_color">
+      <property name="geometry">
+       <rect>
+        <x>25</x>
+        <y>365</y>
+        <width>18</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 3px;
+border: 1px solid;
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBox_disp_method_2">
+      <property name="geometry">
+       <rect>
+        <x>25</x>
+        <y>455</y>
+        <width>80</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QComboBox {
+  background-color: rgb(59, 73, 153);
+  color: rgb(255, 255, 255);
+  padding-right: 15px;
+  border-radius: 4px;
 }
 
- QPushButton:hover {
-	background-color: rgb(154, 153, 150)
+QComboBox::drop-down {
+  subcontrol-origin: padding;
+  subcontrol-position: left;
+  width: 15px;
+  background: transparent;
 }
 
-QPushButton:pressed {
-	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-											  stop: 0 #dadbde, stop: 1 #f6f7fa);
+QComboBox::down-arrow {
+  image: none;
 }</string>
-     </property>
-     <property name="text">
-      <string>⇩</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_rotation_z_minus">
-     <property name="geometry">
-      <rect>
-       <x>110</x>
-       <y>70</y>
-       <width>45</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	background-color: rgb(154, 153, 150);
-	color: rgb(255, 255, 255);
-
-}
-
- QPushButton:hover {
-	background-color: rgb(154, 153, 150)
-}
-
-QPushButton:pressed {
-	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-											  stop: 0 #dadbde, stop: 1 #f6f7fa);
-}</string>
-     </property>
-     <property name="text">
-      <string>⬁ </string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_moving_y_2">
-     <property name="geometry">
-      <rect>
-       <x>85</x>
-       <y>45</y>
-       <width>25</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Pastelova Demo</family>
-       <pointsize>16</pointsize>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QLabel {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	qproperty-alignment: 'AlignVCenter | AlignCenter';
-	border: 1px solid grey;
-	color: rgb(0, 0, 0);
-	background-color: rgb(246, 245, 244);
-}</string>
-     </property>
-     <property name="text">
-      <string>Y</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_moving_z_2">
-     <property name="geometry">
-      <rect>
-       <x>85</x>
-       <y>70</y>
-       <width>25</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Pastelova Demo</family>
-       <pointsize>16</pointsize>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QLabel {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	qproperty-alignment: 'AlignVCenter | AlignCenter';
-	border: 1px solid grey;
-	color: rgb(0, 0, 0);
-	background-color: rgb(246, 245, 244);
-}</string>
-     </property>
-     <property name="text">
-      <string>Z</string>
-     </property>
-    </widget>
-    <widget class="QSpinBox" name="angle">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>43</y>
-       <width>85</width>
-       <height>54</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">font: 700 12pt &quot;Pastelova Demo&quot;;
-background-color: rgb(246, 245, 244);</string>
-     </property>
-     <property name="value">
-      <number>5</number>
-     </property>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <property name="minimumContentsLength">
+       <number>0</number>
+      </property>
+      <item>
+       <property name="text">
+        <string>Parallel</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Central</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QPushButton" name="pushButton_bg_color">
+      <property name="geometry">
+       <rect>
+        <x>25</x>
+        <y>500</y>
+        <width>18</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(49, 47, 58);
+border-radius: 3px;
+border: 1px solid;
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="_label_edges_thick">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>95</y>
+        <width>58</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(30, 32, 34);
+color: rgb(255, 255, 255);
+border: 1px;</string>
+      </property>
+      <property name="text">
+       <string>Thickness</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="_label_vertex_size">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>265</y>
+        <width>58</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(30, 32, 34);
+color: rgb(255, 255, 255);
+border: 1px;</string>
+      </property>
+      <property name="text">
+       <string>Size</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_save">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>620</y>
+        <width>100</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"> background-color: rgb(59, 73, 153);
+ color: rgb(255, 255, 255);
+ border-radius: 4px;</string>
+      </property>
+      <property name="text">
+       <string>Save</string>
+      </property>
+     </widget>
     </widget>
    </widget>
-   <widget class="QGroupBox" name="groupBox_scaling">
+   <widget class="QPushButton" name="pushButton_open_file">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>407</y>
-      <width>201</width>
-      <height>45</height>
+      <x>0</x>
+      <y>0</y>
+      <width>65</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Pastelova Demo</family>
-      <pointsize>14</pointsize>
-      <italic>false</italic>
-      <bold>false</bold>
+      <pointsize>11</pointsize>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QGroupBox {
-	background-color: rgb(246, 245, 244);
-	font: 14pt &quot;Pastelova Demo&quot;;
-	border: 1px solid grey;
-	border-radius: 10px;
-	border-top-right-radius:0px;
-	border-top-left-radius:0px;
-	color: rgb(154, 153, 150);
-}</string>
-    </property>
-    <property name="title">
-     <string> SCALING</string>
-    </property>
-    <widget class="QPushButton" name="pushButton_scaling_minus">
-     <property name="geometry">
-      <rect>
-       <x>110</x>
-       <y>20</y>
-       <width>45</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton {
-	
-	background-color: rgb(94, 92, 100);
+     <string notr="true">QPushButton {
+	background-color: rgb(30, 30, 30);
 	color: rgb(255, 255, 255);
+	border:1px solid rgb(0, 0, 0);
 }
-
- QPushButton:hover {
-	background-color: rgb(154, 153, 150)
-}
-
-QPushButton:pressed {
-	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-											  stop: 0 #dadbde, stop: 1 #f6f7fa);
-}</string>
-     </property>
-     <property name="text">
-      <string>-</string>
-     </property>
-    </widget>
-    <widget class="QSpinBox" name="scale">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>19</y>
-       <width>85</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Pastelova Demo</family>
-       <pointsize>12</pointsize>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QSpinBox {
-	font: 700 12pt &quot;Pastelova Demo&quot;;
-background-color: rgb(246, 245, 244);
-border: 1px solid grey;
-border-bottom:  0px;
-border-radius:10px;
-border-top-right-radius:0px;
-border-top-left-radius:0px;
-border-bottom-right-radius:0px;
+QPushButton:hover {
+	color: rgb(200, 200, 200);
 }
 </string>
-     </property>
-     <property name="minimum">
-      <number>1</number>
-     </property>
-     <property name="maximum">
-      <number>99</number>
-     </property>
-     <property name="singleStep">
-      <number>5</number>
-     </property>
-     <property name="value">
-      <number>10</number>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_scaling_factor">
-     <property name="geometry">
-      <rect>
-       <x>85</x>
-       <y>20</y>
-       <width>25</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Pastelova Demo</family>
-       <pointsize>16</pointsize>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QLabel {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	qproperty-alignment: 'AlignVCenter | AlignCenter';
-	border: 1px solid grey;
-	color: rgb(0, 0, 0);
-	background-color: rgb(246, 245, 244);
-}</string>
-     </property>
-     <property name="text">
-      <string>%</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_scaling_plus">
-     <property name="geometry">
-      <rect>
-       <x>155</x>
-       <y>20</y>
-       <width>45</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton {
-	background-color: rgb(94, 92, 100);
-	color: rgb(255, 255, 255);
-
-	border-radius:10px;
-	border-top-right-radius:0px;
-	border-top-left-radius:0px;
-	border-bottom-left-radius:0px;
-}
-
- QPushButton:hover {
-	background-color: rgb(154, 153, 150)
-}
-
-QPushButton:pressed {
-	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-											  stop: 0 #dadbde, stop: 1 #f6f7fa);
-}</string>
-     </property>
-     <property name="text">
-      <string>+</string>
-     </property>
-    </widget>
+    </property>
+    <property name="text">
+     <string> 📁Open </string>
+    </property>
    </widget>
-   <widget class="QGroupBox" name="groupBox_7">
+   <widget class="QLabel" name="label_filename">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>455</y>
-      <width>201</width>
-      <height>47</height>
+      <x>65</x>
+      <y>0</y>
+      <width>100</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Pastelova Demo</family>
-      <pointsize>14</pointsize>
-      <italic>false</italic>
-      <bold>false</bold>
+      <pointsize>10</pointsize>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QGroupBox {
-background-color: rgb(246, 245, 244);
-font: 14pt &quot;Pastelova Demo&quot;;
-border: 1px solid grey;
-border-radius: 10px;
-color: rgb(154, 153, 150);
-}</string>
+     <string notr="true">background-color: rgb(58, 81, 113);
+color: rgb(255, 255, 255);
+border:1px solid rgb(0, 0, 0);</string>
     </property>
-    <property name="title">
-     <string>PROJECTION TYPE</string>
+    <property name="text">
+     <string>cottage.obj</string>
     </property>
-    <widget class="QRadioButton" name="radioButton_parallel_type">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>20</y>
-       <width>104</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Pastelova Demo</family>
-       <pointsize>16</pointsize>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QRadioButton {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	background-color: rgb(246, 245, 244);
-	border: 1px solid grey;
-	border-right: 0px;
-	border-radius: 10px;
-	border-top-right-radius:0px;
-	border-top-left-radius:0px;
-	border-bottom-right-radius:0px;
-}</string>
-     </property>
-     <property name="text">
-      <string>Parallel</string>
-     </property>
-     <property name="checked">
-      <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="QRadioButton" name="radioButton_central_type">
-     <property name="geometry">
-      <rect>
-       <x>104</x>
-       <y>20</y>
-       <width>96</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Pastelova Demo</family>
-       <pointsize>16</pointsize>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QRadioButton {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	background-color: rgb(246, 245, 244);
-	border: 1px solid grey;
-	border-left: 0px;
-	border-radius: 10px;
-	border-top-right-radius:0px;
-	border-top-left-radius:0px;
-	border-bottom-left-radius: 0px;
-}</string>
-     </property>
-     <property name="text">
-      <string>Central</string>
-     </property>
-    </widget>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
-   <widget class="QGroupBox" name="groupBox_3">
+   <widget class="QLabel" name="label_file_info">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>504</y>
-      <width>201</width>
-      <height>51</height>
+      <x>740</x>
+      <y>650</y>
+      <width>250</width>
+      <height>16</height>
      </rect>
     </property>
-    <property name="styleSheet">
-     <string notr="true">QGroupBox {
-background-color: rgb(246, 245, 244);
-font: 14pt &quot;Pastelova Demo&quot;;
-border: 1px solid grey;
-border-radius: 10px;
-color: rgb(154, 153, 150);
-}</string>
-    </property>
-    <property name="title">
-     <string>BACKGROUND COLOR</string>
-    </property>
-    <widget class="QPushButton" name="pushButton_backgroundColor">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>20</y>
-       <width>201</width>
-       <height>30</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	background-color: rgb(224, 170, 255);
-
-	border-radius: 10px;
-	border-top-right-radius:0px;
-	border-top-left-radius:0px;
-}
-
- QPushButton:hover {
-	background-color: rgb(226, 179, 255);
-}
-
-QPushButton:pressed {
-	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-											  stop: 0 #dadbde, stop: 1 #f6f7fa);
-}</string>
-     </property>
-     <property name="text">
-      <string>Choose color</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="groupBox">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>557</y>
-      <width>201</width>
-      <height>128</height>
-     </rect>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QGroupBox {
-background-color: rgb(246, 245, 244);
-font: 14pt &quot;Pastelova Demo&quot;;
-border: 1px solid grey;
-border-radius: 10px;
-color: rgb(154, 153, 150);
-}</string>
+     <string notr="true">	text-align: left;
+	background-color: rgb(30, 30, 30);
+	color: rgb(190, 190, 190);
+	border-radius: 1px;</string>
     </property>
-    <property name="title">
-     <string>EDGE SETTINGS</string>
-    </property>
-    <widget class="QRadioButton" name="radioButton_edgeType_solid">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>44</y>
-       <width>100</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QRadioButton {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	background-color: rgb(246, 245, 244);
-	border: 1px solid grey;
-	border-top: 0px;
-	border-right: 0px;
-}</string>
-     </property>
-     <property name="text">
-      <string>Solid</string>
-     </property>
-     <property name="checked">
-      <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="QRadioButton" name="radioButton_edgeType_dashed">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>44</y>
-       <width>101</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QRadioButton {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	background-color: rgb(246, 245, 244);
-	border: 1px solid grey;
-	border-top: 0px;
-	border-left: 0px;
-}</string>
-     </property>
-     <property name="text">
-      <string>Dashed</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_5">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>66</y>
-       <width>101</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QLabel {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	background-color: rgb(246, 245, 244);
-	border: 1px solid grey;
-	border-right: 0px;
-}</string>
-     </property>
-     <property name="text">
-      <string>Thickness</string>
-     </property>
-    </widget>
-    <widget class="QSpinBox" name="edgeThickness">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>66</y>
-       <width>101</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QSpinBox {
-	font: 700 12pt &quot;Pastelova Demo&quot;;
-background-color: rgb(246, 245, 244);
-border: 1px solid grey;
-}
-</string>
-     </property>
-     <property name="value">
-      <number>1</number>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>20</y>
-       <width>201</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QLabel {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	qproperty-alignment: 'AlignVCenter | AlignCenter';
-	color: rgb(94, 92, 100);
-	background-color: rgb(246, 245, 244);
-	border: 1px solid grey;
-	border-bottom: 0px;
-}</string>
-     </property>
-     <property name="text">
-      <string>Type</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_edgeColor">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>97</y>
-       <width>201</width>
-       <height>30</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	background-color: rgb(224, 170, 255);
-
-	border-radius: 10px;
-	border-top-right-radius:0px;
-	border-top-left-radius:0px;
-}
-
- QPushButton:hover {
-	background-color: rgb(226, 179, 255);
-}
-
-QPushButton:pressed {
-	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-											  stop: 0 #dadbde, stop: 1 #f6f7fa);
-}</string>
-     </property>
-     <property name="text">
-      <string>Choose color</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="groupBox_5">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>687</y>
-      <width>201</width>
-      <height>154</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QGroupBox {
-background-color: rgb(246, 245, 244);
-font: 14pt &quot;Pastelova Demo&quot;;
-border: 1px solid grey;
-border-radius: 10px;
-color: rgb(154, 153, 150);
-}</string>
-    </property>
-    <property name="title">
-     <string>VERTEX SETTINGS</string>
-    </property>
-    <widget class="QRadioButton" name="radioButton_vertexType_circle">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>44</y>
-       <width>100</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QRadioButton {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	background-color: rgb(246, 245, 244);
-	border: 1px solid grey;
-	border-top: 0px;
-	border-right: 0px;
-	border-bottom: 0px;
-}</string>
-     </property>
-     <property name="text">
-      <string>Circle</string>
-     </property>
-     <property name="checked">
-      <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="QRadioButton" name="radioButton_vertexType_square">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>44</y>
-       <width>101</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QRadioButton {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	background-color: rgb(246, 245, 244);
-	border: 1px solid grey;
-	border-top: 0px;
-	border-left: 0px;
-	border-bottom: 0px;
-}</string>
-     </property>
-     <property name="text">
-      <string>Square</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_7">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>92</y>
-       <width>101</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QLabel {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	background-color: rgb(246, 245, 244);
-	border: 1px solid grey;
-	border-right: 0px;
-}</string>
-     </property>
-     <property name="text">
-      <string>Size</string>
-     </property>
-    </widget>
-    <widget class="QSpinBox" name="vertexSize">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>92</y>
-       <width>101</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QSpinBox {
-	font: 700 12pt &quot;Pastelova Demo&quot;;
-	background-color: rgb(246, 245, 244);
-	border: 1px solid grey;
-}
-</string>
-     </property>
-     <property name="value">
-      <number>1</number>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_8">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>20</y>
-       <width>201</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QLabel {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	qproperty-alignment: 'AlignVCenter | AlignCenter';
-	color: rgb(94, 92, 100);
-	background-color: rgb(246, 245, 244);
-	border: 1px solid grey;
-	border-bottom: 0px;
-}</string>
-     </property>
-     <property name="text">
-      <string>Type</string>
-     </property>
-    </widget>
-    <widget class="QRadioButton" name="radioButton_vertexType_novertex">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>70</y>
-       <width>201</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QRadioButton {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	background-color: rgb(246, 245, 244);
-	border: 1px solid grey;
-	border-top: 0px;
-}</string>
-     </property>
-     <property name="text">
-      <string>No Vertex</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_vertexColor">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>123</y>
-       <width>201</width>
-       <height>30</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton {
-	font: 700 16pt &quot;Pastelova Demo&quot;;
-	background-color: rgb(224, 170, 255);
-
-	border-radius: 10px;
-	border-top-right-radius:0px;
-	border-top-left-radius:0px;
-}
-
- QPushButton:hover {
-	background-color: rgb(226, 179, 255);
-}
-
-QPushButton:pressed {
-	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-											  stop: 0 #dadbde, stop: 1 #f6f7fa);
-}</string>
-     </property>
-     <property name="text">
-      <string>Choose color</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QScrollBar" name="verticalScrollBar">
-    <property name="geometry">
-     <rect>
-      <x>6</x>
-      <y>10</y>
-      <width>16</width>
-      <height>831</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QScrollBar:vertical {
-    border: none;
-    background: none;
-    width: 8px;
-    margin: 0px 0px 0px 0px;
-}
-QScrollBar::handle:vertical {
-    background-color: rgb(224, 170, 255);
-    border-radius: 5px;
-    min-height: 20px;
-}
-QScrollBar::handle:hover:vertical {
-    background: #0097A7;
-}
-QScrollBar::add-line:vertical {
-    background: none;
-    height: 0px;
-    subcontrol-position: bottom;
-    subcontrol-origin: margin;
-}
-QScrollBar::sub-line:vertical {
-    background: none;
-    height: 0px;
-    subcontrol-position: top;
-    subcontrol-origin: margin;
-}
-QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
-    background: none;
-}</string>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
+    <property name="text">
+     <string>Count of vertex: 20432. Count of facets: 6854</string>
     </property>
    </widget>
   </widget>
-  <action name="actionSave_as_GIF">
-   <property name="text">
-    <string>Save as GIF</string>
-   </property>
-  </action>
-  <action name="actionSave_as_bmp">
-   <property name="text">
-    <string>Save as .bmp</string>
-   </property>
-  </action>
-  <action name="actionSave_as_jpeg">
-   <property name="text">
-    <string>Save as .jpeg</string>
-   </property>
-  </action>
  </widget>
  <resources/>
  <connections/>
