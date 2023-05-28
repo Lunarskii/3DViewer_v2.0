@@ -89,17 +89,17 @@ int Model::getError()
     return errorCode;
 }
 
-std::vector<int> Model::getVertexIndex()
+std::vector<int>& Model::getVertexIndex()
 {
     return vertexIndex;
 }
 
-std::vector<double> Model::getVertexCoord()
+std::vector<double>& Model::getVertexCoord()
 {
     return vertexCoord;
 }
 
-void Model::transform(int& strategyType, double& value, int& axis)
+void Model::transform(int& strategyType, double& value, transformation_t& axis)
 {
     if (strategyType == MOVE)
     {

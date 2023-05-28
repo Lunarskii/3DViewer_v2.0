@@ -22,9 +22,9 @@ public:
 
     void setFileName(std::string fileName);
     int getError();
-    std::vector<int> getVertexIndex();
-    std::vector<double> getVertexCoord();
-    void transform(int& strategyType, double& value, int& axis);
+    std::vector<int>& getVertexIndex();
+    std::vector<double>& getVertexCoord();
+    void transform(int& strategyType, double& value, transformation_t& axis);
     
     static Model& getInstance();
 private:
