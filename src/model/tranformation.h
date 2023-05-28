@@ -4,24 +4,26 @@
 #include <vector>
 #include <cmath>
 
-#define X 0
-#define Y 1
-#define Z 2
-
-#define MOVE 0
-#define ROTATE 1
-#define SCALE 2
+typedef enum 
+{
+    X = 0,
+    Y = 1,
+    Z = 2,
+    MOVE = 0,
+    ROTATE = 1,
+    SCALE = 2
+} transformation_t;
 
 class TransformationStrategy
 {
 public:
     virtual ~TransformationStrategy() {}
-    virtual void transform(std::vector<double>&, double&, int& axis) {}
+    virtual void transform(std::vector<double>&, double&, transformation_t& axis) {}
 };
 
 class MoveStrategy : public TransformationStrategy
 {
-    void transform(std::vector<double>& vertexCoord, double& step, int& axis) override
+    void transform(std::vector<double>& vertexCoord, double& step, transformation_t& axis) override
     {
         for (int i = axis; i < vertexCoord.size(); i += 3)
         {
@@ -32,7 +34,7 @@ class MoveStrategy : public TransformationStrategy
 
 class RotateStrategy : public TransformationStrategy 
 {
-    void transform(std::vector<double>& vertexCoord, double& angle, int& axis) override
+    void transform(std::vector<double>& vertexCoord, double& angle, transformation_t& axis) override
     {
         double tempAngle = angle * M_PI / 180;
         double cosValue = cos(tempAngle);
@@ -54,8 +56,6 @@ class RotateStrategy : public TransformationStrategy
             } 
             else if (axis == Z) 
             {
-                // vertexCoord[i] = cosValue * coord - sinValue * vertexCoord[i + 1];
-                // vertexCoord[i + 1] = sinValue * coord + cosValue * vertexCoord[i + 1];
                 vertexCoord[i] = cosValue * coord + sinValue * vertexCoord[i + 1];
                 vertexCoord[i + 1] = -sinValue * coord + cosValue * vertexCoord[i + 1];
             }
@@ -65,11 +65,12 @@ class RotateStrategy : public TransformationStrategy
 
 class ScaleStrategy : public TransformationStrategy
 {
-    void transform(std::vector<double>& vertexCoord, double& scale, int&) override
+    void transform(std::vector<double>& vertexCoord, double& scale, transformation_t&) override
     {
         for (int i = 0; i < vertexCoord.size(); ++i)
         {
-            vertexCoord[i] += scale / 100 * vertexCoord[i];
+            // vertexCoord[i] += scale / 100 * vertexCoord[i];
+            vertexCoord[i] *= scale;
         }
     }
 };
@@ -84,7 +85,7 @@ public:
         this->strategy = strategy;
     }
 
-    void performTransformation(std::vector<double>& vertexCoord, double& value, int& axis)
+    void performTransformation(std::vector<double>& vertexCoord, double& value, transformation_t& axis)
     {
         strategy->transform(vertexCoord, value, axis);
         delete strategy;
