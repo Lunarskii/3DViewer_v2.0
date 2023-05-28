@@ -95,7 +95,7 @@ border: 1px solid rgb(0, 0, 0);</string>
 border: 1px solid rgb(0, 0, 0);</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -669,6 +669,68 @@ QPushButton:hover {
       </property>
       <property name="text">
        <string>Reset</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_img">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>610</y>
+        <width>45</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+ background-color: rgb(59, 73, 153);
+ color: rgb(255, 255, 255);
+ border-radius: 4px;
+}
+
+QPushButton:hover {
+ background-color: rgb(49, 63, 133);
+ color: rgb(255, 255, 255);
+ border-radius: 4px;
+}</string>
+      </property>
+      <property name="text">
+       <string>img</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_gif">
+      <property name="geometry">
+       <rect>
+        <x>65</x>
+        <y>610</y>
+        <width>45</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+ background-color: rgb(59, 73, 153);
+ color: rgb(255, 255, 255);
+ border-radius: 4px;
+}
+
+QPushButton:hover {
+ background-color: rgb(49, 63, 133);
+ color: rgb(255, 255, 255);
+ border-radius: 4px;
+}</string>
+      </property>
+      <property name="text">
+       <string>gif</string>
       </property>
      </widget>
     </widget>
