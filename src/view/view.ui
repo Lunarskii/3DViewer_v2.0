@@ -44,7 +44,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">background-color: transparent;</string>
     </property>
    </widget>
    <widget class="QLabel" name="_down_line">
@@ -62,36 +62,6 @@ border: 1px solid rgb(0, 0, 0);</string>
     </property>
     <property name="text">
      <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_projection">
-    <property name="geometry">
-     <rect>
-      <x>25</x>
-      <y>646</y>
-      <width>45</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>11</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton {
-	text-align: left;
-	background-color: rgb(30, 30, 30);
-	color: rgb(190, 190, 190);
-	border-radius: 1px;
-}
-QPushButton:hover {
-	color: rgb(210, 210, 210);
-}
-</string>
-    </property>
-    <property name="text">
-     <string>Parallel</string>
     </property>
    </widget>
    <widget class="QLabel" name="_top_line">
@@ -115,7 +85,7 @@ border: 1px solid rgb(0, 0, 0);</string>
     <property name="geometry">
      <rect>
       <x>990</x>
-      <y>-25</y>
+      <y>-30</y>
       <width>213</width>
       <height>700</height>
      </rect>
@@ -125,7 +95,7 @@ border: 1px solid rgb(0, 0, 0);</string>
 border: 1px solid rgb(0, 0, 0);</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -135,9 +105,9 @@ border: 1px solid rgb(0, 0, 0);</string>
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>25</y>
-        <width>103</width>
-        <height>20</height>
+        <y>20</y>
+        <width>123</width>
+        <height>25</height>
        </rect>
       </property>
       <property name="font">
@@ -158,10 +128,10 @@ border: 1px solid rgb(0, 0, 0);
      <widget class="QPushButton" name="pushButton_settings1">
       <property name="geometry">
        <rect>
-        <x>103</x>
-        <y>25</y>
-        <width>102</width>
-        <height>20</height>
+        <x>123</x>
+        <y>20</y>
+        <width>82</width>
+        <height>25</height>
        </rect>
       </property>
       <property name="font">
@@ -193,7 +163,7 @@ QPushButton:hover {
        <rect>
         <x>15</x>
         <y>70</y>
-        <width>58</width>
+        <width>70</width>
         <height>16</height>
        </rect>
       </property>
@@ -216,7 +186,7 @@ border: 1px;</string>
        <rect>
         <x>15</x>
         <y>200</y>
-        <width>58</width>
+        <width>70</width>
         <height>16</height>
        </rect>
       </property>
@@ -239,7 +209,7 @@ border: 1px;</string>
        <rect>
         <x>15</x>
         <y>330</y>
-        <width>58</width>
+        <width>70</width>
         <height>16</height>
        </rect>
       </property>
@@ -263,25 +233,25 @@ border: 1px;</string>
         <x>30</x>
         <y>100</y>
         <width>140</width>
-        <height>7</height>
+        <height>8</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">QSlider {
-	height: 6;
+	height: 8;
 }
 
 QSlider::groove:horizontal {
 	background-color: rgb(59, 73, 153);
-	height: 6 px;
-	border-radius: 3px;
+	height: 8 px;
+	border-radius: 4px;
 }
 
 QSlider::handle:horizontal {
 	background: rgb(217, 217, 217);
-	width: 7px;
-	height: 7px;
-  	border-radius: 3px;
+	width: 8px;
+	height: 8px;
+  	border-radius: 4px;
 }</string>
       </property>
       <property name="minimum">
@@ -312,25 +282,25 @@ QSlider::handle:horizontal {
         <x>30</x>
         <y>130</y>
         <width>140</width>
-        <height>7</height>
+        <height>8</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">QSlider {
-	height: 6;
+	height: 8;
 }
 
 QSlider::groove:horizontal {
 	background-color: rgb(59, 73, 153);
-	height: 6 px;
-	border-radius: 3px;
+	height: 8 px;
+	border-radius: 4px;
 }
 
 QSlider::handle:horizontal {
 	background: rgb(217, 217, 217);
-	width: 7px;
-	height: 7px;
-  	border-radius: 3px;
+	width: 8px;
+	height: 8px;
+  	border-radius: 4px;
 }</string>
       </property>
       <property name="minimum">
@@ -352,25 +322,25 @@ QSlider::handle:horizontal {
         <x>30</x>
         <y>160</y>
         <width>140</width>
-        <height>7</height>
+        <height>8</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">QSlider {
-	height: 6;
+	height: 8;
 }
 
 QSlider::groove:horizontal {
 	background-color: rgb(59, 73, 153);
-	height: 6 px;
-	border-radius: 3px;
+	height: 8 px;
+	border-radius: 4px;
 }
 
 QSlider::handle:horizontal {
 	background: rgb(217, 217, 217);
-	width: 7px;
-	height: 7px;
-  	border-radius: 3px;
+	width: 8px;
+	height: 8px;
+  	border-radius: 4px;
 }</string>
       </property>
       <property name="minimum">
@@ -392,25 +362,25 @@ QSlider::handle:horizontal {
         <x>30</x>
         <y>230</y>
         <width>140</width>
-        <height>7</height>
+        <height>8</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">QSlider {
-	height: 6;
+	height: 8;
 }
 
 QSlider::groove:horizontal {
 	background-color: rgb(59, 73, 153);
-	height: 6 px;
-	border-radius: 3px;
+	height: 8 px;
+	border-radius: 4px;
 }
 
 QSlider::handle:horizontal {
 	background: rgb(217, 217, 217);
-	width: 7px;
-	height: 7px;
-  	border-radius: 3px;
+	width: 8px;
+	height: 8px;
+  	border-radius: 4px;
 }</string>
       </property>
       <property name="minimum">
@@ -429,25 +399,25 @@ QSlider::handle:horizontal {
         <x>30</x>
         <y>260</y>
         <width>140</width>
-        <height>7</height>
+        <height>8</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">QSlider {
-	height: 6;
+	height: 8;
 }
 
 QSlider::groove:horizontal {
 	background-color: rgb(59, 73, 153);
-	height: 6 px;
-	border-radius: 3px;
+	height: 8 px;
+	border-radius: 4px;
 }
 
 QSlider::handle:horizontal {
 	background: rgb(217, 217, 217);
-	width: 7px;
-	height: 7px;
-  	border-radius: 3px;
+	width: 8px;
+	height: 8px;
+  	border-radius: 4px;
 }</string>
       </property>
       <property name="minimum">
@@ -466,25 +436,25 @@ QSlider::handle:horizontal {
         <x>30</x>
         <y>290</y>
         <width>140</width>
-        <height>7</height>
+        <height>8</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">QSlider {
-	height: 6;
+	height: 8;
 }
 
 QSlider::groove:horizontal {
 	background-color: rgb(59, 73, 153);
-	height: 6 px;
-	border-radius: 3px;
+	height: 8 px;
+	border-radius: 4px;
 }
 
 QSlider::handle:horizontal {
 	background: rgb(217, 217, 217);
-	width: 7px;
-	height: 7px;
-  	border-radius: 3px;
+	width: 8px;
+	height: 8px;
+  	border-radius: 4px;
 }</string>
       </property>
       <property name="minimum">
@@ -503,25 +473,25 @@ QSlider::handle:horizontal {
         <x>30</x>
         <y>360</y>
         <width>140</width>
-        <height>7</height>
+        <height>8</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">QSlider {
-	height: 6;
+	height: 8;
 }
 
 QSlider::groove:horizontal {
 	background-color: rgb(59, 73, 153);
-	height: 6 px;
-	border-radius: 3px;
+	height: 8 px;
+	border-radius: 4px;
 }
 
 QSlider::handle:horizontal {
 	background: rgb(217, 217, 217);
-	width: 7px;
-	height: 7px;
-  	border-radius: 3px;
+	width: 8px;
+	height: 8px;
+  	border-radius: 4px;
 }</string>
       </property>
       <property name="minimum">
@@ -685,9 +655,17 @@ border: 1px;</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"> background-color: rgb(59, 73, 153);
+       <string notr="true">QPushButton {
+ background-color: rgb(59, 73, 153);
  color: rgb(255, 255, 255);
- border-radius: 4px;</string>
+ border-radius: 4px;
+}
+
+QPushButton:hover {
+ background-color: rgb(49, 63, 133);
+ color: rgb(255, 255, 255);
+ border-radius: 4px;
+}</string>
       </property>
       <property name="text">
        <string>Reset</string>
@@ -701,10 +679,10 @@ border: 1px;</string>
      <widget class="QPushButton" name="pushButton_settings2">
       <property name="geometry">
        <rect>
-        <x>103</x>
-        <y>25</y>
-        <width>102</width>
-        <height>20</height>
+        <x>123</x>
+        <y>20</y>
+        <width>82</width>
+        <height>25</height>
        </rect>
       </property>
       <property name="font">
@@ -726,9 +704,9 @@ border: 1px solid rgb(0, 0, 0);
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>25</y>
-        <width>103</width>
-        <height>20</height>
+        <y>20</y>
+        <width>123</width>
+        <height>25</height>
        </rect>
       </property>
       <property name="font">
@@ -756,7 +734,7 @@ QPushButton:hover {
       <property name="geometry">
        <rect>
         <x>15</x>
-        <y>70</y>
+        <y>65</y>
         <width>58</width>
         <height>16</height>
        </rect>
@@ -780,7 +758,7 @@ border: 1px;</string>
        <rect>
         <x>15</x>
         <y>240</y>
-        <width>58</width>
+        <width>80</width>
         <height>16</height>
        </rect>
       </property>
@@ -802,7 +780,7 @@ border: 1px;</string>
       <property name="geometry">
        <rect>
         <x>15</x>
-        <y>410</y>
+        <y>415</y>
         <width>58</width>
         <height>16</height>
        </rect>
@@ -827,25 +805,25 @@ border: 1px;</string>
         <x>25</x>
         <y>115</y>
         <width>140</width>
-        <height>7</height>
+        <height>8</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">QSlider {
-	height: 6;
+	height: 8;
 }
 
 QSlider::groove:horizontal {
 	background-color: rgb(59, 73, 153);
-	height: 6 px;
-	border-radius: 3px;
+	height: 8 px;
+	border-radius: 4px;
 }
 
 QSlider::handle:horizontal {
 	background: rgb(217, 217, 217);
-	width: 7px;
-	height: 7px;
-  	border-radius: 3px;
+	width: 8px;
+	height: 8px;
+  	border-radius: 4px;
 }</string>
       </property>
       <property name="maximum">
@@ -871,27 +849,27 @@ QSlider::handle:horizontal {
       <property name="geometry">
        <rect>
         <x>25</x>
-        <y>285</y>
+        <y>290</y>
         <width>140</width>
-        <height>7</height>
+        <height>8</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">QSlider {
-	height: 6;
+	height: 8;
 }
 
 QSlider::groove:horizontal {
 	background-color: rgb(59, 73, 153);
-	height: 6 px;
-	border-radius: 3px;
+	height: 8 px;
+	border-radius: 4px;
 }
 
 QSlider::handle:horizontal {
 	background: rgb(217, 217, 217);
-	width: 7px;
-	height: 7px;
-  	border-radius: 3px;
+	width: 8px;
+	height: 8px;
+  	border-radius: 4px;
 }</string>
       </property>
       <property name="maximum">
@@ -917,7 +895,7 @@ QSlider::handle:horizontal {
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>130</y>
+        <y>135</y>
         <width>58</width>
         <height>16</height>
        </rect>
@@ -940,7 +918,7 @@ border: 1px;</string>
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>175</y>
+        <y>185</y>
         <width>58</width>
         <height>16</height>
        </rect>
@@ -963,8 +941,8 @@ border: 1px;</string>
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>300</y>
-        <width>90</width>
+        <y>310</y>
+        <width>120</width>
         <height>16</height>
        </rect>
       </property>
@@ -986,7 +964,7 @@ border: 1px;</string>
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>345</y>
+        <y>360</y>
         <width>40</width>
         <height>16</height>
        </rect>
@@ -1009,8 +987,8 @@ border: 1px;</string>
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>435</y>
-        <width>110</width>
+        <y>445</y>
+        <width>120</width>
         <height>16</height>
        </rect>
       </property>
@@ -1032,8 +1010,8 @@ border: 1px;</string>
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>480</y>
-        <width>110</width>
+        <y>495</y>
+        <width>135</width>
         <height>16</height>
        </rect>
       </property>
@@ -1055,7 +1033,7 @@ border: 1px;</string>
       <property name="geometry">
        <rect>
         <x>25</x>
-        <y>150</y>
+        <y>155</y>
         <width>80</width>
         <height>18</height>
        </rect>
@@ -1105,7 +1083,7 @@ QComboBox::down-arrow {
       <property name="geometry">
        <rect>
         <x>25</x>
-        <y>195</y>
+        <y>205</y>
         <width>18</width>
         <height>18</height>
        </rect>
@@ -1124,7 +1102,7 @@ border: 1px solid;
       <property name="geometry">
        <rect>
         <x>25</x>
-        <y>320</y>
+        <y>330</y>
         <width>80</width>
         <height>18</height>
        </rect>
@@ -1179,7 +1157,7 @@ QComboBox::down-arrow {
       <property name="geometry">
        <rect>
         <x>25</x>
-        <y>365</y>
+        <y>380</y>
         <width>18</width>
         <height>18</height>
        </rect>
@@ -1198,7 +1176,7 @@ border: 1px solid;
       <property name="geometry">
        <rect>
         <x>25</x>
-        <y>455</y>
+        <y>465</y>
         <width>80</width>
         <height>18</height>
        </rect>
@@ -1248,7 +1226,7 @@ QComboBox::down-arrow {
       <property name="geometry">
        <rect>
         <x>25</x>
-        <y>500</y>
+        <y>515</y>
         <width>18</width>
         <height>18</height>
        </rect>
@@ -1268,7 +1246,7 @@ border: 1px solid;
        <rect>
         <x>20</x>
         <y>95</y>
-        <width>58</width>
+        <width>80</width>
         <height>16</height>
        </rect>
       </property>
@@ -1290,7 +1268,7 @@ border: 1px;</string>
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>265</y>
+        <y>270</y>
         <width>58</width>
         <height>16</height>
        </rect>
@@ -1307,24 +1285,6 @@ border: 1px;</string>
       </property>
       <property name="text">
        <string>Size</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_save">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>620</y>
-        <width>100</width>
-        <height>32</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"> background-color: rgb(59, 73, 153);
- color: rgb(255, 255, 255);
- border-radius: 4px;</string>
-      </property>
-      <property name="text">
-       <string>Save</string>
       </property>
      </widget>
     </widget>
@@ -1363,7 +1323,7 @@ QPushButton:hover {
      <rect>
       <x>65</x>
       <y>0</y>
-      <width>100</width>
+      <width>120</width>
       <height>20</height>
      </rect>
     </property>
@@ -1378,7 +1338,7 @@ color: rgb(255, 255, 255);
 border:1px solid rgb(0, 0, 0);</string>
     </property>
     <property name="text">
-     <string>cottage.obj</string>
+     <string/>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -1408,6 +1368,13 @@ border:1px solid rgb(0, 0, 0);</string>
      <string>Count of vertex: 20432. Count of facets: 6854</string>
     </property>
    </widget>
+   <zorder>widget</zorder>
+   <zorder>_top_line</zorder>
+   <zorder>tabWidget</zorder>
+   <zorder>pushButton_open_file</zorder>
+   <zorder>label_filename</zorder>
+   <zorder>label_file_info</zorder>
+   <zorder>_down_line</zorder>
   </widget>
  </widget>
  <resources/>
