@@ -53,6 +53,8 @@ void Model::edgesParser(std::string line)
     while (std::getline(iss, token, ' '))
     {
         sscanf(token.c_str(), "%d", &index);
+
+        if (index <= 0) continue;
         --index;
 
         if (first == 0)
