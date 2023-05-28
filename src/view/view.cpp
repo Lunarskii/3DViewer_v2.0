@@ -1,74 +1,64 @@
 #include "view.h"
 
-View::View(Controller* c, QWidget *parent)
-    : controller(c)
-    , QOpenGLWidget(parent)
+View::View(QWidget *parent)
+    : QOpenGLWidget(parent)
     , ui(new Ui::View)
+    , facade(new Facade(ui))
 {
     setlocale(LC_NUMERIC, "C");
     ui->setupUi(this);
     this->resize(1440, 1080);
     initDefaultValues();
 
-    QList<QPushButton*> transformButtons = 
-    { 
-        ui->pushButton_moving_x_minus,
-        ui->pushButton_moving_x_plus,
-        ui->pushButton_moving_y_minus,
-        ui->pushButton_moving_y_plus,
-        ui->pushButton_moving_z_minus,
-        ui->pushButton_moving_z_plus,
-        ui->pushButton_rotation_x_minus,
-        ui->pushButton_rotation_x_plus,
-        ui->pushButton_rotation_y_minus,
-        ui->pushButton_rotation_y_plus,
-        ui->pushButton_rotation_z_minus,
-        ui->pushButton_rotation_z_plus,
-        ui->pushButton_scaling_minus,
-        ui->pushButton_scaling_plus,
-    };
+    connect(ui->_pushButton_transformation2, SIGNAL(clicked()), this, SLOT(changeTab()));
+    connect(ui->pushButton_settings1, SIGNAL(clicked()), this, SLOT(changeTab()));
 
-    // QList<QPushButton*> propertyButtons = { ui->radioButton_parallel_type,
-    //                                         ui->radioButton_central_type, 
-    //                                         ui->radioButton_edgeType_dashed, 
-    //                                         ui->radioButton_edgeType_solid, 
-    //                                         ui->radioButton_vertexType_circle,
-    //                                         ui->radioButton_vertexType_square,
-    //                                         ui->radioButton_vertexType_novertex };
+    connect(ui->horizontalSlider_move_x, SIGNAL(valueChanged(int)), this, SLOT(transformModel()));
+    connect(ui->horizontalSlider_move_y, SIGNAL(valueChanged(int)), this, SLOT(transformModel()));
+    connect(ui->horizontalSlider_move_z, SIGNAL(valueChanged(int)), this, SLOT(transformModel()));
+    connect(ui->horizontalSlider_rotate_x, SIGNAL(valueChanged(int)), this, SLOT(transformModel()));
+    connect(ui->horizontalSlider_rotate_y, SIGNAL(valueChanged(int)), this, SLOT(transformModel()));
+    connect(ui->horizontalSlider_rotate_z, SIGNAL(valueChanged(int)), this, SLOT(transformModel()));
+    connect(ui->horizontalSlider_scale, SIGNAL(valueChanged(int)), this, SLOT(transformModel()));
 
-    foreach (QPushButton* button, transformButtons) 
-    {
-        connect(button, SIGNAL(clicked()), this, SLOT(transformModel()));
-    }
-    // foreach (QPushButton* button, propertyButtons) 
-    // {
-    //     connect(button, SIGNAL(clicked()), this, SLOT(update()));
-    // }
+    // // QList<QPushButton*> propertyButtons = { ui->radioButton_parallel_type,
+    // //                                         ui->radioButton_central_type, 
+    // //                                         ui->radioButton_edgeType_dashed, 
+    // //                                         ui->radioButton_edgeType_solid, 
+    // //                                         ui->radioButton_vertexType_circle,
+    // //                                         ui->radioButton_vertexType_square,
+    // //                                         ui->radioButton_vertexType_novertex };
 
-    // connecting colors
-    connect(ui->pushButton_backgroundColor, SIGNAL(clicked()), this, SLOT(setColor()));
-    connect(ui->pushButton_edgeColor, SIGNAL(clicked()), this, SLOT(setColor()));
-    connect(ui->pushButton_vertexColor, SIGNAL(clicked()), this, SLOT(setColor()));
+    // // foreach (QPushButton* button, propertyButtons) 
+    // // {
+    // //     connect(button, SIGNAL(clicked()), this, SLOT(update()));
+    // // }
 
-    // connecting buttons to synchronize model updates
-    connect(ui->radioButton_parallel_type, SIGNAL(clicked()), this, SLOT(update()));
-    connect(ui->radioButton_central_type, SIGNAL(clicked()), this, SLOT(update()));
-    connect(ui->radioButton_edgeType_dashed, SIGNAL(clicked()), this, SLOT(update()));
-    connect(ui->radioButton_edgeType_solid, SIGNAL(clicked()), this, SLOT(update()));
-    connect(ui->radioButton_vertexType_circle, SIGNAL(clicked()), this, SLOT(update()));
-    connect(ui->radioButton_vertexType_square, SIGNAL(clicked()), this, SLOT(update()));
-    connect(ui->radioButton_vertexType_novertex, SIGNAL(clicked()), this, SLOT(update()));
-    connect(ui->edgeThickness, SIGNAL(valueChanged(int)), this, SLOT(update()));
-    connect(ui->vertexSize, SIGNAL(valueChanged(int)), this, SLOT(update()));
+    // // connecting colors
+    // connect(ui->pushButton_backgroundColor, SIGNAL(clicked()), this, SLOT(setColor()));
+    // connect(ui->pushButton_edgeColor, SIGNAL(clicked()), this, SLOT(setColor()));
+    // connect(ui->pushButton_vertexColor, SIGNAL(clicked()), this, SLOT(setColor()));
 
-    lastSettings = new QSettings("SAVE_3DVIEWER", "3DViewer", this);
-    restoreSettings();
+    // // connecting buttons to synchronize model updates
+    // connect(ui->radioButton_parallel_type, SIGNAL(clicked()), this, SLOT(update()));
+    // connect(ui->radioButton_central_type, SIGNAL(clicked()), this, SLOT(update()));
+    // connect(ui->radioButton_edgeType_dashed, SIGNAL(clicked()), this, SLOT(update()));
+    // connect(ui->radioButton_edgeType_solid, SIGNAL(clicked()), this, SLOT(update()));
+    // connect(ui->radioButton_vertexType_circle, SIGNAL(clicked()), this, SLOT(update()));
+    // connect(ui->radioButton_vertexType_square, SIGNAL(clicked()), this, SLOT(update()));
+    // connect(ui->radioButton_vertexType_novertex, SIGNAL(clicked()), this, SLOT(update()));
+    // connect(ui->edgeThickness, SIGNAL(valueChanged(int)), this, SLOT(update()));
+    // connect(ui->vertexSize, SIGNAL(valueChanged(int)), this, SLOT(update()));
+
+    // lastSettings = new QSettings("SAVE_3DVIEWER", "3DViewer", this);
+    // restoreSettings();
 }
 
 View::~View()
 {
-    saveSettings();
-    delete lastSettings;
+    // saveSettings();
+    // delete lastSettings;
+    delete facade;
     delete ui;
 }
 
@@ -88,15 +78,15 @@ void View::setColor()
     {
         QPushButton *button = (QPushButton *)sender();
         
-        if (button == ui->pushButton_backgroundColor) 
+        if (button == ui->pushButton_bg_color) 
         {
             backgroundColor = color;
         } 
-        else if (button == ui->pushButton_edgeColor) 
+        else if (button == ui->pushButton_edges_color) 
         {
             edgeColor = color;
         } 
-        else if (button == ui->pushButton_vertexColor) 
+        else if (button == ui->pushButton_vertex_color) 
         {
             vertexColor = color;
         }
@@ -105,30 +95,44 @@ void View::setColor()
     }
 }
 
-void View::on_pushButton_selectFile_clicked() {
+void View::changeTab()
+{
+    QPushButton *button = (QPushButton *)sender();
+    int tabIndex = ui->tabWidget->currentIndex();
+
+    if (button == ui->_pushButton_transformation2 && tabIndex != 0)
+    {
+        ui->tabWidget->setCurrentIndex(0);
+    }
+    else if (button == ui->pushButton_settings1 && tabIndex != 1)
+    {
+        ui->tabWidget->setCurrentIndex(1);
+    }
+}
+
+void View::on_pushButton_open_file_clicked() {
     QString filePath = QFileDialog::getOpenFileName(this, ("Select Model"), "../models/", "3D Image Files (*.obj)");
 
     if (filePath != "") 
     {
-        controller->setFileName(filePath.toStdString());
-        if (controller->getError() == 0)
-        {
-            ui->fileName->setText((QFileInfo(filePath)).fileName());
-            ui->numberOfVertices->setText(QString::number(controller->getVertexCoord().size() / 3));
-            ui->numberOfEdges->setText(QString::number(controller->getVertexIndex().size() / 2));
-            update();
-        }
-        else
-        {
-            // создать окно с ошибкой
-        }
+        emit setModel(filePath);
+
+        ui->label_filename->setText((QFileInfo(filePath)).fileName());
     }
+}
+
+void View::handleSolution(std::vector<int>* vertexIndex, std::vector<double>* vertexCoord)
+{
+    this->vertexIndex = vertexIndex->data();
+    this->vertexCoord = vertexCoord->data();
+    this->countVertexIndex = vertexIndex->size();
+    this->countVertexCoord = vertexCoord->size();
+    update();
 }
 
 void View::transformModel() 
 {
-    QPushButton *button = (QPushButton *)sender();
-    facade.transformModel(button);
-
+    QSlider* slider = qobject_cast<QSlider*>(sender());
+    facade->transform(slider);
     update();
 }

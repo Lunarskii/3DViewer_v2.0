@@ -12,7 +12,6 @@
 #include <QTimer>         // library for time counting
 #include <QWheelEvent>    // library for receiving mouse wheel signals
 #include <QWidget>        // library for using widgets
-#include "../controller/controller.h"
 #include "QtGifImage/gifimage/qgifimage.h"
 #include "ui_view.h"
 
@@ -43,7 +42,7 @@
 #define ANGLE "angle"
 #define SCALE_BOX "scale"
 
-#define GL_SILENCE_DEPRECATION // проверить эту штуку, чзх
+#define GL_SILENCE_DEPRECATION
 
 QT_BEGIN_NAMESPACE
 namespace Ui 
@@ -53,28 +52,66 @@ namespace Ui
 }
 QT_END_NAMESPACE
 
+class Facade : public QObject
+{
+    Q_OBJECT
+
+public:
+    Facade() : ui(nullptr) {}
+    Facade(Ui::View* ui) : ui(ui) {}
+
+    void moveModel(QString& sliderName);
+    void rotateModel(QString& sliderName);
+    void scaleModel(QString& sliderName);
+    void transform(QSlider* slider);
+
+signals:
+    void setTransform(int strategyType, double value, int axis);
+
+private:
+    Ui::View* ui;
+    int moveX{};
+    int moveY{};
+    int moveZ{};
+    int rotateX{};
+    int rotateY{};
+    int rotateZ{};
+    double scale{};
+};
+
 class View : public QOpenGLWidget
 {
     Q_OBJECT
 
 public:
-    View(Controller* c, QWidget *parent = nullptr);
+    View(QWidget *parent = nullptr);
     ~View();
+    friend class Facade;
+
+signals:
+    void setModel(QString fileName);
+
+public slots:
+    void handleSolution(std::vector<int>* vertexIndex, std::vector<double>* vertexCoord);
 
 private slots:
-    void on_pushButton_selectFile_clicked();
+    void on_pushButton_open_file_clicked();
     void transformModel();
     void setColor();
+    void changeTab();
 
     // Methods for saving images
-    void on_actionSave_as_GIF_triggered();
-    void on_actionSave_as_bmp_triggered();
-    void on_actionSave_as_jpeg_triggered();
-    void saveImage();
+    // void on_actionSave_as_GIF_triggered();
+    // void on_actionSave_as_bmp_triggered();
+    // void on_actionSave_as_jpeg_triggered();
+    // void saveImage();
 
 private:
     Ui::View *ui;
-    Controller* controller;
+    int* vertexIndex{nullptr};
+    double* vertexCoord{nullptr};
+    int countVertexIndex{};
+    int countVertexCoord{};
 
     // Model rendering methods
     void initializeGL() override;
@@ -86,9 +123,9 @@ private:
     void setVertices();
 
     // Methods for saving and restoring settings
-    QSettings *lastSettings;
-    void saveSettings();
-    void restoreSettings();
+    // QSettings *lastSettings;
+    // void saveSettings();
+    // void restoreSettings();
 
     // Colors
     QColor backgroundColor;
@@ -101,17 +138,14 @@ private:
     int frames;
 
     // Events
-    QPoint clickPosition;
-    bool leftButton;
-    bool rightButton;
-    void mouseMoveEvent(QMouseEvent *cursorPosition) override;
-    void mousePressEvent(QMouseEvent *event) override;
-    void mouseReleaseEvent(QMouseEvent *cursorPosition) override;
+    // QPoint clickPosition;
+    // bool leftButton;
+    // bool rightButton;
+    // void mouseMoveEvent(QMouseEvent *cursorPosition) override;
+    // void mousePressEvent(QMouseEvent *event) override;
+    // void mouseReleaseEvent(QMouseEvent *cursorPosition) override;
     // void wheelEvent(QWheelEvent *event) override;
     // void keyPressEvent(QKeyEvent *event) override;  // keys for calling saving gif, jpeg and bmp
-
-    // удалить, если не будет использоваться
-    QScrollArea *scrollArea;
 
     void initDefaultValues();
 
@@ -121,34 +155,10 @@ private:
     int pointType;
     int pointSize;
     int pointVisibility;
-
     float x_angle, y_angle, z_angle;
 
-public:
-    class Facade
-    {
-    public:
-        Facade() : ui(nullptr), controller(nullptr) {}
-        Facade(Ui::View* ui, Controller* c) : ui(ui), controller(c) {}
-
-        void setFacadeData(Ui::View* ui, Controller* c)
-        {
-            this->ui = ui;
-            this->controller = c;
-        }
-
-        void moveModel(QPushButton* button);
-        void rotateModel(QPushButton* button);
-        void scaleModel(QString buttonText);
-        void transformModel(QPushButton* button);
-
-    private:
-        Ui::View* ui;
-        Controller* controller;
-    };
-
-private:
-    Facade facade{ui, controller};
+public: //  для использования в коннекте контроллера, пока другого способа не нашел
+    Facade* facade;
 };
 
 #endif  // CPP4_3DVIEWER_V2_0_VIEW_VIEW_H_

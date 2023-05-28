@@ -1,57 +1,58 @@
 #include "view.h"
 
-void View::Facade::moveModel(QPushButton* button)
+void Facade::moveModel(QString& sliderName)
 {
-    double step = ui->step->value();
-
-    if (button == ui->pushButton_moving_x_minus) {
-        controller->transform(MOVE, -step, X);
-    } else if (button == ui->pushButton_moving_x_plus) {
-        controller->transform(MOVE, step, X);
-    } else if (button == ui->pushButton_moving_y_minus) {
-        controller->transform(MOVE, -step, Y);
-    } else if (button == ui->pushButton_moving_y_plus) {
-        controller->transform(MOVE, step, Y);
-    } else if (button == ui->pushButton_moving_z_minus) {
-        controller->transform(MOVE, -step, Z);
-    } else if (button == ui->pushButton_moving_z_plus) {
-        controller->transform(MOVE, step, Z);
+    if (sliderName == "horizontalSlider_move_x")
+    {
+        emit setTransform(0, ui->horizontalSlider_move_x->value() - moveX, 0);
+        moveX = ui->horizontalSlider_move_x->value();
+    }
+    else if (sliderName == "horizontalSlider_move_y")
+    {
+        emit setTransform(0, ui->horizontalSlider_move_y->value() - moveY, 1);
+        moveY = ui->horizontalSlider_move_y->value();
+    }
+    else if (sliderName == "horizontalSlider_move_z")
+    {
+        emit setTransform(0, ui->horizontalSlider_move_z->value() - moveZ, 2);
+        moveZ = ui->horizontalSlider_move_z->value();
     }
 }
 
-void View::Facade::rotateModel(QPushButton* button)
+void Facade::rotateModel(QString& sliderName)
 {
-    int angle = ui->angle->value();
-
-    if (button == ui->pushButton_rotation_x_minus) {
-        controller->transform(ROTATE, -angle, X);
-    } else if (button == ui->pushButton_rotation_x_plus) {
-        controller->transform(ROTATE, angle, X);
-    } else if (button == ui->pushButton_rotation_y_minus) {
-        controller->transform(ROTATE, -angle, Y);
-    } else if (button == ui->pushButton_rotation_y_plus) {
-        controller->transform(ROTATE, angle, Y);
-    } else if (button == ui->pushButton_rotation_z_minus) {
-        controller->transform(ROTATE, -angle, Z);
-    } else if (button == ui->pushButton_rotation_z_plus) {
-        controller->transform(ROTATE, angle, Z);
+    if (sliderName == "horizontalSlider_rotate_x")
+    {
+        emit setTransform(1, ui->horizontalSlider_rotate_x->value() - rotateX, 0);
+        rotateX = ui->horizontalSlider_rotate_x->value();
+    }
+    else if (sliderName == "horizontalSlider_rotate_y")
+    {
+        emit setTransform(1, ui->horizontalSlider_rotate_y->value() - rotateY, 1);
+        rotateY = ui->horizontalSlider_rotate_y->value();
+    }
+    else if (sliderName == "horizontalSlider_rotate_z")
+    {
+        emit setTransform(1, ui->horizontalSlider_rotate_z->value() - rotateZ, 2);
+        rotateZ = ui->horizontalSlider_rotate_z->value();
     }
 }
 
-void View::Facade::scaleModel(QString buttonText)
+void Facade::scaleModel(QString& sliderName)
 {
-    int scale = ui->scale->value();
-
-    if (buttonText == "-") {
-        controller->transform(SCALE, -scale);
-    } else if (buttonText == "+") {
-        controller->transform(SCALE, scale);
+    if (sliderName == "horizontalSlider_scale")
+    {
+        if (scale == 0) scale = 1;
+        emit setTransform(2, ui->horizontalSlider_scale->value() / 20.0 / scale, 0);
+        scale = ui->horizontalSlider_scale->value() / 20.0;
     }
 }
 
-void View::Facade::transformModel(QPushButton* button)
+void Facade::transform(QSlider* slider)
 {
-    moveModel(button);
-    rotateModel(button);
-    scaleModel(button->text());
+    QString sliderName = slider->objectName();
+
+    moveModel(sliderName);
+    rotateModel(sliderName);
+    scaleModel(sliderName);
 }
