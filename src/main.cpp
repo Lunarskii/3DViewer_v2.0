@@ -1,12 +1,15 @@
-#include "view/view.h"
+#include "controller/controller.h"
 
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    Controller controller;
-    View view(&controller);
+    View view;
+    Controller controller(&view);
+
+    QObject::connect(&controller, SIGNAL(solutionReady(std::vector<int>*, std::vector<double>*)), &view, SLOT(handleSolution(std::vector<int>*, std::vector<double>*)));
+
     view.show();
     return a.exec();
 }
