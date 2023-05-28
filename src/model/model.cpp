@@ -54,7 +54,7 @@ void Model::edgesParser(std::string line)
     {
         sscanf(token.c_str(), "%d", &index);
 
-        if (index <= 0) continue;
+        if (index <= 0 || token.find('\r') != std::string::npos) continue;
         --index;
 
         if (first == 0)
