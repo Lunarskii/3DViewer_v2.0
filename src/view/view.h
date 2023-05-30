@@ -96,6 +96,7 @@ public slots:
 
 private slots:
     void on_pushButton_open_file_clicked();
+    void clearSliders();
     void transformModel();
     void setColor();
     void changeTab();

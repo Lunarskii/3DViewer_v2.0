@@ -120,13 +120,30 @@ void View::changeTab()
     }
 }
 
+void View::clearSliders() {
+  QSlider *sliders[] = {
+      ui->horizontalSlider_move_x,
+      ui->horizontalSlider_move_y,
+      ui->horizontalSlider_move_z,
+      ui->horizontalSlider_rotate_x,
+      ui->horizontalSlider_rotate_y,
+      ui->horizontalSlider_rotate_z,
+  };
+
+  for (auto slider : sliders) {
+    slider->setValue(0);
+  }
+
+  ui->horizontalSlider_scale->setValue(100);
+}
+
 void View::on_pushButton_open_file_clicked() {
     QString filePath = QFileDialog::getOpenFileName(this, ("Select Model"), "../models/", "3D Image Files (*.obj)");
 
     if (filePath != "") 
     {
+        clearSliders();
         emit setModel(filePath);
-
         ui->label_filename->setText((QFileInfo(filePath)).fileName());
     }
 }

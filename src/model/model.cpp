@@ -25,6 +25,8 @@ void Model::parser()
             }
         }
         file.close();
+        centralization();
+        converting();
     }
 }
 
@@ -122,4 +124,51 @@ typename Model::Model& Model::getInstance()
 {
     static Model instance;
     return instance;
+}
+
+void Model::centralization() {
+  std::vector<double> offset = findOffset();
+  int strategyType = 0;
+  transformation_t x = X, y = Y, z = Z;
+  transform(strategyType, offset[X], x);
+  transform(strategyType, offset[Y], y);
+  transform(strategyType, offset[Z], z);
+}
+void Model::converting() {
+//  Тут какая то ошибока в расчетах
+  if (max_value > 1) {
+    for (double& value : vertexCoord) {
+      value = (value - min_value) / (max_value - min_value);
+      value = value * 4;
+    }
+  }
+}
+
+std::vector<double> Model::findOffset() {
+  std::vector<double> min_values = {vertexCoord[0], vertexCoord[1], vertexCoord[2]};
+  std::vector<double> max_values = {vertexCoord[0], vertexCoord[1], vertexCoord[2]};
+
+  for (size_t i = 0; i < vertexCoord.size(); i += 3) {
+    for (int j = 0; j < 3; j++) {
+      if (min_values[j] > vertexCoord[i+j]) {
+        min_values[j] = vertexCoord[i+j];
+      }
+
+      if (max_values[j] < vertexCoord[i+j]) {
+        max_values[j] = vertexCoord[i+j];
+      }
+    }
+  }
+
+  double diffX = -(max_values[0] - min_values[0]) / 2;
+  double diffY = -(max_values[1] - min_values[1]) / 2;
+  double diffZ = -(max_values[2] - min_values[2]) / 2;
+
+  min_value = min_values[0], max_value = max_values[0];
+  for (int i = 0; i < 3; i++) {
+    if (min_value > min_values[i]) min_value = min_values[i];
+    if (max_value < max_values[i]) max_value = max_values[i];
+  }
+
+  return {diffX, diffY, diffZ};
 }
