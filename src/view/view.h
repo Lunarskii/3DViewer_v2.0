@@ -137,23 +137,23 @@ private:
     QTimer *timer;
     int frames;
 
-    // Events
-    // QPoint clickPosition;
-    // bool leftButton;
-    // bool rightButton;
-    // void mouseMoveEvent(QMouseEvent *cursorPosition) override;
-    // void mousePressEvent(QMouseEvent *event) override;
-    // void mouseReleaseEvent(QMouseEvent *cursorPosition) override;
-    // void wheelEvent(QWheelEvent *event) override;
-    // void keyPressEvent(QKeyEvent *event) override;  // keys for calling saving gif, jpeg and bmp
+//     Events
+     QPoint clickPosition;
+     bool leftButton;
+     bool rightButton;
+     void mouseMoveEvent(QMouseEvent *cursorPosition) override;
+     void mousePressEvent(QMouseEvent *event) override;
+     void mouseReleaseEvent(QMouseEvent *cursorPosition) override;
+     void wheelEvent(QWheelEvent *event) override;
+//     void keyPressEvent(QKeyEvent *event) override;  // keys for calling saving gif, jpeg and bmp
 
     void initDefaultValues();
 
     int projectionType;
     int edgeType;
-    int edgeWidth;
+    float edgeWidth;
     int pointType;
-    int pointSize;
+    float pointSize;
     int pointVisibility;
     float x_angle, y_angle, z_angle;
 

@@ -28,8 +28,7 @@ void View::paintGL() {
 
   updateValues();
   if (projectionType) {
-    std::vector<double> vertexCoord = controller->getVertexCoord();
-    glVertexPointer(3, GL_DOUBLE, 0, vertexCoord.data());
+    glVertexPointer(3, GL_DOUBLE, 0, vertexCoord);
     glEnableClientState(GL_VERTEX_ARRAY);
     setProjectionType();
 
@@ -46,22 +45,19 @@ void View::paintGL() {
 }
 
 void View::updateValues() {
-    // projection type
-    projectionType = ui->radioButton_parallel_type->isChecked() ? PARALLEL : CENTRAL;
+  projectionType = ui->comboBox_disp_method_2->currentText() == "Parallel" ? PARALLEL : CENTRAL;
+  edgeType = ui->comboBox->currentText() == "Solid" ? SOLID : DASHED;
 
-    // edge type
-    edgeType = ui->radioButton_edgeType_solid->isChecked() ? SOLID : DASHED;
+  edgeWidth = ui->horizontalSlider_edges_thick->value() / 30;
+  pointSize = ui->horizontalSlider_vert_size->value() / 10;
 
-    edgeWidth = (float)ui->edgeThickness->value();
-    pointSize = (float)ui->vertexSize->value() * 2;
+  if (ui->comboBox_disp_method->currentText() == "None") {
+    pointVisibility = NOVERTEX;
+  } else {
+    pointVisibility = AVERTEX;
 
-    if (ui->radioButton_vertexType_novertex->isChecked()) {
-      pointVisibility = NOVERTEX;
-    } else {
-      pointVisibility = AVERTEX;
-
-      pointType = ui->radioButton_vertexType_circle->isChecked() ? CIRCLE : SQUARE;
-    }
+    pointType = ui->comboBox_disp_method->currentText() == "Circle" ? CIRCLE : SQUARE;
+  }
 }
 
 void View::setEdges() {
@@ -74,8 +70,7 @@ void View::setEdges() {
 
   glLineWidth(edgeWidth);  // setting the edge thickness
   glColor3f(edgeColor.redF(), edgeColor.greenF(), edgeColor.blueF());  // setting the edge color
-  std::vector<int> vertexIndex = controller->getVertexIndex();
-  glDrawElements(GL_LINES, controller->getVertexIndex().size(), GL_UNSIGNED_INT, vertexIndex.data());
+  glDrawElements(GL_LINES, countVertexIndex, GL_UNSIGNED_INT, vertexIndex);
 }
 
 void View::setVertices() {
@@ -85,12 +80,12 @@ void View::setVertices() {
   if (pointType == CIRCLE) 
   {
     glEnable(GL_POINT_SMOOTH);
-    glDrawArrays(GL_POINTS, 0, controller->getVertexCoord().size() / 3);
+    glDrawArrays(GL_POINTS, 0, countVertexCoord / 3);
     glDisable(GL_POINT_SMOOTH);
   } 
   else 
   {
-    glDrawArrays(GL_POINTS, 0, controller->getVertexCoord().size() / 3);
+    glDrawArrays(GL_POINTS, 0, countVertexCoord / 3);
   }
 }
 

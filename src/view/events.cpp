@@ -1,42 +1,48 @@
-// #include "view.h"
+ #include "view.h"
 
-// void View::mouseMoveEvent(QMouseEvent *cursorPosition) {
-//   if (leftButton) {
-//     // double rotateX = (cursorPosition->pos().x() - clickPosition.x()) / 75.0;
-//     // double rotateY = (cursorPosition->pos().y() - clickPosition.y()) / 75.0;
-//     // rotateModel(&model, rotateY, X);
-//     // rotateModel(&model, rotateX, Y);
+ void View::mouseMoveEvent(QMouseEvent *cursorPosition) {
+   if (leftButton) {
+      int rotateX = (cursorPosition->pos().x() - clickPosition.x()) / 15;
+      int rotateY = (cursorPosition->pos().y() - clickPosition.y()) / 15;
+      ui->horizontalSlider_rotate_y->setValue(rotateY);
+      ui->horizontalSlider_rotate_x->setValue(rotateX);
 
 
 
-//   } else if (rightButton) {
-//     // double moveX = (cursorPosition->pos().x() - clickPosition.x()) / 10000.0;
-//     // double moveY = (cursorPosition->pos().y() - clickPosition.y()) / 10000.0;
-//     // moveModel(&model, moveY, moveX, 0);
-//   }
+   } else if (rightButton) {
+      int moveX = (cursorPosition->pos().x() - clickPosition.x()) / 100;
+      int moveY = (clickPosition.y() - cursorPosition->pos().y()) / 100;
+      ui->horizontalSlider_move_x->setValue(moveX);
+      ui->horizontalSlider_move_y->setValue(moveY);
+   }
 
-//   update();
-// }
+   update();
+ }
 
-// void View::mousePressEvent(QMouseEvent *event) {
-//   clickPosition = event->pos();
-//   if (event->button() == Qt::LeftButton) {
-//     leftButton = true;
-//   } else if (event->button() == Qt::RightButton) {
-//     rightButton = true;
-//   }
-// }
+ void View::mousePressEvent(QMouseEvent *event) {
+   clickPosition = event->pos();
+   if (event->button() == Qt::LeftButton) {
+     leftButton = true;
+   } else if (event->button() == Qt::RightButton) {
+     rightButton = true;
+   }
+ }
 
-// void View::mouseReleaseEvent(QMouseEvent *cursorPosition) {
-//   leftButton = false;
-//   rightButton = false;
-//   cursorPosition->pos() = clickPosition;
-// }
+ void View::mouseReleaseEvent(QMouseEvent *cursorPosition) {
+   leftButton = false;
+   rightButton = false;
+   cursorPosition->pos() = clickPosition;
+ }
 
-// // void View::wheelEvent(QWheelEvent *event) {
-// //   scaleModel(&model, event->angleDelta().y() >= 0 ? 10 : -10);
-// //   update();
-// // }
+  void View::wheelEvent(QWheelEvent *event) {
+    int offset = 0;
+    if (event->angleDelta().y() > 0) {
+      offset = 8;
+    } else if (event->angleDelta().y() < 0) {
+      offset = -8;
+    }
+    ui->horizontalSlider_scale->setValue(ui->horizontalSlider_scale->value() + offset);
+  }
 
 // // void View::keyPressEvent(QKeyEvent *event) {
 // //   if (event->key() == Qt::Key_G) {

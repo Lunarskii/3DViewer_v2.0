@@ -35,9 +35,9 @@ View::View(QWidget *parent)
     // // }
 
     // // connecting colors
-    // connect(ui->pushButton_backgroundColor, SIGNAL(clicked()), this, SLOT(setColor()));
-    // connect(ui->pushButton_edgeColor, SIGNAL(clicked()), this, SLOT(setColor()));
-    // connect(ui->pushButton_vertexColor, SIGNAL(clicked()), this, SLOT(setColor()));
+     connect(ui->pushButton_bg_color, SIGNAL(clicked()), this, SLOT(setColor()));
+     connect(ui->pushButton_edges_color, SIGNAL(clicked()), this, SLOT(setColor()));
+     connect(ui->pushButton_vertex_color, SIGNAL(clicked()), this, SLOT(setColor()));
 
     // // connecting buttons to synchronize model updates
     // connect(ui->radioButton_parallel_type, SIGNAL(clicked()), this, SLOT(update()));
@@ -77,18 +77,25 @@ void View::setColor()
     if (color.isValid())
     {
         QPushButton *button = (QPushButton *)sender();
-        
-        if (button == ui->pushButton_bg_color) 
+        char buffer[50] = {};
+
+        if (button == ui->pushButton_bg_color)
         {
             backgroundColor = color;
-        } 
-        else if (button == ui->pushButton_edges_color) 
+            sprintf(buffer, "background-color: rgb(%d, %d, %d);", color.red(), color.green(), color.blue());
+            ui->pushButton_bg_color->setStyleSheet(buffer);
+        }
+        else if (button == ui->pushButton_edges_color)
         {
             edgeColor = color;
-        } 
-        else if (button == ui->pushButton_vertex_color) 
+            sprintf(buffer, "background-color: rgb(%d, %d, %d);", color.red(), color.green(), color.blue());
+            ui->pushButton_edges_color->setStyleSheet(buffer);
+        }
+        else if (button == ui->pushButton_vertex_color)
         {
             vertexColor = color;
+            sprintf(buffer, "background-color: rgb(%d, %d, %d);", color.red(), color.green(), color.blue());
+            ui->pushButton_vertex_color->setStyleSheet(buffer);
         }
 
         update();
