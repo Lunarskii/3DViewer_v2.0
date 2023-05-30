@@ -2,20 +2,22 @@
 
  void View::mouseMoveEvent(QMouseEvent *cursorPosition) {
    if (leftButton) {
-      int rotateX = (cursorPosition->pos().y() - clickPosition.y()) / 10;
-      int rotateY = (cursorPosition->pos().x() - clickPosition.x()) / 10;
+      int rotateX = (cursorPosition->pos().y() - clickPosition.y()) / 3;
+      int rotateY = (cursorPosition->pos().x() - clickPosition.x()) / 3;
       ui->horizontalSlider_rotate_x->setValue(ui->horizontalSlider_rotate_x->value() + rotateX);
       ui->horizontalSlider_rotate_y->setValue(ui->horizontalSlider_rotate_y->value() + rotateY);
 
 
 
    } else if (rightButton) {
-      int moveX = (cursorPosition->pos().x() - clickPosition.x()) / 20;
-      int moveY = (clickPosition.y() - cursorPosition->pos().y()) / 20;
+      int moveX = (cursorPosition->pos().x() - clickPosition.x()) / 2;
+      int moveY = (clickPosition.y() - cursorPosition->pos().y()) / 2;
       ui->horizontalSlider_move_x->setValue(ui->horizontalSlider_move_x->value() + moveX);
       ui->horizontalSlider_move_y->setValue(ui->horizontalSlider_move_y->value() + moveY);
    }
 
+   clickPosition.setX(cursorPosition->pos().x());
+   clickPosition.setY(cursorPosition->pos().y());
    update();
  }
 
