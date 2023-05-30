@@ -2,18 +2,18 @@
 
  void View::mouseMoveEvent(QMouseEvent *cursorPosition) {
    if (leftButton) {
-      int rotateX = (cursorPosition->pos().x() - clickPosition.x()) / 15;
-      int rotateY = (cursorPosition->pos().y() - clickPosition.y()) / 15;
-      ui->horizontalSlider_rotate_y->setValue(rotateY);
-      ui->horizontalSlider_rotate_x->setValue(rotateX);
+      int rotateX = (cursorPosition->pos().y() - clickPosition.y()) / 10;
+      int rotateY = (cursorPosition->pos().x() - clickPosition.x()) / 10;
+      ui->horizontalSlider_rotate_x->setValue(ui->horizontalSlider_rotate_x->value() + rotateX);
+      ui->horizontalSlider_rotate_y->setValue(ui->horizontalSlider_rotate_y->value() + rotateY);
 
 
 
    } else if (rightButton) {
-      int moveX = (cursorPosition->pos().x() - clickPosition.x()) / 100;
-      int moveY = (clickPosition.y() - cursorPosition->pos().y()) / 100;
-      ui->horizontalSlider_move_x->setValue(moveX);
-      ui->horizontalSlider_move_y->setValue(moveY);
+      int moveX = (cursorPosition->pos().x() - clickPosition.x()) / 20;
+      int moveY = (clickPosition.y() - cursorPosition->pos().y()) / 20;
+      ui->horizontalSlider_move_x->setValue(ui->horizontalSlider_move_x->value() + moveX);
+      ui->horizontalSlider_move_y->setValue(ui->horizontalSlider_move_y->value() + moveY);
    }
 
    update();
@@ -31,7 +31,7 @@
  void View::mouseReleaseEvent(QMouseEvent *cursorPosition) {
    leftButton = false;
    rightButton = false;
-   cursorPosition->pos() = clickPosition;
+   clickPosition =  cursorPosition->pos();
  }
 
   void View::wheelEvent(QWheelEvent *event) {

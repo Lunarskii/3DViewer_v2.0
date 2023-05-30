@@ -70,9 +70,9 @@ signals:
 
 private:
     Ui::View* ui;
-    int moveX{};
-    int moveY{};
-    int moveZ{};
+    double moveX{};
+    double moveY{};
+    double moveZ{};
     int rotateX{};
     int rotateY{};
     int rotateZ{};

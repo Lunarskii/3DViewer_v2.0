@@ -2,20 +2,24 @@
 
 void Facade::moveModel(QString& sliderName)
 {
+    double rate = 0;
     if (sliderName == "horizontalSlider_move_x")
     {
-        emit setTransform(0, ui->horizontalSlider_move_x->value() - moveX, 0);
-        moveX = ui->horizontalSlider_move_x->value();
+        rate = ui->horizontalSlider_move_x->value() / 50.0;
+        emit setTransform(0, rate - moveX, 0);
+        moveX = rate;
     }
     else if (sliderName == "horizontalSlider_move_y")
     {
-        emit setTransform(0, ui->horizontalSlider_move_y->value() - moveY, 1);
-        moveY = ui->horizontalSlider_move_y->value();
+        rate = ui->horizontalSlider_move_y->value() / 50.0;
+        emit setTransform(0, rate - moveY, 1);
+        moveY = rate;
     }
     else if (sliderName == "horizontalSlider_move_z")
     {
-        emit setTransform(0, ui->horizontalSlider_move_z->value() - moveZ, 2);
-        moveZ = ui->horizontalSlider_move_z->value();
+        rate = ui->horizontalSlider_move_z->value() / 50.0;
+        emit setTransform(0, rate - moveZ, 2);
+        moveZ = rate;
     }
 }
 
