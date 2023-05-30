@@ -37,7 +37,7 @@
    <widget class="QWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>-10</x>
       <y>15</y>
       <width>1000</width>
       <height>630</height>
@@ -45,23 +45,6 @@
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: transparent;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="_down_line">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>645</y>
-      <width>1001</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(30, 32, 34);
-border: 1px solid rgb(0, 0, 0);</string>
-    </property>
-    <property name="text">
-     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="_top_line">
@@ -1430,13 +1413,6 @@ border:1px solid rgb(0, 0, 0);</string>
      <string>Count of vertex: 20432. Count of facets: 6854</string>
     </property>
    </widget>
-   <zorder>widget</zorder>
-   <zorder>_top_line</zorder>
-   <zorder>tabWidget</zorder>
-   <zorder>pushButton_open_file</zorder>
-   <zorder>label_filename</zorder>
-   <zorder>label_file_info</zorder>
-   <zorder>_down_line</zorder>
   </widget>
  </widget>
  <resources/>

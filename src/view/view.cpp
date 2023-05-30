@@ -65,9 +65,12 @@ View::~View()
 void View::initDefaultValues() 
 {
     // setting the color
-    backgroundColor.setRgb(255, 255, 255);
-    edgeColor.setRgb(0, 0, 255);
-    vertexColor.setRgb(255, 0, 0);
+    QColor bgColor = ui->pushButton_bg_color->palette().button().color();
+    QColor eColor = ui->pushButton_edges_color->palette().button().color();
+    QColor vColor = ui->pushButton_vertex_color->palette().button().color();
+    backgroundColor.setRgb(bgColor.red(), bgColor.green(), bgColor.blue());
+    edgeColor.setRgb(eColor.red(), eColor.green(), eColor.blue());
+    vertexColor.setRgb(vColor.red(), vColor.green(), vColor.blue());
 }
 
 void View::setColor() 
