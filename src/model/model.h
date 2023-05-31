@@ -6,6 +6,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <bits/stdc++.h>
 
 #include "tranformation.h"
 
@@ -29,12 +30,6 @@ public:
     static Model& getInstance();
 private:
     Model() = default;
-
-    void centralization();
-    void converting();
-    std::vector<double> findOffset();
-    double min_value{};
-    double max_value{};
 
     std::string fileName;
     std::vector<double> vertexCoord{};

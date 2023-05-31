@@ -46,8 +46,8 @@ void Facade::scaleModel(QString& sliderName)
 {
     if (sliderName == "horizontalSlider_scale")
     {
-        if (scale == 0) scale = 1;
         double rate = pow(10, ui->horizontalSlider_scale->value() / 100.0) / 100;
+        if (scale == 0) scale = rate;
         emit setTransform(2, rate / scale, 0);
         scale = rate;
     }
