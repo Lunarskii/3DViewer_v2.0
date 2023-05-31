@@ -49,6 +49,7 @@ void View::initDefaultValues() {
   backgroundColor.setRgb(bgColor.red(), bgColor.green(), bgColor.blue());
   edgeColor.setRgb(eColor.red(), eColor.green(), eColor.blue());
   vertexColor.setRgb(vColor.red(), vColor.green(), vColor.blue());
+  ui->tabWidget->setCurrentIndex(0);
 }
 
 void View::setColor() {

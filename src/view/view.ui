@@ -78,7 +78,7 @@ border: 1px solid rgb(0, 0, 0);</string>
 border: 1px solid rgb(0, 0, 0);</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -1283,7 +1283,7 @@ QComboBox::down-arrow {
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(21, 22, 24);
+       <string notr="true">background-color: rgb(30, 32, 34);
 border-radius: 3px;
 border: 1px solid;
 </string>
