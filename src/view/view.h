@@ -15,34 +15,19 @@
 #include "QtGifImage/gifimage/qgifimage.h"
 #include "ui_view.h"
 
-// projection type
-#define PARALLEL 1
-#define CENTRAL 2
-
-// edge type
-#define SOLID 1
-#define DASHED 2
-
-// vertex type
-#define CIRCLE 1
-#define SQUARE 2
-#define NOVERTEX 3
-#define AVERTEX 4
-
-// lines to save the definition
-#define PROJECTION_TYPE "projectionType"
-#define EDGE_TYPE "edgeType"
-#define VERTEX_TYPE "vertexType"
-#define EDGE_THICKNESS "edgeThickness"
-#define VERTEX_SIZE "vertexSize"
-#define BACKGROUND_COLOR "backgroundColor"
-#define EDGE_COLOR "edgeColor"
-#define VERTEX_COLOR "vertexColor"
-#define STEP "step"
-#define ANGLE "angle"
-#define SCALE_BOX "scale"
-
-#define GL_SILENCE_DEPRECATION
+enum Settings {
+    // projection type
+    PARALLEL = 1,
+    CENTRAL = 2,
+    // edge type
+    SOLID = 1,
+    DASHED = 2,
+    // vertex type
+    CIRCLE = 1,
+    SQUARE = 2,
+    NOVERTEX = 3,
+    AVERTEX = 4,
+};
 
 QT_BEGIN_NAMESPACE
 namespace Ui 
