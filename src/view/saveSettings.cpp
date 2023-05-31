@@ -12,8 +12,10 @@
 //   lastSettings->setValue(SCALE_BOX, ui->scale->value());
 
 //   // saving projection settings
-//   if (ui->radioButton_parallel_type->isChecked()) lastSettings->setValue(PROJECTION_TYPE, PARALLEL);
-//   if (ui->radioButton_central_type->isChecked()) lastSettings->setValue(PROJECTION_TYPE, CENTRAL);
+//   if (ui->radioButton_parallel_type->isChecked())
+//   lastSettings->setValue(PROJECTION_TYPE, PARALLEL); if
+//   (ui->radioButton_central_type->isChecked())
+//   lastSettings->setValue(PROJECTION_TYPE, CENTRAL);
 
 //   // saving edge settings
 //   lastSettings->setValue(EDGE_THICKNESS, ui->edgeThickness->value());
@@ -50,9 +52,11 @@
 //   if (double tempStep = lastSettings->value(STEP, -1).toDouble();
 //       tempStep != -1)
 //     ui->step->setValue(tempStep);
-//   if (int tempAngle = lastSettings->value(ANGLE, -1).toInt(); tempAngle != -1)
+//   if (int tempAngle = lastSettings->value(ANGLE, -1).toInt(); tempAngle !=
+//   -1)
 //     ui->angle->setValue(tempAngle);
-//   if (int tempScale = lastSettings->value(SCALE_BOX, -1).toInt(); tempScale != -1)
+//   if (int tempScale = lastSettings->value(SCALE_BOX, -1).toInt(); tempScale
+//   != -1)
 //     ui->scale->setValue(tempScale);
 
 //   // restoring projection settings
@@ -62,8 +66,9 @@
 //     ui->radioButton_central_type->setChecked(true);
 
 //   // restoring edge settings
-//   if (tempEdgeThickness != -1) ui->edgeThickness->setValue(tempEdgeThickness);
-//   if (lastSettings->value(EDGE_TYPE).toInt() == SOLID)
+//   if (tempEdgeThickness != -1)
+//   ui->edgeThickness->setValue(tempEdgeThickness); if
+//   (lastSettings->value(EDGE_TYPE).toInt() == SOLID)
 //     ui->radioButton_edgeType_solid->setChecked(true);
 //   if (lastSettings->value(EDGE_TYPE).toInt() == DASHED)
 //     ui->radioButton_edgeType_dashed->setChecked(true);

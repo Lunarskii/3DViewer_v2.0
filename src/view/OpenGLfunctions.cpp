@@ -21,7 +21,8 @@ void View::resizeGL(int w, int h) {
 
 void View::paintGL() {
   resize(1440, 1080);
-  glClearColor(backgroundColor.redF(), backgroundColor.greenF(), backgroundColor.blueF(), 1.0f);
+  glClearColor(backgroundColor.redF(), backgroundColor.greenF(),
+               backgroundColor.blueF(), 1.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
@@ -45,7 +46,9 @@ void View::paintGL() {
 }
 
 void View::updateValues() {
-  projectionType = ui->comboBox_disp_method_2->currentText() == "Parallel" ? PARALLEL : CENTRAL;
+  projectionType = ui->comboBox_disp_method_2->currentText() == "Parallel"
+                       ? PARALLEL
+                       : CENTRAL;
   edgeType = ui->comboBox->currentText() == "Solid" ? SOLID : DASHED;
 
   edgeWidth = ui->horizontalSlider_edges_thick->value() / 30;
@@ -56,7 +59,8 @@ void View::updateValues() {
   } else {
     pointVisibility = AVERTEX;
 
-    pointType = ui->comboBox_disp_method->currentText() == "Circle" ? CIRCLE : SQUARE;
+    pointType =
+        ui->comboBox_disp_method->currentText() == "Circle" ? CIRCLE : SQUARE;
   }
 }
 
@@ -69,7 +73,8 @@ void View::setEdges() {
   }
 
   glLineWidth(edgeWidth);  // setting the edge thickness
-  glColor3f(edgeColor.redF(), edgeColor.greenF(), edgeColor.blueF());  // setting the edge color
+  glColor3f(edgeColor.redF(), edgeColor.greenF(),
+            edgeColor.blueF());  // setting the edge color
   glDrawElements(GL_LINES, countVertexIndex, GL_UNSIGNED_INT, vertexIndex);
 }
 
@@ -77,14 +82,11 @@ void View::setVertices() {
   glPointSize(pointSize);
   glColor3f(vertexColor.redF(), vertexColor.greenF(), vertexColor.blueF());
 
-  if (pointType == CIRCLE) 
-  {
+  if (pointType == CIRCLE) {
     glEnable(GL_POINT_SMOOTH);
     glDrawArrays(GL_POINTS, 0, countVertexCoord / 3);
     glDisable(GL_POINT_SMOOTH);
-  } 
-  else 
-  {
+  } else {
     glDrawArrays(GL_POINTS, 0, countVertexCoord / 3);
   }
 }
