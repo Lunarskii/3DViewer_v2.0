@@ -1,8 +1,6 @@
 #ifndef CPP4_3DVIEWER_V2_0_MODEL_MODEL_H_
 #define CPP4_3DVIEWER_V2_0_MODEL_MODEL_H_
 
-#include <bits/stdc++.h>
-
 #include <cstring>
 #include <fstream>
 #include <iostream>
