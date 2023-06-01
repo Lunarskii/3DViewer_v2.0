@@ -30,13 +30,13 @@ View::View(QWidget *parent)
     connect(slider, SIGNAL(valueChanged(int)), this, SLOT(transformModel()));
   }
 
-  // lastSettings = new QSettings("SAVE_3DVIEWER", "3DViewer", this);
-  // restoreSettings();
+   lastSettings = new QSettings("SAVE_3DVIEWER", "3DViewer", this);
+   restoreSettings();
 }
 
 View::~View() {
-  // saveSettings();
-  // delete lastSettings;
+  saveSettings();
+  delete lastSettings;
   delete facade;
   delete ui;
 }

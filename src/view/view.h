@@ -108,9 +108,9 @@ class View : public QOpenGLWidget {
   void setVertices();
 
   // Methods for saving and restoring settings
-  // QSettings *lastSettings;
-  // void saveSettings();
-  // void restoreSettings();
+   QSettings *lastSettings;
+   void saveSettings();
+   void restoreSettings();
 
   // Colors
   QColor backgroundColor;
