@@ -56,15 +56,14 @@ void Model::edgesParser(std::string line) {
 }
 
 void Model::setFileName(std::string fileName) {
-  if (fileName.size() <= 3 ||
-      fileName.compare(fileName.size() - 4, 4, ".obj")) {
+  if (fileName.size() <= 3 || fileName.compare(fileName.size() - 4, 4, ".obj")) {
     errorCode = FILE_HAS_WRONG_EXTENSION;
   } else {
-    vertexCoord.clear();
-    vertexIndex.clear();
-    errorCode = 0;
     this->fileName = fileName;
+    errorCode = 0;
   }
+  vertexCoord.clear();
+  vertexIndex.clear();
 }
 
 int Model::getError() { return errorCode; }

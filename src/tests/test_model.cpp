@@ -2,29 +2,50 @@
 
 using namespace std;
 
-TEST(MODEL, CORRECT_FILE) {
-  Model model(
-      "/home/lunarskii/project/3DViewer_v2.0/src/tests/one_million.obj");
-  model.parser();
+TEST(Model, CorrectFile) {
+  Model *model;
+  model = &Model::getInstance();
 
-  cout << "countVertex = " << model.getCountVertex() << endl;
-  // cout << "vertexCoord = ";
-  // std::vector<double> temp1 = model.getVertexCoord();
-  // double* vertexCoord = temp1.data();
-  // for (int i = 0; i < model.getCountVertex() * 3; ++i)
-  // {
-  //     cout << vertexCoord[i] << " ";
-  // }
-  cout << endl;
-  cout << "countIndex = " << model.getCountIndex() << endl;
-  // cout << "vertexIndex = ";
-  // std::vector<int> temp2 = model.getVertexIndex();
-  // int* vertexIndex = temp2.data();
-  // for (int i = 0; i < model.getCountIndex(); ++i)
-  // {
-  //     cout << vertexIndex[i] << " ";
-  // }
-  // cout << endl;
+  model->setFileName("tests/models/cube.obj");
+  model->parser();
 
-  ASSERT_EQ(model.getError(), 0);
+  EXPECT_EQ(model->getError(), 0);
+  EXPECT_EQ(model->getVertexCoord().size(), 24);
+  EXPECT_EQ(model->getVertexIndex().size(), 72);
 }
+
+TEST(Model, WrongExtension) {
+  Model *model;
+  model = &Model::getInstance();
+
+  model->setFileName("Makefile");
+  model->parser();
+
+  EXPECT_EQ(model->getError(), FILE_HAS_WRONG_EXTENSION);
+  EXPECT_TRUE(model->getVertexCoord().empty());
+  EXPECT_TRUE(model->getVertexIndex().empty());
+}
+
+TEST(Model, FailedToOpen) {
+  Model *model;
+  model = &Model::getInstance();
+
+  model->setFileName("qwerty.obj");
+  model->parser();
+
+  EXPECT_EQ(model->getError(), FAILED_TO_OPEN_FILE);
+  EXPECT_TRUE(model->getVertexCoord().empty());
+  EXPECT_TRUE(model->getVertexIndex().empty());
+}
+
+TEST(Model, IncorrectFile) {
+  Model *model;
+  model = &Model::getInstance();
+
+  model->setFileName("tests/models/incorrect.obj");
+  model->parser();
+
+  EXPECT_EQ(model->getError(), INCORRECT_ENTRY_OF_THE_VERTEX_COORDINATE);
+}
+
+// Возможно стоит еще тестить transform
