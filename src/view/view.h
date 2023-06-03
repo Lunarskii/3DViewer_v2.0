@@ -3,6 +3,7 @@
 
 #include <QColor>         // library for using colors
 #include <QColorDialog>   // library for dialog windows
+#include <QPalette>
 #include <QFileDialog>    // library for dialog windows
 #include <QKeyEvent>      // library for receiving keyboard signals
 #include <QMouseEvent>    // library for receiving mouse signals
@@ -52,7 +53,7 @@ class Facade : public QObject {
  signals:
   void setTransform(int strategyType, double value, int axis);
 
- private:
+private:
   Ui::View* ui;
   double moveX{};
   double moveY{};

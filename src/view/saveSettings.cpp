@@ -40,10 +40,21 @@
    int tempVertexSize = lastSettings->value("vertex_size", -1).toInt();
 
    // restoring color settings
-   if (tempBackgroundColor != "-1")
-     backgroundColor.setNamedColor(tempBackgroundColor);
-   if (tempEdgeColor != "-1") edgeColor.setNamedColor(tempEdgeColor);
-   if (tempVertexColor != "-1") vertexColor.setNamedColor(tempVertexColor);
+   if (tempBackgroundColor != "-1") {
+    backgroundColor.setNamedColor(tempBackgroundColor);
+    QColor color(tempBackgroundColor);
+    ui->pushButton_bg_color->setStyleSheet(QString("background-color: %1").arg(color.name()));
+   }
+   if (tempEdgeColor != "-1") {
+    edgeColor.setNamedColor(tempEdgeColor);
+    QColor color(tempEdgeColor);
+    ui->pushButton_edges_color->setStyleSheet(QString("background-color: %1").arg(color.name()));
+   }
+   if (tempVertexColor != "-1") {
+    vertexColor.setNamedColor(tempVertexColor);
+    QColor color(tempVertexColor);
+    ui->pushButton_vertex_color->setStyleSheet(QString("background-color: %1").arg(color.name()));
+   }
 
    // restoring projection settings
    if (lastSettings->value("projection_type").toInt() == PARALLEL)

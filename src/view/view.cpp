@@ -46,9 +46,9 @@ void View::initDefaultValues() {
   QColor bgColor = ui->pushButton_bg_color->palette().button().color();
   QColor eColor = ui->pushButton_edges_color->palette().button().color();
   QColor vColor = ui->pushButton_vertex_color->palette().button().color();
-  backgroundColor.setRgb(bgColor.red(), bgColor.green(), bgColor.blue());
-  edgeColor.setRgb(eColor.red(), eColor.green(), eColor.blue());
-  vertexColor.setRgb(vColor.red(), vColor.green(), vColor.blue());
+  backgroundColor.setNamedColor(bgColor.name());
+  edgeColor.setNamedColor(eColor.name());
+  vertexColor.setNamedColor(vColor.name());
   ui->tabWidget->setCurrentIndex(0);
 }
 
@@ -57,23 +57,16 @@ void View::setColor() {
 
   if (color.isValid()) {
     QPushButton *button = (QPushButton *)sender();
-    char buffer[50] = {};
 
     if (button == ui->pushButton_bg_color) {
       backgroundColor = color;
-      sprintf(buffer, "background-color: rgb(%d, %d, %d);", color.red(),
-              color.green(), color.blue());
-      ui->pushButton_bg_color->setStyleSheet(buffer);
+      ui->pushButton_bg_color->setStyleSheet(QString("background-color: %1").arg(backgroundColor.name()));
     } else if (button == ui->pushButton_edges_color) {
       edgeColor = color;
-      sprintf(buffer, "background-color: rgb(%d, %d, %d);", color.red(),
-              color.green(), color.blue());
-      ui->pushButton_edges_color->setStyleSheet(buffer);
+      ui->pushButton_edges_color->setStyleSheet(QString("background-color: %1").arg(edgeColor.name()));
     } else if (button == ui->pushButton_vertex_color) {
       vertexColor = color;
-      sprintf(buffer, "background-color: rgb(%d, %d, %d);", color.red(),
-              color.green(), color.blue());
-      ui->pushButton_vertex_color->setStyleSheet(buffer);
+      ui->pushButton_vertex_color->setStyleSheet(QString("background-color: %1").arg(vertexColor.name()));
     }
 
     update();
@@ -113,6 +106,7 @@ void View::on_pushButton_open_file_clicked() {
     clearSliders();
     emit setModel(filePath);
     ui->label_filename->setText((QFileInfo(filePath)).fileName());
+    ui->label_filename->setStyleSheet(QString("background-color: %1").arg(QColor(58, 81, 113).name()));
   }
 }
 
@@ -130,3 +124,4 @@ void View::transformModel() {
   facade->transform(slider);
   update();
 }
+

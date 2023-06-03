@@ -37,7 +37,7 @@
    <widget class="QWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>-10</x>
+      <x>-9</x>
       <y>15</y>
       <width>1000</width>
       <height>630</height>
@@ -682,10 +682,41 @@ QPushButton:hover {
 }</string>
       </property>
       <property name="text">
-       <string>img</string>
+       <string>bmp</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_gif">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>610</y>
+        <width>45</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+ background-color: rgb(59, 73, 153);
+ color: rgb(255, 255, 255);
+ border-radius: 4px;
+}
+
+QPushButton:hover {
+ background-color: rgb(49, 63, 133);
+ color: rgb(255, 255, 255);
+ border-radius: 4px;
+}</string>
+      </property>
+      <property name="text">
+       <string>gif</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_jpeg">
       <property name="geometry">
        <rect>
         <x>65</x>
@@ -713,7 +744,7 @@ QPushButton:hover {
 }</string>
       </property>
       <property name="text">
-       <string>gif</string>
+       <string>jpeg</string>
       </property>
      </widget>
     </widget>
@@ -1384,9 +1415,8 @@ QPushButton:hover {
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(58, 81, 113);
-color: rgb(255, 255, 255);
-border:1px solid rgb(0, 0, 0);</string>
+     <string notr="true">background-color: rgb(30, 32, 34);
+color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string/>
