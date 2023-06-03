@@ -13,6 +13,9 @@ View::View(QWidget *parent)
   // connecting colors
   connect(ui->buttonGroupColors, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(setColor(QAbstractButton *)));
 
+  // connecting save format
+  connect(ui->buttonGroupImg, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(Record(QAbstractButton *)));
+
   // connecting transform
   std::vector<QSlider *> transform_sliders = {
       ui->horizontalSlider_move_x,   ui->horizontalSlider_move_y,
@@ -23,10 +26,6 @@ View::View(QWidget *parent)
   for (auto slider : transform_sliders) {
     connect(slider, SIGNAL(valueChanged(int)), this, SLOT(transformModel()));
   }
-
-  // connecting save format
-
-  connect(ui->buttonGroupImg, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(on_buttonGroupImg_clicked(QAbstractButton *)));
 
    lastSettings = new QSettings("SAVE_3DVIEWER", "3DViewer", this);
    restoreSettings();
@@ -122,10 +121,8 @@ void View::transformModel() {
   update();
 }
 
-void View::on_buttonGroupImg_clicked(QAbstractButton *button) {
+void View::Record(QAbstractButton *button) {
    if (button == ui->pushButton_bmp) saveBmp();
     else if (button == ui->pushButton_jpeg) saveJpeg();
     else if (button == ui->pushButton_gif) saveGif();
-
 }
-

@@ -82,9 +82,9 @@ class View : public QOpenGLWidget {
 
  private slots:
   void on_pushButton_open_file_clicked();
-  void on_buttonGroupImg_clicked(QAbstractButton *button);
   void clearSliders();
   void transformModel();
+  void Record(QAbstractButton *button);
   void setColor(QAbstractButton *button);
   void changeTab(QAbstractButton *button);
   void saveImage();
