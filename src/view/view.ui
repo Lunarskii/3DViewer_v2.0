@@ -44,7 +44,8 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: transparent;</string>
+     <string notr="true">background-color: transparent;
+border: 1px;</string>
     </property>
    </widget>
    <widget class="QLabel" name="_top_line">
@@ -658,7 +659,7 @@ QPushButton:hover {
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>610</y>
+        <y>565</y>
         <width>45</width>
         <height>30</height>
        </rect>
@@ -689,7 +690,7 @@ QPushButton:hover {
       <property name="geometry">
        <rect>
         <x>120</x>
-        <y>610</y>
+        <y>565</y>
         <width>45</width>
         <height>30</height>
        </rect>
@@ -720,7 +721,7 @@ QPushButton:hover {
       <property name="geometry">
        <rect>
         <x>65</x>
-        <y>610</y>
+        <y>565</y>
         <width>45</width>
         <height>30</height>
        </rect>
@@ -745,6 +746,29 @@ QPushButton:hover {
       </property>
       <property name="text">
        <string>jpeg</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_file_info">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>605</y>
+        <width>250</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(30, 32, 34);
+color: rgb(255, 255, 255);
+border: 1px;</string>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>
@@ -1382,7 +1406,7 @@ border: 1px;</string>
     </property>
     <property name="font">
      <font>
-      <pointsize>11</pointsize>
+      <pointsize>10</pointsize>
      </font>
     </property>
     <property name="styleSheet">
@@ -1416,37 +1440,14 @@ QPushButton:hover {
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(30, 32, 34);
-color: rgb(255, 255, 255);</string>
+color: rgb(255, 255, 255);
+border: 1px solid rgb(0, 0, 0);</string>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_file_info">
-    <property name="geometry">
-     <rect>
-      <x>740</x>
-      <y>650</y>
-      <width>250</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>11</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">	text-align: left;
-	background-color: rgb(30, 30, 30);
-	color: rgb(190, 190, 190);
-	border-radius: 1px;</string>
-    </property>
-    <property name="text">
-     <string>Count of vertex: 20432. Count of facets: 6854</string>
     </property>
    </widget>
   </widget>

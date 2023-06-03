@@ -116,6 +116,8 @@ void View::handleSolution(std::vector<int> *vertexIndex,
   this->vertexCoord = vertexCoord->data();
   this->countVertexIndex = vertexIndex->size();
   this->countVertexCoord = vertexCoord->size();
+  QString info = "Count of vertex: %1\nCount of facets: %2";
+  ui->label_file_info->setText(info.arg(countVertexCoord / 3).arg(countVertexIndex / 8));
   update();
 }
 
