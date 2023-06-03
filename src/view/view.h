@@ -13,6 +13,7 @@
 #include <QTimer>         // library for time counting
 #include <QWheelEvent>    // library for receiving mouse wheel signals
 #include <QWidget>        // library for using widgets
+#include <QButtonGroup>
 
 #include "QtGifImage/gifimage/qgifimage.h"
 #include "ui_view.h"
@@ -81,16 +82,12 @@ class View : public QOpenGLWidget {
 
  private slots:
   void on_pushButton_open_file_clicked();
+  void on_buttonGroupImg_clicked(QAbstractButton *button);
   void clearSliders();
   void transformModel();
   void setColor();
   void changeTab();
-
-  // Methods for saving images
-  // void on_actionSave_as_GIF_triggered();
-  // void on_actionSave_as_bmp_triggered();
-  // void on_actionSave_as_jpeg_triggered();
-  // void saveImage();
+  void saveImage();
 
  private:
   Ui::View* ui;
@@ -112,6 +109,11 @@ class View : public QOpenGLWidget {
    QSettings *lastSettings;
    void saveSettings();
    void restoreSettings();
+
+   // Methods for saving images
+    void saveGif();
+    void saveBmp();
+    void saveJpeg();
 
   // Colors
   QColor backgroundColor;

@@ -30,6 +30,10 @@ View::View(QWidget *parent)
     connect(slider, SIGNAL(valueChanged(int)), this, SLOT(transformModel()));
   }
 
+  // connecting save format
+
+  connect(ui->buttonGroupImg, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(on_buttonGroupImg_clicked(QAbstractButton *)));
+
    lastSettings = new QSettings("SAVE_3DVIEWER", "3DViewer", this);
    restoreSettings();
 }
@@ -125,5 +129,12 @@ void View::transformModel() {
   QSlider *slider = qobject_cast<QSlider *>(sender());
   facade->transform(slider);
   update();
+}
+
+void View::on_buttonGroupImg_clicked(QAbstractButton *button) {
+   if (button == ui->pushButton_bmp) saveBmp();
+    else if (button == ui->pushButton_jpeg) saveJpeg();
+    else if (button == ui->pushButton_gif) saveGif();
+
 }
 
