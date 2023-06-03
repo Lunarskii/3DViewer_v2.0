@@ -8,16 +8,10 @@ View::View(QWidget *parent)
   initDefaultValues();
 
   // connecting change tab
-  connect(ui->_pushButton_transformation2, SIGNAL(clicked()), this,
-          SLOT(changeTab()));
-  connect(ui->pushButton_settings1, SIGNAL(clicked()), this, SLOT(changeTab()));
+  connect(ui->buttonGroupTabs, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(changeTab(QAbstractButton *)));
 
   // connecting colors
-  connect(ui->pushButton_bg_color, SIGNAL(clicked()), this, SLOT(setColor()));
-  connect(ui->pushButton_edges_color, SIGNAL(clicked()), this,
-          SLOT(setColor()));
-  connect(ui->pushButton_vertex_color, SIGNAL(clicked()), this,
-          SLOT(setColor()));
+  connect(ui->buttonGroupColors, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(setColor(QAbstractButton *)));
 
   // connecting transform
   std::vector<QSlider *> transform_sliders = {
@@ -56,12 +50,10 @@ void View::initDefaultValues() {
   ui->tabWidget->setCurrentIndex(0);
 }
 
-void View::setColor() {
+void View::setColor(QAbstractButton *button) {
   QColor color = QColorDialog::getColor();
 
   if (color.isValid()) {
-    QPushButton *button = (QPushButton *)sender();
-
     if (button == ui->pushButton_bg_color) {
       backgroundColor = color;
       ui->pushButton_bg_color->setStyleSheet(QString("background-color: %1").arg(backgroundColor.name()));
@@ -77,8 +69,7 @@ void View::setColor() {
   }
 }
 
-void View::changeTab() {
-  QPushButton *button = (QPushButton *)sender();
+void View::changeTab(QAbstractButton *button) {
   int tabIndex = ui->tabWidget->currentIndex();
 
   if (button == ui->_pushButton_transformation2 && tabIndex != 0) {

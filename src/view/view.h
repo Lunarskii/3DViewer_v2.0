@@ -85,8 +85,8 @@ class View : public QOpenGLWidget {
   void on_buttonGroupImg_clicked(QAbstractButton *button);
   void clearSliders();
   void transformModel();
-  void setColor();
-  void changeTab();
+  void setColor(QAbstractButton *button);
+  void changeTab(QAbstractButton *button);
   void saveImage();
 
  private:

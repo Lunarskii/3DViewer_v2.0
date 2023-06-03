@@ -79,7 +79,7 @@ border: 1px solid rgb(0, 0, 0);</string>
 border: 1px solid rgb(0, 0, 0);</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -141,6 +141,9 @@ QPushButton:hover {
       <property name="text">
        <string>Settings</string>
       </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroupTabs</string>
+      </attribute>
      </widget>
      <widget class="QLabel" name="_label_move">
       <property name="geometry">
@@ -838,6 +841,9 @@ QPushButton:hover {
       <property name="text">
        <string>Transformation</string>
       </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroupTabs</string>
+      </attribute>
      </widget>
      <widget class="QLabel" name="_label_edges">
       <property name="geometry">
@@ -1212,6 +1218,9 @@ border: 1px solid;
       <property name="text">
        <string/>
       </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroupColors</string>
+      </attribute>
      </widget>
      <widget class="QComboBox" name="comboBox_disp_method">
       <property name="geometry">
@@ -1286,6 +1295,9 @@ border: 1px solid;
       <property name="text">
        <string/>
       </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroupColors</string>
+      </attribute>
      </widget>
      <widget class="QComboBox" name="comboBox_disp_method_2">
       <property name="geometry">
@@ -1355,6 +1367,9 @@ border: 1px solid;
       <property name="text">
        <string/>
       </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroupColors</string>
+      </attribute>
      </widget>
      <widget class="QLabel" name="_label_edges_thick">
       <property name="geometry">
@@ -1465,5 +1480,7 @@ border: 1px solid rgb(0, 0, 0);</string>
  <connections/>
  <buttongroups>
   <buttongroup name="buttonGroupImg"/>
+  <buttongroup name="buttonGroupTabs"/>
+  <buttongroup name="buttonGroupColors"/>
  </buttongroups>
 </ui>
