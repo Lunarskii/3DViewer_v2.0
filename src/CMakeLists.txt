@@ -35,11 +35,11 @@ set(TEST_DIRS
         model/
         tests/
 )
-set(PROJECT_SOURCES main.cpp)
+set(PROJECT_SOURCES main.cc)
 set(TEST_SOURCES "")
 
 foreach(dir ${SOURCE_DIRS})
-    file(GLOB CPP_SOURCES "${dir}/*.cpp")
+    file(GLOB CPP_SOURCES "${dir}/*.cc")
     file(GLOB C_SOURCES "${dir}/*.c")
     file(GLOB HEADER_SOURCES "${dir}/*.h")
     file(GLOB UI_SOURCES "${dir}/*.ui")
@@ -47,7 +47,7 @@ foreach(dir ${SOURCE_DIRS})
 endforeach()
 
 foreach(dir ${TEST_DIRS})
-    file(GLOB_RECURSE CPP_SOURCES "${dir}/*.cpp")
+    file(GLOB_RECURSE CPP_SOURCES "${dir}/*.cc")
     file(GLOB_RECURSE HEADER_SOURCES "${dir}/*.h")
     list(APPEND TEST_SOURCES ${CPP_SOURCES} ${HEADER_SOURCES})
 endforeach()
