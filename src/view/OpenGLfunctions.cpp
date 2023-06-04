@@ -29,7 +29,7 @@ void View::paintGL() {
 
   updateValues();
   if (projectionType) {
-    glVertexPointer(3, GL_DOUBLE, 0, vertexCoord);
+    glVertexPointer(3, GL_DOUBLE, 0, vertex_coord_);
     glEnableClientState(GL_VERTEX_ARRAY);
     setProjectionType();
 
@@ -75,7 +75,7 @@ void View::setEdges() {
   glLineWidth(edgeWidth);  // setting the edge thickness
   glColor3f(edgeColor.redF(), edgeColor.greenF(),
             edgeColor.blueF());  // setting the edge color
-  glDrawElements(GL_LINES, countVertexIndex, GL_UNSIGNED_INT, vertexIndex);
+  glDrawElements(GL_LINES, count_vertex_index_, GL_UNSIGNED_INT, vertex_index_);
 }
 
 void View::setVertices() {
@@ -84,10 +84,10 @@ void View::setVertices() {
 
   if (pointType == CIRCLE) {
     glEnable(GL_POINT_SMOOTH);
-    glDrawArrays(GL_POINTS, 0, countVertexCoord / 3);
+    glDrawArrays(GL_POINTS, 0, count_vertex_coord_ / 3);
     glDisable(GL_POINT_SMOOTH);
   } else {
-    glDrawArrays(GL_POINTS, 0, countVertexCoord / 3);
+    glDrawArrays(GL_POINTS, 0, count_vertex_coord_ / 3);
   }
 }
 

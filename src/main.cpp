@@ -10,9 +10,9 @@ int main(int argc, char *argv[]) {
 
   QObject::connect(
       &controller,
-      SIGNAL(solutionReady(std::vector<int> *, std::vector<double> *)), &view,
-      SLOT(handleSolution(std::vector<int> *, std::vector<double> *)));
+      SIGNAL(SolutionReady(std::vector<int> *, std::vector<double> *)), &view,
+      SLOT(HandleSolution(std::vector<int> *, std::vector<double> *)));
 
   view.show();
-  return a.exec();
+  return QApplication::exec();
 }

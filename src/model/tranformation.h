@@ -16,12 +16,12 @@ typedef enum {
 class TransformationStrategy {
  public:
   virtual ~TransformationStrategy() {}
-  virtual void transform(std::vector<double>&, double&,
+  virtual void Transform(std::vector<double>&, double&,
                          transformation_t& axis) {}
 };
 
 class MoveStrategy : public TransformationStrategy {
-  void transform(std::vector<double>& vertexCoord, double& step,
+  void Transform(std::vector<double>& vertexCoord, double& step,
                  transformation_t& axis) override {
     for (int i = axis; i < vertexCoord.size(); i += 3) {
       vertexCoord[i] += step;
@@ -30,7 +30,7 @@ class MoveStrategy : public TransformationStrategy {
 };
 
 class RotateStrategy : public TransformationStrategy {
-  void transform(std::vector<double>& vertexCoord, double& angle,
+  void Transform(std::vector<double>& vertexCoord, double& angle,
                  transformation_t& axis) override {
     double tempAngle = angle * M_PI / 180;
     double cosValue = cos(tempAngle);
@@ -54,31 +54,28 @@ class RotateStrategy : public TransformationStrategy {
 };
 
 class ScaleStrategy : public TransformationStrategy {
-  void transform(std::vector<double>& vertexCoord, double& scale,
+  void Transform(std::vector<double>& vertexCoord, double& scale,
                  transformation_t&) override {
-    for (int i = 0; i < vertexCoord.size(); ++i) {
-      // vertexCoord[i] += scale / 100 * vertexCoord[i];
-      vertexCoord[i] *= scale;
+    for (double& i : vertexCoord) {
+      i *= scale;
     }
   }
 };
 
 class Strategy {
  public:
-  Strategy() : strategy(nullptr) {}
+  Strategy() : strategy_(nullptr) {}
 
-  void setStrategy(TransformationStrategy* strategy) {
-    this->strategy = strategy;
-  }
+  void setStrategy(TransformationStrategy* strategy) { strategy_ = strategy; }
 
   void performTransformation(std::vector<double>& vertexCoord, double& value,
                              transformation_t& axis) {
-    strategy->transform(vertexCoord, value, axis);
-    delete strategy;
+    strategy_->Transform(vertexCoord, value, axis);
+    delete strategy_;
   }
 
  private:
-  TransformationStrategy* strategy;
+  TransformationStrategy* strategy_;
 };
 
 #endif  // CPP4_3DVIEWER_V2_0_MODEL_TRANSFORMATION_H_

@@ -11,28 +11,28 @@ class Controller : public QObject {
   Q_OBJECT
 
  signals:
-  void solutionReady(std::vector<int>* vertexIndex,
+  void SolutionReady(std::vector<int>* vertexIndex,
                      std::vector<double>* vertexCoord);
 
  public slots:
-  void setFileName(QString fileName);
-  void transform(int strategyType, double value, int axis = X);
+  void SetFileName(const QString& fileName);
+  void Transform(int strategyType, double value, int axis = X);
 
  public:
-  Controller(View* newView) : model(&Model::getInstance()), view(newView) {
-    QObject::connect(view, SIGNAL(setModel(QString)), this,
-                     SLOT(setFileName(QString)));
-    QObject::connect(view->facade, SIGNAL(setTransform(int, double, int)), this,
-                     SLOT(transform(int, double, int)));
+  Controller(View* newView) : model_(&Model::GetInstance()), view_(newView) {
+    QObject::connect(view_, SIGNAL(SetModel(QString)), this,
+                     SLOT(SetFileName(QString)));
+    QObject::connect(view_->facade, SIGNAL(SetTransform(int, double, int)),
+                     this, SLOT(Transform(int, double, int)));
   }
 
-  int getError();
-  std::vector<int>& getVertexIndex();
-  std::vector<double>& getVertexCoord();
+  int GetError();
+  std::vector<int>& GetVertexIndex();
+  std::vector<double>& GetVertexCoord();
 
  private:
-  Model* model;
-  View* view;
+  Model* model_;
+  View* view_;
 };
 
 #endif  // CPP4_3DVIEWER_V2_0_CONTROLLER_CONTROLLER_H_

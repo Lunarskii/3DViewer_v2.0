@@ -17,27 +17,27 @@ enum error_list {
 
 class Model {
  public:
-  void parser();
+  void Parser();
 
-  void setFileName(std::string fileName);
-  int getError();
-  std::vector<int>& getVertexIndex();
-  std::vector<double>& getVertexCoord();
-  void transform(int& strategyType, double& value, transformation_t& axis);
+  void SetFileName(const std::string& fileName);
+  int GetError();
+  std::vector<int>& GetVertexIndex();
+  std::vector<double>& GetVertexCoord();
+  void Transform(int& strategyType, double& value, transformation_t& axis);
 
-  static Model& getInstance();
+  static Model& GetInstance();
 
  private:
   Model() = default;
 
-  void vertexParser(std::string line);
-  void edgesParser(std::string line);
+  void VertexParser_(const std::string& line);
+  void EdgesParser_(const std::string& line);
 
-  std::string fileName;
-  std::vector<double> vertexCoord{};
-  std::vector<int> vertexIndex{};
-  int errorCode{};
-  Strategy transformationModel;
+  std::string filename_;
+  std::vector<double> vertex_coord_{};
+  std::vector<int> vertex_index_{};
+  int error_code_{};
+  Strategy TransformationModel_;
 };
 
 #endif  // CPP4_3DVIEWER_V2_0_MODEL_MODEL_H_

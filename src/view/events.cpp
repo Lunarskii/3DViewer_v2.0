@@ -2,20 +2,20 @@
 
 void View::mouseMoveEvent(QMouseEvent *cursorPosition) {
   if (leftButton) {
-    int rotateX = (cursorPosition->pos().y() - clickPosition.y()) / 3;
-    int rotateY = (cursorPosition->pos().x() - clickPosition.x()) / 3;
+    int rotate_x = (cursorPosition->pos().y() - clickPosition.y()) / 3;
+    int rotate_y = (cursorPosition->pos().x() - clickPosition.x()) / 3;
     ui->horizontalSlider_rotate_x->setValue(
-        ui->horizontalSlider_rotate_x->value() + rotateX);
+        ui->horizontalSlider_rotate_x->value() + rotate_x);
     ui->horizontalSlider_rotate_y->setValue(
-        ui->horizontalSlider_rotate_y->value() + rotateY);
+        ui->horizontalSlider_rotate_y->value() + rotate_y);
 
   } else if (rightButton) {
-    int moveX = (cursorPosition->pos().x() - clickPosition.x()) / 2;
-    int moveY = (clickPosition.y() - cursorPosition->pos().y()) / 2;
+    int move_x = (cursorPosition->pos().x() - clickPosition.x()) / 2;
+    int move_y = (clickPosition.y() - cursorPosition->pos().y()) / 2;
     ui->horizontalSlider_move_x->setValue(ui->horizontalSlider_move_x->value() +
-                                          moveX);
+                                          move_x);
     ui->horizontalSlider_move_y->setValue(ui->horizontalSlider_move_y->value() +
-                                          moveY);
+                                          move_y);
   }
 
   clickPosition.setX(cursorPosition->pos().x());
@@ -48,13 +48,3 @@ void View::wheelEvent(QWheelEvent *event) {
   ui->horizontalSlider_scale->setValue(ui->horizontalSlider_scale->value() +
                                        offset);
 }
-
-// // void View::keyPressEvent(QKeyEvent *event) {
-// //   if (event->key() == Qt::Key_G) {
-// //     on_actionSave_as_GIF_triggered();
-// //   } else if (event->key() == Qt::Key_J) {
-// //     on_actionSave_as_jpeg_triggered();
-// //   } else if (event->key() == Qt::Key_B) {
-// //     on_actionSave_as_bmp_triggered();
-// //   }
-// // }

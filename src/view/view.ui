@@ -1479,8 +1479,8 @@ border: 1px solid rgb(0, 0, 0);</string>
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroupImg"/>
   <buttongroup name="buttonGroupTabs"/>
   <buttongroup name="buttonGroupColors"/>
+  <buttongroup name="buttonGroupImg"/>
  </buttongroups>
 </ui>
