@@ -99,13 +99,13 @@ void View::ClearSliders() {
 }
 
 void View::on_pushButton_open_file_clicked() {
-  QString filePath = QFileDialog::getOpenFileName(
+  QString filepath = QFileDialog::getOpenFileName(
       this, ("Select Model"), "../models/", "3D Image Files (*.obj)");
 
-  if (filePath != "") {
+  if (filepath != "") {
     ClearSliders();
-    emit SetModel(filePath);
-    ui->label_filename->setText((QFileInfo(filePath)).fileName());
+    emit SetModel(filepath);
+    ui->label_filename->setText((QFileInfo(filepath)).fileName());
     ui->label_filename->setStyleSheet(
         QString("background-color: %1").arg(QColor(58, 81, 113).name()));
   }
