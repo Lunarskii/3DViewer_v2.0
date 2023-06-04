@@ -1,54 +1,43 @@
-VALGRIND_FLAGS				= --log-file="valgrind.txt" --track-origins=yes --trace-children=yes --leak-check=full --leak-resolution=med
+.PHONY: all install uninstall clean dvi dist launch tests style valgrind
 
-SRC_GIFLIB_DIR				= view/QtGifImage/giflib/
-OBJ_GIFLIB_DIR				= ../obj/GIFLIB/
-GIF_LIBRARY					= giflib.a
-BUILD_FOLDERS				:= $(shell mkdir -p $(OBJ_GIFLIB_DIR))
-SRC_GIFLIB					:= $(wildcard $(SRC_GIFLIB_DIR)*.c)
-OBJ_GIFLIB					:= $(patsubst $(SRC_GIFLIB_DIR)%.c,$(OBJ_GIFLIB_DIR)%.o,$(SRC_GIFLIB))
+APP_NAME = 3DViewer
 
-
-APP_NAME					= 3DViewer
+OS := $(shell uname -s)
+ifeq ($(OS), Linux)
+  OPEN = ./build/$(APP_NAME)
+endif
+ifeq ($(OS), Darwin)
+	OPEN = open build/$(APP_NAME).app
+endif
 
 all: install launch
 
-install: $(GIF_LIBRARY)
+install:
 	cmake -B build
-	make -C build untitled
-	cp build/untitled $(APP_NAME)
+	make -C build 3DViewer
 
-uninstall: clean
+uninstall:
+	$(MAKE) clean
 	rm -rf build
-	rm -rf $(APP_NAME)
 
 clean:
-	rm -rf ../obj/
-	rm -rf *.a
-	rm -rf valgrind.txt
+	rm -rf valgrind.txt 3DViewer.tar.gz
 
 dvi:
 	open README.md
 
-dist: install
+dist:
+	$(MAKE) install
 	tar -czf $(APP_NAME).tar.gz --directory=build/ .
 
 launch:
-	./$(APP_NAME)
+	$(OPEN)
 
 tests: install
 	make -C build tests
 	./build/tests
 
-$(GIF_LIBRARY): $(OBJ_GIFLIB)
-	ar rc $(GIF_LIBRARY) $(OBJ_GIFLIB)
-	ranlib $(GIF_LIBRARY)
-	mv $(GIF_LIBRARY) lib$(GIF_LIBRARY)
-
-$(OBJ_GIFLIB_DIR)%.o: $(SRC_GIFLIB_DIR)%.c
-	gcc -c $< -o $@
-
-clang:
-	clang-format --style=google -i $(SRC_PROJECT_DIR)*
-	clang-format --style=google -i $(SRC_TEST_DIR)*
-
-.PHONY: all install uninstall clean dvi dist launch tests clang valgrind
+style:
+	clang-format -style=Google -n controller/*.cc controller/*.h model/*.cc model/*.h
+	clang-format -style=Google -n view/*.cc view/*.h tests/*.cc tests/*.h
+	clang-format -style=Google -n view/QtGifImage/gifimage/* view/QtGifImage/giflib/*
