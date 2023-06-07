@@ -1129,7 +1129,7 @@ border: 1px;</string>
        <rect>
         <x>25</x>
         <y>155</y>
-        <width>80</width>
+        <width>100</width>
         <height>18</height>
        </rect>
       </property>
@@ -1201,7 +1201,7 @@ border: 1px solid;
        <rect>
         <x>25</x>
         <y>330</y>
-        <width>80</width>
+        <width>100</width>
         <height>18</height>
        </rect>
       </property>

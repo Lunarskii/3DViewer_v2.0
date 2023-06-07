@@ -139,6 +139,7 @@ class View : public QOpenGLWidget {
   void wheelEvent(QWheelEvent* event) override;
 
   void initDefaultValues();
+  void ConnectSlotSignals();
 
   int projectionType;
   int edgeType;

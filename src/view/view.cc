@@ -6,7 +6,19 @@ View::View(QWidget *parent)
   ui->setupUi(this);
   this->resize(1440, 1080);
   initDefaultValues();
+  ConnectSlotSignals();
+  lastSettings = new QSettings("SAVE_3DVIEWER", "3DViewer", this);
+  RestoreSettings();
+}
 
+View::~View() {
+  SaveSettings();
+  delete lastSettings;
+  delete facade;
+  delete ui;
+}
+
+void View::ConnectSlotSignals() {
   // connecting change tab
   connect(ui->buttonGroupTabs, SIGNAL(buttonClicked(QAbstractButton *)), this,
           SLOT(ChangeTab(QAbstractButton *)));
@@ -35,16 +47,6 @@ View::View(QWidget *parent)
   connect(ui->comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(update()));
   connect(ui->comboBox_disp_method, SIGNAL(currentIndexChanged(int)), this, SLOT(update()));
   connect(ui->comboBox_disp_method_2, SIGNAL(currentIndexChanged(int)), this, SLOT(update()));
-
-  lastSettings = new QSettings("SAVE_3DVIEWER", "3DViewer", this);
-  RestoreSettings();
-}
-
-View::~View() {
-  SaveSettings();
-  delete lastSettings;
-  delete facade;
-  delete ui;
 }
 
 void View::initDefaultValues() {
