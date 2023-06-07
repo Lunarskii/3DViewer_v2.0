@@ -632,32 +632,6 @@ border: 1px;</string>
        <string>z</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_reset">
-      <property name="geometry">
-       <rect>
-        <x>15</x>
-        <y>400</y>
-        <width>70</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QPushButton {
- background-color: rgb(59, 73, 153);
- color: rgb(255, 255, 255);
- border-radius: 4px;
-}
-
-QPushButton:hover {
- background-color: rgb(49, 63, 133);
- color: rgb(255, 255, 255);
- border-radius: 4px;
-}</string>
-      </property>
-      <property name="text">
-       <string>Reset</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="pushButton_bmp">
       <property name="geometry">
        <rect>
@@ -1479,8 +1453,8 @@ border: 1px solid rgb(0, 0, 0);</string>
  <resources/>
  <connections/>
  <buttongroups>
+  <buttongroup name="buttonGroupImg"/>
   <buttongroup name="buttonGroupTabs"/>
   <buttongroup name="buttonGroupColors"/>
-  <buttongroup name="buttonGroupImg"/>
  </buttongroups>
 </ui>
