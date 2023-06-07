@@ -73,7 +73,8 @@ void View::setEdges() {
   }
 
   glLineWidth(edgeWidth);
-  glColor3f(edgeColor.redF(), edgeColor.greenF(), edgeColor.blueF());  // setting the edge color
+  glColor3f(edgeColor.redF(), edgeColor.greenF(),
+            edgeColor.blueF());  // setting the edge color
   glDrawElements(GL_LINES, count_vertex_index_, GL_UNSIGNED_INT, vertex_index_);
 }
 
