@@ -51,8 +51,8 @@ void View::updateValues() {
                        : CENTRAL;
   edgeType = ui->comboBox->currentText() == "Solid" ? SOLID : DASHED;
 
-  edgeWidth = ui->horizontalSlider_edges_thick->value() / 30;
-  pointSize = ui->horizontalSlider_vert_size->value() / 10;
+  edgeWidth = ui->horizontalSlider_edges_thick->value();
+  pointSize = ui->horizontalSlider_vert_size->value();
 
   if (ui->comboBox_disp_method->currentText() == "None") {
     pointVisibility = NOVERTEX;
@@ -72,9 +72,8 @@ void View::setEdges() {
     glDisable(GL_LINE_STIPPLE);
   }
 
-  glLineWidth(edgeWidth);  // setting the edge thickness
-  glColor3f(edgeColor.redF(), edgeColor.greenF(),
-            edgeColor.blueF());  // setting the edge color
+  glLineWidth(edgeWidth);
+  glColor3f(edgeColor.redF(), edgeColor.greenF(), edgeColor.blueF());  // setting the edge color
   glDrawElements(GL_LINES, count_vertex_index_, GL_UNSIGNED_INT, vertex_index_);
 }
 

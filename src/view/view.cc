@@ -30,6 +30,12 @@ View::View(QWidget *parent)
     connect(slider, SIGNAL(valueChanged(int)), this, SLOT(TransformModel()));
   }
 
+  connect(ui->horizontalSlider_vert_size, SIGNAL(valueChanged(int)), this, SLOT(update()));
+  connect(ui->horizontalSlider_edges_thick, SIGNAL(valueChanged(int)), this, SLOT(update()));
+  connect(ui->comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(update()));
+  connect(ui->comboBox_disp_method, SIGNAL(currentIndexChanged(int)), this, SLOT(update()));
+  connect(ui->comboBox_disp_method_2, SIGNAL(currentIndexChanged(int)), this, SLOT(update()));
+
   lastSettings = new QSettings("SAVE_3DVIEWER", "3DViewer", this);
   RestoreSettings();
 }

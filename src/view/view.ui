@@ -79,7 +79,7 @@ border: 1px solid rgb(0, 0, 0);</string>
 border: 1px solid rgb(0, 0, 0);</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -916,13 +916,13 @@ QSlider::handle:horizontal {
 }</string>
       </property>
       <property name="minimum">
-       <number>10</number>
+       <number>1</number>
       </property>
       <property name="maximum">
-       <number>80</number>
+       <number>25</number>
       </property>
       <property name="value">
-       <number>30</number>
+       <number>5</number>
       </property>
       <property name="tracking">
        <bool>true</bool>
@@ -965,13 +965,13 @@ QSlider::handle:horizontal {
 }</string>
       </property>
       <property name="minimum">
-       <number>10</number>
+       <number>1</number>
       </property>
       <property name="maximum">
-       <number>80</number>
+       <number>25</number>
       </property>
       <property name="value">
-       <number>30</number>
+       <number>5</number>
       </property>
       <property name="tracking">
        <bool>true</bool>
@@ -1453,8 +1453,8 @@ border: 1px solid rgb(0, 0, 0);</string>
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroupImg"/>
   <buttongroup name="buttonGroupTabs"/>
   <buttongroup name="buttonGroupColors"/>
+  <buttongroup name="buttonGroupImg"/>
  </buttongroups>
 </ui>
