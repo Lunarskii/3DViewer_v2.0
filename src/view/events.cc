@@ -41,9 +41,9 @@ void View::mouseReleaseEvent(QMouseEvent *cursorPosition) {
 void View::wheelEvent(QWheelEvent *event) {
   int offset = 0;
   if (event->angleDelta().y() > 0) {
-    offset = 8;
+    offset = 6;
   } else if (event->angleDelta().y() < 0) {
-    offset = -8;
+    offset = -6;
   }
   ui->horizontalSlider_scale->setValue(ui->horizontalSlider_scale->value() +
                                        offset);
