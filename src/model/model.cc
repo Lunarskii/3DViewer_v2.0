@@ -75,11 +75,11 @@ std::vector<double>& Model::GetVertexCoord() { return vertex_coord_; }
 
 void Model::Transform(int& strategyType, double& value,
                       transformation_t& axis) {
-  if (strategyType == MOVE) {
+  if (strategyType == kMove) {
     TransformationModel_.setStrategy(new MoveStrategy());
-  } else if (strategyType == ROTATE) {
+  } else if (strategyType == kRotate) {
     TransformationModel_.setStrategy(new RotateStrategy());
-  } else if (strategyType == SCALE) {
+  } else if (strategyType == kScale) {
     TransformationModel_.setStrategy(new ScaleStrategy());
   }
   TransformationModel_.performTransformation(vertex_coord_, value, axis);

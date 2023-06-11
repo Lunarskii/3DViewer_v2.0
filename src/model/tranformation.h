@@ -5,12 +5,12 @@
 #include <vector>
 
 typedef enum {
-  X = 0,
-  Y = 1,
-  Z = 2,
-  MOVE = 0,
-  ROTATE = 1,
-  SCALE = 2
+  kX = 0,
+  kY = 1,
+  kZ = 2,
+  kMove = 0,
+  kRotate = 1,
+  kScale = 2
 } transformation_t;
 
 class TransformationStrategy {
@@ -22,57 +22,25 @@ class TransformationStrategy {
 
 class MoveStrategy : public TransformationStrategy {
   void Transform(std::vector<double>& vertexCoord, double& step,
-                 transformation_t& axis) override {
-    for (int i = axis; i < vertexCoord.size(); i += 3) {
-      vertexCoord[i] += step;
-    }
-  }
+                 transformation_t& axis) override;
 };
 
 class RotateStrategy : public TransformationStrategy {
   void Transform(std::vector<double>& vertexCoord, double& angle,
-                 transformation_t& axis) override {
-    double tempAngle = angle * M_PI / 180;
-    double cosValue = cos(tempAngle);
-    double sinValue = sin(tempAngle);
-
-    for (int i = (axis == X) ? 1 : 0; i < vertexCoord.size(); i += 3) {
-      double coord = vertexCoord[i];
-
-      if (axis == X) {
-        vertexCoord[i] = cosValue * coord - sinValue * vertexCoord[i + 1];
-        vertexCoord[i + 1] = sinValue * coord + cosValue * vertexCoord[i + 1];
-      } else if (axis == Y) {
-        vertexCoord[i] = cosValue * coord + sinValue * vertexCoord[i + 2];
-        vertexCoord[i + 2] = -sinValue * coord + cosValue * vertexCoord[i + 2];
-      } else if (axis == Z) {
-        vertexCoord[i] = cosValue * coord + sinValue * vertexCoord[i + 1];
-        vertexCoord[i + 1] = -sinValue * coord + cosValue * vertexCoord[i + 1];
-      }
-    }
-  }
+                 transformation_t& axis) override;
 };
 
 class ScaleStrategy : public TransformationStrategy {
   void Transform(std::vector<double>& vertexCoord, double& scale,
-                 transformation_t&) override {
-    for (double& i : vertexCoord) {
-      i *= scale;
-    }
-  }
+                 transformation_t&) override;
 };
 
 class Strategy {
  public:
-  Strategy() : strategy_(nullptr) {}
-
-  void setStrategy(TransformationStrategy* strategy) { strategy_ = strategy; }
-
+  Strategy();
+  void setStrategy(TransformationStrategy* strategy);
   void performTransformation(std::vector<double>& vertexCoord, double& value,
-                             transformation_t& axis) {
-    strategy_->Transform(vertexCoord, value, axis);
-    delete strategy_;
-  }
+                             transformation_t& axis);
 
  private:
   TransformationStrategy* strategy_;

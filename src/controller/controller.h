@@ -16,10 +16,11 @@ class Controller : public QObject {
 
  public slots:
   void SetFileName(const QString& fileName);
-  void Transform(int strategyType, double value, int axis = X);
+  void Transform(int strategyType, double value, int axis = kX);
 
  public:
-  Controller(View* newView) : model_(&Model::GetInstance()), view_(newView) {
+  explicit Controller(View* newView)
+      : model_(&Model::GetInstance()), view_(newView) {
     QObject::connect(view_, SIGNAL(SetModel(QString)), this,
                      SLOT(SetFileName(QString)));
     QObject::connect(view_->facade, SIGNAL(SetTransform(int, double, int)),
