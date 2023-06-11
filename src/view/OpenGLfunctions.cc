@@ -1,9 +1,6 @@
 #include "view.h"
 
 void View::initializeGL() {
-  x_angle = 15;
-  y_angle = 15;
-  z_angle = 1;
   glEnable(GL_DEPTH_TEST);
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
@@ -21,68 +18,70 @@ void View::resizeGL(int w, int h) {
 
 void View::paintGL() {
   resize(1440, 1080);
-  glClearColor(backgroundColor.redF(), backgroundColor.greenF(),
-               backgroundColor.blueF(), 1.0f);
+  glClearColor(settings.backgroundColor.redF(),
+               settings.backgroundColor.greenF(),
+               settings.backgroundColor.blueF(), 1.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
 
   updateValues();
-  if (projectionType) {
+  if (settings.projectionType) {
     glVertexPointer(3, GL_DOUBLE, 0, vertex_coord_);
     glEnableClientState(GL_VERTEX_ARRAY);
     setProjectionType();
 
-    if (projectionType == PARALLEL) {
-      glRotated(x_angle, 1, 0, 0);
-      glRotated(y_angle, 0, 1, 0);
-      glRotated(z_angle, 0, 0, 1);
+    if (settings.projectionType == kParallel) {
+      glRotated(15, 1, 0, 0);
+      glRotated(15, 0, 1, 0);
+      glRotated(1, 0, 0, 1);
     }
 
     setEdges();
-    if (pointVisibility == AVERTEX) setVertices();
+    if (settings.pointVisibility == kAVertex) setVertices();
     glDisableClientState(GL_VERTEX_ARRAY);
   }
 }
 
 void View::updateValues() {
-  projectionType = ui->comboBox_disp_method_2->currentText() == "Parallel"
-                       ? PARALLEL
-                       : CENTRAL;
-  edgeType = ui->comboBox->currentText() == "Solid" ? SOLID : DASHED;
+  settings.projectionType =
+      ui->comboBox_disp_method_2->currentText() == "Parallel" ? kParallel
+                                                              : kCentral;
+  settings.edgeType = ui->comboBox->currentText() == "Solid" ? kSolid : kDashed;
 
-  edgeWidth = ui->horizontalSlider_edges_thick->value();
-  pointSize = ui->horizontalSlider_vert_size->value();
+  settings.edgeWidth = ui->horizontalSlider_edges_thick->value();
+  settings.pointSize = ui->horizontalSlider_vert_size->value();
 
   if (ui->comboBox_disp_method->currentText() == "None") {
-    pointVisibility = NOVERTEX;
+    settings.pointVisibility = kNoVertex;
   } else {
-    pointVisibility = AVERTEX;
+    settings.pointVisibility = kAVertex;
 
-    pointType =
-        ui->comboBox_disp_method->currentText() == "Circle" ? CIRCLE : SQUARE;
+    settings.pointType =
+        ui->comboBox_disp_method->currentText() == "Circle" ? kCircle : kSquare;
   }
 }
 
 void View::setEdges() {
-  if (edgeType == DASHED) {
+  if (settings.edgeType == kDashed) {
     glLineStipple(1, 0x3333);
     glEnable(GL_LINE_STIPPLE);
-  } else if (edgeType == SOLID) {
+  } else if (settings.edgeType == kSolid) {
     glDisable(GL_LINE_STIPPLE);
   }
 
-  glLineWidth(edgeWidth);
-  glColor3f(edgeColor.redF(), edgeColor.greenF(),
-            edgeColor.blueF());  // setting the edge color
+  glLineWidth(settings.edgeWidth);
+  glColor3f(settings.edgeColor.redF(), settings.edgeColor.greenF(),
+            settings.edgeColor.blueF());  // setting the edge color
   glDrawElements(GL_LINES, count_vertex_index_, GL_UNSIGNED_INT, vertex_index_);
 }
 
 void View::setVertices() {
-  glPointSize(pointSize);
-  glColor3f(vertexColor.redF(), vertexColor.greenF(), vertexColor.blueF());
+  glPointSize(settings.pointSize);
+  glColor3f(settings.vertexColor.redF(), settings.vertexColor.greenF(),
+            settings.vertexColor.blueF());
 
-  if (pointType == CIRCLE) {
+  if (settings.pointType == kCircle) {
     glEnable(GL_POINT_SMOOTH);
     glDrawArrays(GL_POINTS, 0, count_vertex_coord_ / 3);
     glDisable(GL_POINT_SMOOTH);
@@ -92,10 +91,10 @@ void View::setVertices() {
 }
 
 void View::setProjectionType() {
-  if (projectionType == PARALLEL) {
+  if (settings.projectionType == kParallel) {
     glOrtho(-5, 8.3, -5, 5, -100, 100);
     glTranslated(2, 0, -10);
-  } else if (projectionType == CENTRAL) {
+  } else if (settings.projectionType == kCentral) {
     glFrustum(-1, 1.67, -1, 1, 1, 15);
     glTranslated(0, 0, -10);
   }

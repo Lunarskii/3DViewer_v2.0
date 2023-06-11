@@ -20,16 +20,16 @@
 
 enum Settings {
   // projection type
-  PARALLEL = 1,
-  CENTRAL = 2,
+  kParallel = 1,
+  kCentral = 2,
   // edge type
-  SOLID = 1,
-  DASHED = 2,
+  kSolid = 1,
+  kDashed = 2,
   // vertex type
-  CIRCLE = 1,
-  SQUARE = 2,
-  NOVERTEX = 3,
-  AVERTEX = 4,
+  kCircle = 1,
+  kSquare = 2,
+  kNoVertex = 3,
+  kAVertex = 4
 };
 
 struct TransformInfo {
@@ -40,6 +40,18 @@ struct TransformInfo {
   int rotate_y;
   int rotate_z;
   double scale;
+};
+
+struct SettingsInfo {
+  int edgeType;
+  int pointType;
+  float edgeWidth;
+  float pointSize;
+  int projectionType;
+  int pointVisibility;
+  QColor edgeColor;
+  QColor vertexColor;
+  QColor backgroundColor;
 };
 
 QT_BEGIN_NAMESPACE
@@ -110,6 +122,7 @@ class View : public QOpenGLWidget {
   void setVertices();
 
   // Methods for saving and restoring settings
+  struct SettingsInfo settings;
   QSettings* lastSettings;
   void SaveSettings();
   void RestoreSettings();
@@ -119,17 +132,12 @@ class View : public QOpenGLWidget {
   void SaveBmp();
   void SaveJpeg();
 
-  // Colors
-  QColor backgroundColor;
-  QColor edgeColor;
-  QColor vertexColor;
-
   // GIF
   QGifImage* gif;
   QTimer* timer;
   int frames;
 
-  //     Events
+  // Events
   QPoint clickPosition;
   bool leftButton;
   bool rightButton;
@@ -138,16 +146,9 @@ class View : public QOpenGLWidget {
   void mouseReleaseEvent(QMouseEvent* cursorPosition) override;
   void wheelEvent(QWheelEvent* event) override;
 
+  // Other
   void initDefaultValues();
   void ConnectSlotSignals();
-
-  int projectionType;
-  int edgeType;
-  float edgeWidth;
-  int pointType;
-  float pointSize;
-  int pointVisibility;
-  float x_angle, y_angle, z_angle;
 
  public:  //  для использования в коннекте контроллера, пока другого способа не
           //  нашел

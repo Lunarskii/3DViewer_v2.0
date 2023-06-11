@@ -10,9 +10,9 @@
 #include "tranformation.h"
 
 enum error_list {
-  FILE_HAS_WRONG_EXTENSION = 1,
-  FAILED_TO_OPEN_FILE = 2,
-  INCORRECT_ENTRY_OF_THE_VERTEX_COORDINATE = 3,
+  kFileWrongExtension = 1,
+  kFailedToOpen = 2,
+  kIncorrectData = 3,
 };
 
 class Model {

@@ -58,9 +58,9 @@ void View::initDefaultValues() {
   QColor bgColor = ui->pushButton_bg_color->palette().button().color();
   QColor eColor = ui->pushButton_edges_color->palette().button().color();
   QColor vColor = ui->pushButton_vertex_color->palette().button().color();
-  backgroundColor.setNamedColor(bgColor.name());
-  edgeColor.setNamedColor(eColor.name());
-  vertexColor.setNamedColor(vColor.name());
+  settings.backgroundColor.setNamedColor(bgColor.name());
+  settings.edgeColor.setNamedColor(eColor.name());
+  settings.vertexColor.setNamedColor(vColor.name());
   ui->tabWidget->setCurrentIndex(0);
 }
 
@@ -69,17 +69,17 @@ void View::SetColor(QAbstractButton *button) {
 
   if (color.isValid()) {
     if (button == ui->pushButton_bg_color) {
-      backgroundColor = color;
+      settings.backgroundColor = color;
       ui->pushButton_bg_color->setStyleSheet(
-          QString("background-color: %1").arg(backgroundColor.name()));
+          QString("background-color: %1").arg(settings.backgroundColor.name()));
     } else if (button == ui->pushButton_edges_color) {
-      edgeColor = color;
+      settings.edgeColor = color;
       ui->pushButton_edges_color->setStyleSheet(
-          QString("background-color: %1").arg(edgeColor.name()));
+          QString("background-color: %1").arg(settings.edgeColor.name()));
     } else if (button == ui->pushButton_vertex_color) {
-      vertexColor = color;
+      settings.vertexColor = color;
       ui->pushButton_vertex_color->setStyleSheet(
-          QString("background-color: %1").arg(vertexColor.name()));
+          QString("background-color: %1").arg(settings.vertexColor.name()));
     }
 
     update();

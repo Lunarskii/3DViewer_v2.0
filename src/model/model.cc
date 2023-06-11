@@ -1,12 +1,12 @@
 #include "model.h"
 
 void Model::Parser() {
-  if (error_code_ != FILE_HAS_WRONG_EXTENSION) {
+  if (error_code_ != kFileWrongExtension) {
     std::ifstream file(filename_);
     std::string line;
 
     if (!file.is_open()) {
-      error_code_ = FAILED_TO_OPEN_FILE;
+      error_code_ = kFailedToOpen;
       return;
     }
 
@@ -28,7 +28,7 @@ void Model::VertexParser_(const std::string& line) {
   if (sscanf(line.c_str(), "%c %lf %lf %lf %c", &j, &d1, &d2, &d3, &j) == 4) {
     vertex_coord_.insert(vertex_coord_.end(), {d1, d2, d3});
   } else {
-    error_code_ = INCORRECT_ENTRY_OF_THE_VERTEX_COORDINATE;
+    error_code_ = kIncorrectData;
   }
 }
 
@@ -58,7 +58,7 @@ void Model::EdgesParser_(const std::string& line) {
 void Model::SetFileName(const std::string& filename) {
   if (filename.size() <= 3 ||
       filename.compare(filename.size() - 4, 4, ".obj")) {
-    error_code_ = FILE_HAS_WRONG_EXTENSION;
+    error_code_ = kFileWrongExtension;
   } else {
     filename_ = filename;
     error_code_ = 0;
