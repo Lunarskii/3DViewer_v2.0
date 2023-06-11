@@ -15,31 +15,31 @@ typedef enum {
 
 class TransformationStrategy {
  public:
-  virtual ~TransformationStrategy() {}
+  virtual ~TransformationStrategy() = default;
   virtual void Transform(std::vector<double>&, double&,
                          transformation_t& axis) {}
 };
 
 class MoveStrategy : public TransformationStrategy {
-  void Transform(std::vector<double>& vertexCoord, double& step,
+  void Transform(std::vector<double>& vertex_coord, double& step,
                  transformation_t& axis) override;
 };
 
 class RotateStrategy : public TransformationStrategy {
-  void Transform(std::vector<double>& vertexCoord, double& angle,
+  void Transform(std::vector<double>& vertex_coord, double& angle,
                  transformation_t& axis) override;
 };
 
 class ScaleStrategy : public TransformationStrategy {
-  void Transform(std::vector<double>& vertexCoord, double& scale,
+  void Transform(std::vector<double>& vertex_coord, double& scale,
                  transformation_t&) override;
 };
 
 class Strategy {
  public:
   Strategy();
-  void setStrategy(TransformationStrategy* strategy);
-  void performTransformation(std::vector<double>& vertexCoord, double& value,
+  void SetStrategy(TransformationStrategy* strategy);
+  void PerformTransformation(std::vector<double>& vertex_coord, double& value,
                              transformation_t& axis);
 
  private:

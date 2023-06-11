@@ -1,39 +1,39 @@
 #include "view.h"
 
-void View::SaveGif() {
-  frames = 0;
-  gif = new QGifImage;
-  timer = new QTimer(this);
-  gif->setDefaultDelay(100);
-  connect(timer, SIGNAL(timeout()), this, SLOT(SaveImage()));
-  timer->start(100);
+void View::SaveGif_() {
+  frames_ = 0;
+  gif_ = new QGifImage;
+  timer_ = new QTimer(this);
+  gif_->setDefaultDelay(100);
+  connect(timer_, SIGNAL(timeout()), this, SLOT(SaveImage_()));
+  timer_->start(100);
 }
 
-void View::SaveImage() {
+void View::SaveImage_() {
   QPixmap pix = QPixmap::fromImage(grabFramebuffer());
   QPixmap scaledPix = pix.scaled(QSize(640, 480), Qt::IgnoreAspectRatio,
                                  Qt::SmoothTransformation);
-  gif->addFrame(scaledPix.toImage());
+  gif_->addFrame(scaledPix.toImage());
 
-  if (frames == 50) {
-    timer->stop();
+  if (frames_ == 50) {
+    timer_->stop();
     QString pathGIF = QFileDialog::getSaveFileName(
-        this, ("Save as GIF"), "image.gif", "GIF Image Files (*.gif)");
-    gif->save(pathGIF);
-    delete timer;
-    delete gif;
+        this, ("Save as GIF"), "image.gif_", "GIF Image Files (*.gif_)");
+    gif_->save(pathGIF);
+    delete timer_;
+    delete gif_;
   }
-  frames++;
+  frames_++;
 }
 
-void View::SaveBmp() {
+void View::SaveBmp_() {
   QString pathScreenshot = QFileDialog::getSaveFileName(
       this, ("Save as BMP"), "image.bmp", "BMP Image Files (*.bmp)");
 
   grabFramebuffer().save(pathScreenshot, "bmp");
 }
 
-void View::SaveJpeg() {
+void View::SaveJpeg_() {
   QString pathScreenshot = QFileDialog::getSaveFileName(
       this, ("Save as JPEG"), "image.jpeg", "JPEG Image Files (*.jpeg)");
 

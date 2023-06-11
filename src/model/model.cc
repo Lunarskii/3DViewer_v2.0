@@ -76,13 +76,13 @@ std::vector<double>& Model::GetVertexCoord() { return vertex_coord_; }
 void Model::Transform(int& strategyType, double& value,
                       transformation_t& axis) {
   if (strategyType == kMove) {
-    TransformationModel_.setStrategy(new MoveStrategy());
+    TransformationModel_.SetStrategy(new MoveStrategy());
   } else if (strategyType == kRotate) {
-    TransformationModel_.setStrategy(new RotateStrategy());
+    TransformationModel_.SetStrategy(new RotateStrategy());
   } else if (strategyType == kScale) {
-    TransformationModel_.setStrategy(new ScaleStrategy());
+    TransformationModel_.SetStrategy(new ScaleStrategy());
   }
-  TransformationModel_.performTransformation(vertex_coord_, value, axis);
+  TransformationModel_.PerformTransformation(vertex_coord_, value, axis);
 }
 
 typename Model::Model& Model::GetInstance() {

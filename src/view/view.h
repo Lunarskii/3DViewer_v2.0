@@ -10,7 +10,7 @@
 #include <QOpenGLWidget>  // library for using widgets
 #include <QPalette>
 #include <QScrollArea>  //
-#include <QSettings>    // library for saving and restoring settings
+#include <QSettings>    // library for saving and restoring settings_
 #include <QTimer>       // library for time counting
 #include <QWheelEvent>  // library for receiving mouse wheel signals
 #include <QWidget>      // library for using widgets
@@ -43,15 +43,15 @@ struct TransformInfo {
 };
 
 struct SettingsInfo {
-  int edgeType;
-  int pointType;
-  float edgeWidth;
-  float pointSize;
-  int projectionType;
-  int pointVisibility;
-  QColor edgeColor;
-  QColor vertexColor;
-  QColor backgroundColor;
+  int edge_type;
+  int point_type;
+  float edge_width;
+  float point_size;
+  int projection_type;
+  int point_visibility;
+  QColor edge_color;
+  QColor vertex_color;
+  QColor bg_color;
 };
 
 QT_BEGIN_NAMESPACE
@@ -65,8 +65,8 @@ class Facade : public QObject {
   Q_OBJECT
 
  public:
-  Facade() : ui(nullptr) {}
-  explicit Facade(Ui::View* ui) : ui(ui) {}
+  Facade() : ui_(nullptr) {}
+  explicit Facade(Ui::View* ui) : ui_(ui) {}
 
   void MoveModel(QString& sliderName);
   void RotateModel(QString& sliderName);
@@ -77,7 +77,7 @@ class Facade : public QObject {
   void SetTransform(int strategyType, double value, int axis);
 
  private:
-  Ui::View* ui;
+  Ui::View* ui_;
   struct TransformInfo transform_info_ {};
 };
 
@@ -97,16 +97,16 @@ class View : public QOpenGLWidget {
                       std::vector<double>* vertex_coord_);
 
  private slots:
-  void on_pushButton_open_file_clicked();
-  void ClearSliders();
-  void TransformModel();
-  void Record(QAbstractButton* button);
-  void SetColor(QAbstractButton* button);
-  void ChangeTab(QAbstractButton* button);
-  void SaveImage();
+  void OpenFileBtnClicked_();
+  void ClearSliders_();
+  void TransformModel_();
+  void Record_(QAbstractButton* button);
+  void SetColor_(QAbstractButton* button);
+  void ChangeTab_(QAbstractButton* button);
+  void SaveImage_();
 
  private:
-  Ui::View* ui;
+  Ui::View* ui_;
   int* vertex_index_{nullptr};
   double* vertex_coord_{nullptr};
   int count_vertex_index_{};
@@ -116,39 +116,39 @@ class View : public QOpenGLWidget {
   void initializeGL() override;
   void resizeGL(int w, int h) override;
   void paintGL() override;
-  void updateValues();
-  void setProjectionType();
-  void setEdges();
-  void setVertices();
+  void UpdateValues_();
+  void SetProjectionType_();
+  void SetEdges_();
+  void SetVertices_();
 
-  // Methods for saving and restoring settings
-  struct SettingsInfo settings;
-  QSettings* lastSettings;
-  void SaveSettings();
-  void RestoreSettings();
+  // Methods for saving and restoring settings_
+  struct SettingsInfo settings_;
+  QSettings* last_settings_;
+  void SaveSettings_();
+  void RestoreSettings_();
 
   // Methods for saving images
-  void SaveGif();
-  void SaveBmp();
-  void SaveJpeg();
+  void SaveGif_();
+  void SaveBmp_();
+  void SaveJpeg_();
 
   // GIF
-  QGifImage* gif;
-  QTimer* timer;
-  int frames;
+  QGifImage* gif_;
+  QTimer* timer_;
+  int frames_;
 
   // Events
-  QPoint clickPosition;
-  bool leftButton;
-  bool rightButton;
+  QPoint click_pos_;
+  bool left_btn_pressed_;
+  bool right_btn_pressed;
   void mouseMoveEvent(QMouseEvent* cursorPosition) override;
   void mousePressEvent(QMouseEvent* event) override;
   void mouseReleaseEvent(QMouseEvent* cursorPosition) override;
   void wheelEvent(QWheelEvent* event) override;
 
   // Other
-  void initDefaultValues();
-  void ConnectSlotSignals();
+  void InitDefaultSettings_();
+  void ConnectSlotSignals_();
 
  public:  //  для использования в коннекте контроллера, пока другого способа не
           //  нашел

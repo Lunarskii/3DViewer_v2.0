@@ -1,124 +1,129 @@
 #include "view.h"
 
 View::View(QWidget *parent)
-    : QOpenGLWidget(parent), ui(new Ui::View), facade(new Facade(ui)) {
+    : QOpenGLWidget(parent), ui_(new Ui::View), facade(new Facade(ui_)) {
   setlocale(LC_NUMERIC, "C");
-  ui->setupUi(this);
+  ui_->setupUi(this);
   this->resize(1440, 1080);
-  initDefaultValues();
-  ConnectSlotSignals();
-  lastSettings = new QSettings("SAVE_3DVIEWER", "3DViewer", this);
-  RestoreSettings();
+  InitDefaultSettings_();
+  ConnectSlotSignals_();
+  last_settings_ = new QSettings("SAVE_3DVIEWER", "3DViewer", this);
+  RestoreSettings_();
 }
 
 View::~View() {
-  SaveSettings();
-  delete lastSettings;
+  SaveSettings_();
+  delete last_settings_;
   delete facade;
-  delete ui;
+  delete ui_;
 }
 
-void View::ConnectSlotSignals() {
-  // connecting change tab
-  connect(ui->buttonGroupTabs, SIGNAL(buttonClicked(QAbstractButton *)), this,
-          SLOT(ChangeTab(QAbstractButton *)));
+void View::ConnectSlotSignals_() {
+  // connect file opening
+  connect(ui_->pushButton_open_file, SIGNAL(clicked()), this,
+          SLOT(OpenFileBtnClicked_()));
 
-  // connecting colors
-  connect(ui->buttonGroupColors, SIGNAL(buttonClicked(QAbstractButton *)), this,
-          SLOT(SetColor(QAbstractButton *)));
+  // connect change tab
+  connect(ui_->buttonGroupTabs, SIGNAL(buttonClicked(QAbstractButton *)), this,
+          SLOT(ChangeTab_(QAbstractButton *)));
 
-  // connecting save format
-  connect(ui->buttonGroupImg, SIGNAL(buttonClicked(QAbstractButton *)), this,
-          SLOT(Record(QAbstractButton *)));
+  // connect save format
+  connect(ui_->buttonGroupImg, SIGNAL(buttonClicked(QAbstractButton *)), this,
+          SLOT(Record_(QAbstractButton *)));
 
-  // connecting transform
+  // connect transform
   std::vector<QSlider *> transform_sliders = {
-      ui->horizontalSlider_move_x,   ui->horizontalSlider_move_y,
-      ui->horizontalSlider_move_z,   ui->horizontalSlider_rotate_x,
-      ui->horizontalSlider_rotate_y, ui->horizontalSlider_rotate_z,
-      ui->horizontalSlider_scale};
+      ui_->horizontalSlider_move_x,   ui_->horizontalSlider_move_y,
+      ui_->horizontalSlider_move_z,   ui_->horizontalSlider_rotate_x,
+      ui_->horizontalSlider_rotate_y, ui_->horizontalSlider_rotate_z,
+      ui_->horizontalSlider_scale};
 
   for (auto slider : transform_sliders) {
-    connect(slider, SIGNAL(valueChanged(int)), this, SLOT(TransformModel()));
+    connect(slider, SIGNAL(valueChanged(int)), this, SLOT(TransformModel_()));
   }
 
-  connect(ui->horizontalSlider_vert_size, SIGNAL(valueChanged(int)), this,
+  // connect settings
+  connect(ui_->horizontalSlider_vert_size, SIGNAL(valueChanged(int)), this,
           SLOT(update()));
-  connect(ui->horizontalSlider_edges_thick, SIGNAL(valueChanged(int)), this,
+  connect(ui_->horizontalSlider_edges_thick, SIGNAL(valueChanged(int)), this,
           SLOT(update()));
-  connect(ui->comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(update()));
-  connect(ui->comboBox_disp_method, SIGNAL(currentIndexChanged(int)), this,
+  connect(ui_->comboBox, SIGNAL(currentIndexChanged(int)), this,
           SLOT(update()));
-  connect(ui->comboBox_disp_method_2, SIGNAL(currentIndexChanged(int)), this,
+  connect(ui_->comboBox_disp_method, SIGNAL(currentIndexChanged(int)), this,
           SLOT(update()));
+  connect(ui_->comboBox_disp_method_2, SIGNAL(currentIndexChanged(int)), this,
+          SLOT(update()));
+
+  connect(ui_->buttonGroupColors, SIGNAL(buttonClicked(QAbstractButton *)),
+          this, SLOT(SetColor_(QAbstractButton *)));
 }
 
-void View::initDefaultValues() {
+void View::InitDefaultSettings_() {
   // setting the color
-  QColor bgColor = ui->pushButton_bg_color->palette().button().color();
-  QColor eColor = ui->pushButton_edges_color->palette().button().color();
-  QColor vColor = ui->pushButton_vertex_color->palette().button().color();
-  settings.backgroundColor.setNamedColor(bgColor.name());
-  settings.edgeColor.setNamedColor(eColor.name());
-  settings.vertexColor.setNamedColor(vColor.name());
-  ui->tabWidget->setCurrentIndex(0);
+  QColor bgColor = ui_->pushButton_bg_color->palette().button().color();
+  QColor eColor = ui_->pushButton_edges_color->palette().button().color();
+  QColor vColor = ui_->pushButton_vertex_color->palette().button().color();
+  settings_.bg_color.setNamedColor(bgColor.name());
+  settings_.edge_color.setNamedColor(eColor.name());
+  settings_.vertex_color.setNamedColor(vColor.name());
+  ui_->tabWidget->setCurrentIndex(0);
 }
 
-void View::SetColor(QAbstractButton *button) {
+void View::SetColor_(QAbstractButton *button) {
   QColor color = QColorDialog::getColor();
 
   if (color.isValid()) {
-    if (button == ui->pushButton_bg_color) {
-      settings.backgroundColor = color;
-      ui->pushButton_bg_color->setStyleSheet(
-          QString("background-color: %1").arg(settings.backgroundColor.name()));
-    } else if (button == ui->pushButton_edges_color) {
-      settings.edgeColor = color;
-      ui->pushButton_edges_color->setStyleSheet(
-          QString("background-color: %1").arg(settings.edgeColor.name()));
-    } else if (button == ui->pushButton_vertex_color) {
-      settings.vertexColor = color;
-      ui->pushButton_vertex_color->setStyleSheet(
-          QString("background-color: %1").arg(settings.vertexColor.name()));
+    if (button == ui_->pushButton_bg_color) {
+      settings_.bg_color = color;
+      ui_->pushButton_bg_color->setStyleSheet(
+          QString("background-color: %1").arg(settings_.bg_color.name()));
+    } else if (button == ui_->pushButton_edges_color) {
+      settings_.edge_color = color;
+      ui_->pushButton_edges_color->setStyleSheet(
+          QString("background-color: %1").arg(settings_.edge_color.name()));
+    } else if (button == ui_->pushButton_vertex_color) {
+      settings_.vertex_color = color;
+      ui_->pushButton_vertex_color->setStyleSheet(
+          QString("background-color: %1").arg(settings_.vertex_color.name()));
     }
 
     update();
   }
 }
 
-void View::ChangeTab(QAbstractButton *button) {
-  int tabIndex = ui->tabWidget->currentIndex();
+void View::ChangeTab_(QAbstractButton *button) {
+  int tabIndex = ui_->tabWidget->currentIndex();
 
-  if (button == ui->_pushButton_transformation2 && tabIndex != 0) {
-    ui->tabWidget->setCurrentIndex(0);
-  } else if (button == ui->pushButton_settings1 && tabIndex != 1) {
-    ui->tabWidget->setCurrentIndex(1);
+  if (button == ui_->_pushButton_transformation2 && tabIndex != 0) {
+    ui_->tabWidget->setCurrentIndex(0);
+  } else if (button == ui_->pushButton_settings1 && tabIndex != 1) {
+    ui_->tabWidget->setCurrentIndex(1);
   }
 }
 
-void View::ClearSliders() {
+void View::ClearSliders_() {
   QSlider *sliders[] = {
-      ui->horizontalSlider_move_x,   ui->horizontalSlider_move_y,
-      ui->horizontalSlider_move_z,   ui->horizontalSlider_rotate_x,
-      ui->horizontalSlider_rotate_y, ui->horizontalSlider_rotate_z,
+      ui_->horizontalSlider_move_x,   ui_->horizontalSlider_move_y,
+      ui_->horizontalSlider_move_z,   ui_->horizontalSlider_rotate_x,
+      ui_->horizontalSlider_rotate_y, ui_->horizontalSlider_rotate_z,
   };
 
   for (auto slider : sliders) {
     slider->setValue(0);
   }
 
-  ui->horizontalSlider_scale->setValue(100);
+  ui_->horizontalSlider_scale->setValue(100);
 }
 
-void View::on_pushButton_open_file_clicked() {
+void View::OpenFileBtnClicked_() {
   QString filepath = QFileDialog::getOpenFileName(
       this, ("Select Model"), "../models/", "3D Image Files (*.obj)");
 
   if (filepath != "") {
-    ClearSliders();
+    ClearSliders_();
     emit SetModel(filepath);
-    ui->label_filename->setText((QFileInfo(filepath)).fileName());
-    ui->label_filename->setStyleSheet(
+    ui_->label_filename->setText((QFileInfo(filepath)).fileName());
+    ui_->label_filename->setStyleSheet(
         QString("background-color: %1").arg(QColor(58, 81, 113).name()));
   }
 }
@@ -130,22 +135,22 @@ void View::HandleSolution(std::vector<int> *vertex_index,
   count_vertex_index_ = static_cast<int>(vertex_index->size());
   count_vertex_coord_ = static_cast<int>(vertex_coord->size());
   QString info = "Count of vertex: %1\nCount of facets: %2";
-  ui->label_file_info->setText(
+  ui_->label_file_info->setText(
       info.arg(count_vertex_coord_ / 3).arg(count_vertex_index_ / 8));
   update();
 }
 
-void View::TransformModel() {
+void View::TransformModel_() {
   auto *slider = qobject_cast<QSlider *>(sender());
   facade->Transform(slider);
   update();
 }
 
-void View::Record(QAbstractButton *button) {
-  if (button == ui->pushButton_bmp)
-    SaveBmp();
-  else if (button == ui->pushButton_jpeg)
-    SaveJpeg();
-  else if (button == ui->pushButton_gif)
-    SaveGif();
+void View::Record_(QAbstractButton *button) {
+  if (button == ui_->pushButton_bmp)
+    SaveBmp_();
+  else if (button == ui_->pushButton_jpeg)
+    SaveJpeg_();
+  else if (button == ui_->pushButton_gif)
+    SaveGif_();
 }

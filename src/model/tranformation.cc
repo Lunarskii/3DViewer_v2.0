@@ -1,49 +1,49 @@
 #include "tranformation.h"
 
-void MoveStrategy::Transform(std::vector<double> &vertexCoord, double &step,
+void MoveStrategy::Transform(std::vector<double> &vertex_coord, double &step,
                              transformation_t &axis) {
-  for (int i = axis; i < vertexCoord.size(); i += 3) {
-    vertexCoord[i] += step;
+  for (int i = axis; i < vertex_coord.size(); i += 3) {
+    vertex_coord[i] += step;
   }
 }
 
-void RotateStrategy::Transform(std::vector<double> &vertexCoord, double &angle,
+void RotateStrategy::Transform(std::vector<double> &vertex_coord, double &angle,
                                transformation_t &axis) {
   double tempAngle = angle * M_PI / 180;
   double cosValue = cos(tempAngle);
   double sinValue = sin(tempAngle);
 
-  for (int i = (axis == kX) ? 1 : 0; i < vertexCoord.size(); i += 3) {
-    double coord = vertexCoord[i];
+  for (int i = (axis == kX) ? 1 : 0; i < vertex_coord.size(); i += 3) {
+    double coord = vertex_coord[i];
 
     if (axis == kX) {
-      vertexCoord[i] = cosValue * coord - sinValue * vertexCoord[i + 1];
-      vertexCoord[i + 1] = sinValue * coord + cosValue * vertexCoord[i + 1];
+      vertex_coord[i] = cosValue * coord - sinValue * vertex_coord[i + 1];
+      vertex_coord[i + 1] = sinValue * coord + cosValue * vertex_coord[i + 1];
     } else if (axis == kY) {
-      vertexCoord[i] = cosValue * coord + sinValue * vertexCoord[i + 2];
-      vertexCoord[i + 2] = -sinValue * coord + cosValue * vertexCoord[i + 2];
+      vertex_coord[i] = cosValue * coord + sinValue * vertex_coord[i + 2];
+      vertex_coord[i + 2] = -sinValue * coord + cosValue * vertex_coord[i + 2];
     } else if (axis == kZ) {
-      vertexCoord[i] = cosValue * coord + sinValue * vertexCoord[i + 1];
-      vertexCoord[i + 1] = -sinValue * coord + cosValue * vertexCoord[i + 1];
+      vertex_coord[i] = cosValue * coord + sinValue * vertex_coord[i + 1];
+      vertex_coord[i + 1] = -sinValue * coord + cosValue * vertex_coord[i + 1];
     }
   }
 }
 
-void ScaleStrategy::Transform(std::vector<double> &vertexCoord, double &scale,
+void ScaleStrategy::Transform(std::vector<double> &vertex_coord, double &scale,
                               transformation_t &) {
-  for (double &i : vertexCoord) {
+  for (double &i : vertex_coord) {
     i *= scale;
   }
 }
 
 Strategy::Strategy() : strategy_(nullptr) {}
 
-void Strategy::setStrategy(TransformationStrategy *strategy) {
+void Strategy::SetStrategy(TransformationStrategy *strategy) {
   strategy_ = strategy;
 }
 
-void Strategy::performTransformation(std::vector<double> &vertexCoord,
+void Strategy::PerformTransformation(std::vector<double> &vertex_coord,
                                      double &value, transformation_t &axis) {
-  strategy_->Transform(vertexCoord, value, axis);
+  strategy_->Transform(vertex_coord, value, axis);
   delete strategy_;
 }

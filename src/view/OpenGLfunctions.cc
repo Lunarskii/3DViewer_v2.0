@@ -18,70 +18,71 @@ void View::resizeGL(int w, int h) {
 
 void View::paintGL() {
   resize(1440, 1080);
-  glClearColor(settings.backgroundColor.redF(),
-               settings.backgroundColor.greenF(),
-               settings.backgroundColor.blueF(), 1.0f);
+  glClearColor(settings_.bg_color.redF(), settings_.bg_color.greenF(),
+               settings_.bg_color.blueF(), 1.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
 
-  updateValues();
-  if (settings.projectionType) {
+  UpdateValues_();
+  if (settings_.projection_type) {
     glVertexPointer(3, GL_DOUBLE, 0, vertex_coord_);
     glEnableClientState(GL_VERTEX_ARRAY);
-    setProjectionType();
+    SetProjectionType_();
 
-    if (settings.projectionType == kParallel) {
+    if (settings_.projection_type == kParallel) {
       glRotated(15, 1, 0, 0);
       glRotated(15, 0, 1, 0);
       glRotated(1, 0, 0, 1);
     }
 
-    setEdges();
-    if (settings.pointVisibility == kAVertex) setVertices();
+    SetEdges_();
+    if (settings_.point_visibility == kAVertex) SetVertices_();
     glDisableClientState(GL_VERTEX_ARRAY);
   }
 }
 
-void View::updateValues() {
-  settings.projectionType =
-      ui->comboBox_disp_method_2->currentText() == "Parallel" ? kParallel
-                                                              : kCentral;
-  settings.edgeType = ui->comboBox->currentText() == "Solid" ? kSolid : kDashed;
+void View::UpdateValues_() {
+  settings_.projection_type =
+      ui_->comboBox_disp_method_2->currentText() == "Parallel" ? kParallel
+                                                               : kCentral;
+  settings_.edge_type =
+      ui_->comboBox->currentText() == "Solid" ? kSolid : kDashed;
 
-  settings.edgeWidth = ui->horizontalSlider_edges_thick->value();
-  settings.pointSize = ui->horizontalSlider_vert_size->value();
+  settings_.edge_width = ui_->horizontalSlider_edges_thick->value();
+  settings_.point_size = ui_->horizontalSlider_vert_size->value();
 
-  if (ui->comboBox_disp_method->currentText() == "None") {
-    settings.pointVisibility = kNoVertex;
+  if (ui_->comboBox_disp_method->currentText() == "None") {
+    settings_.point_visibility = kNoVertex;
   } else {
-    settings.pointVisibility = kAVertex;
+    settings_.point_visibility = kAVertex;
 
-    settings.pointType =
-        ui->comboBox_disp_method->currentText() == "Circle" ? kCircle : kSquare;
+    settings_.point_type = ui_->comboBox_disp_method->currentText() == "Circle"
+                               ? kCircle
+                               : kSquare;
   }
 }
 
-void View::setEdges() {
-  if (settings.edgeType == kDashed) {
+void View::SetEdges_() {
+  if (settings_.edge_type == kDashed) {
     glLineStipple(1, 0x3333);
     glEnable(GL_LINE_STIPPLE);
-  } else if (settings.edgeType == kSolid) {
+  } else if (settings_.edge_type == kSolid) {
     glDisable(GL_LINE_STIPPLE);
   }
 
-  glLineWidth(settings.edgeWidth);
-  glColor3f(settings.edgeColor.redF(), settings.edgeColor.greenF(),
-            settings.edgeColor.blueF());  // setting the edge color
+  glLineWidth(settings_.edge_width);
+  glColor3f(settings_.edge_color.redF(), settings_.edge_color.greenF(),
+            settings_.edge_color.blueF());  // setting the edge color
   glDrawElements(GL_LINES, count_vertex_index_, GL_UNSIGNED_INT, vertex_index_);
 }
 
-void View::setVertices() {
-  glPointSize(settings.pointSize);
-  glColor3f(settings.vertexColor.redF(), settings.vertexColor.greenF(),
-            settings.vertexColor.blueF());
+void View::SetVertices_() {
+  glPointSize(settings_.point_size);
+  glColor3f(settings_.vertex_color.redF(), settings_.vertex_color.greenF(),
+            settings_.vertex_color.blueF());
 
-  if (settings.pointType == kCircle) {
+  if (settings_.point_type == kCircle) {
     glEnable(GL_POINT_SMOOTH);
     glDrawArrays(GL_POINTS, 0, count_vertex_coord_ / 3);
     glDisable(GL_POINT_SMOOTH);
@@ -90,11 +91,11 @@ void View::setVertices() {
   }
 }
 
-void View::setProjectionType() {
-  if (settings.projectionType == kParallel) {
+void View::SetProjectionType_() {
+  if (settings_.projection_type == kParallel) {
     glOrtho(-5, 8.3, -5, 5, -100, 100);
     glTranslated(2, 0, -10);
-  } else if (settings.projectionType == kCentral) {
+  } else if (settings_.projection_type == kCentral) {
     glFrustum(-1, 1.67, -1, 1, 1, 15);
     glTranslated(0, 0, -10);
   }
