@@ -12,6 +12,7 @@ int main(int argc, char *argv[]) {
       &controller,
       SIGNAL(SolutionReady(std::vector<int> *, std::vector<double> *)), &view,
       SLOT(HandleSolution(std::vector<int> *, std::vector<double> *)));
+  QObject::connect(&controller, SIGNAL(ErrorHasOccured()), &view, SLOT(HandleError()));
 
   view.show();
   return QApplication::exec();

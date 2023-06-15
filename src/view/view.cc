@@ -1,5 +1,7 @@
 #include "view.h"
 
+#include <QMessageBox>
+
 View::View(QWidget *parent)
     : QOpenGLWidget(parent), ui_(new Ui::View), facade(new Facade(ui_)) {
   setlocale(LC_NUMERIC, "C");
@@ -138,6 +140,16 @@ void View::HandleSolution(std::vector<int> *vertex_index,
   ui_->label_file_info->setText(
       info.arg(count_vertex_coord_ / 3).arg(count_vertex_index_ / 8));
   update();
+}
+
+void View::HandleError()
+{
+  vertex_index_ = nullptr;
+  vertex_coord_ = nullptr;
+  count_vertex_index_ = 0;
+  count_vertex_coord_ = 0;
+  update();
+  QMessageBox::critical(nullptr, "Error", "Плохая моделька, брат");
 }
 
 void View::TransformModel_() {

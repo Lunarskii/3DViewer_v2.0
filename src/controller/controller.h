@@ -13,6 +13,7 @@ class Controller : public QObject {
  signals:
   void SolutionReady(std::vector<int>* vertexIndex,
                      std::vector<double>* vertexCoord);
+  void ErrorHasOccured();
 
  public slots:
   void SetFileName(const QString& fileName);

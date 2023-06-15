@@ -7,7 +7,7 @@ void Controller::SetFileName(const QString& fileName) {
   if (GetError() == 0) {
     emit SolutionReady(&GetVertexIndex(), &GetVertexCoord());
   } else {
-    // отправка ошибки
+    emit ErrorHasOccured();
   }
 }
 

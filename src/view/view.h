@@ -95,6 +95,7 @@ class View : public QOpenGLWidget {
  public slots:
   void HandleSolution(std::vector<int>* vertex_index_,
                       std::vector<double>* vertex_coord_);
+  void HandleError();
 
  private slots:
   void OpenFileBtnClicked_();
