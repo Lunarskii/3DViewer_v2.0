@@ -1,5 +1,7 @@
 .PHONY: all install uninstall clean dvi dist launch tests style valgrind
 
+CFLAGS = -Wall -Werror -Wextra -std=c++17 -pedantic -g
+LDFLAGS = $(shell pkg-config --cflags --libs gtest)
 APP_NAME = 3DViewer
 
 OS := $(shell uname -s)
@@ -22,6 +24,7 @@ uninstall:
 
 clean:
 	rm -rf valgrind.txt 3DViewer.tar.gz
+	rm -rf test
 
 dvi:
 	open README.md
@@ -33,9 +36,9 @@ dist:
 launch:
 	$(OPEN)
 
-tests: install
-	make -C build tests
-	./build/tests
+tests:
+	g++ tests/*.cc model/*.cc $(CFLAGS) $(LDFLAGS) -o test
+	./test
 
 style:
 	clang-format -style=Google -n controller/*.cc controller/*.h model/*.cc model/*.h
