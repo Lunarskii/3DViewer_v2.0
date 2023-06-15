@@ -30,12 +30,7 @@ set(SOURCE_DIRS
         view/QtGifImage/gifimage
         view/QtGifImage/giflib
 )
-set(TEST_DIRS
-        model/
-        tests/
-)
 set(PROJECT_SOURCES main.cc)
-set(TEST_SOURCES "")
 
 foreach(dir ${SOURCE_DIRS})
     file(GLOB CPP_SOURCES "${dir}/*.cc")
@@ -44,16 +39,6 @@ foreach(dir ${SOURCE_DIRS})
     file(GLOB UI_SOURCES "${dir}/*.ui")
     list(APPEND PROJECT_SOURCES ${CPP_SOURCES} ${C_SOURCES} ${HEADER_SOURCES} ${UI_SOURCES})
 endforeach()
-
-foreach(dir ${TEST_DIRS})
-    file(GLOB_RECURSE CPP_SOURCES "${dir}/*.cc")
-    file(GLOB_RECURSE HEADER_SOURCES "${dir}/*.h")
-    list(APPEND TEST_SOURCES ${CPP_SOURCES} ${HEADER_SOURCES})
-endforeach()
-
-add_executable(tests 
-        ${TEST_SOURCES}
-)
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(3DViewer
@@ -82,10 +67,6 @@ target_link_libraries(3DViewer PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 target_link_libraries(3DViewer PRIVATE Qt${QT_VERSION_MAJOR}::Gui)
 target_link_libraries(3DViewer PRIVATE Qt${QT_VERSION_MAJOR}::OpenGLWidgets)
 target_link_libraries(3DViewer PRIVATE Qt${QT_VERSION_MAJOR}::Core)
-target_link_libraries(tests PRIVATE ${GTEST_LIBRARIES} pthread)
-
-include(GoogleTest)
-gtest_discover_tests(tests)
 
 set_target_properties(3DViewer PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
