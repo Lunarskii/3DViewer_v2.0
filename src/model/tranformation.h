@@ -4,20 +4,19 @@
 #include <cmath>
 #include <vector>
 
-typedef enum {
+enum transformation_t {
   kX = 0,
   kY = 1,
   kZ = 2,
   kMove = 0,
   kRotate = 1,
   kScale = 2
-} transformation_t;
+};
 
 class TransformationStrategy {
  public:
   virtual ~TransformationStrategy() = default;
-  virtual void Transform(std::vector<double>&, double&,
-                         transformation_t& axis) {}
+  virtual void Transform(std::vector<double>&, double&, transformation_t&) {}
 };
 
 class MoveStrategy : public TransformationStrategy {

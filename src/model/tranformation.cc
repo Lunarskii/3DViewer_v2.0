@@ -2,7 +2,7 @@
 
 void MoveStrategy::Transform(std::vector<double> &vertex_coord, double &step,
                              transformation_t &axis) {
-  for (int i = axis; i < vertex_coord.size(); i += 3) {
+  for (std::size_t i = axis; i < vertex_coord.size(); i += 3) {
     vertex_coord[i] += step;
   }
 }
@@ -13,7 +13,7 @@ void RotateStrategy::Transform(std::vector<double> &vertex_coord, double &angle,
   double cosValue = cos(tempAngle);
   double sinValue = sin(tempAngle);
 
-  for (int i = (axis == kX) ? 1 : 0; i < vertex_coord.size(); i += 3) {
+  for (std::size_t i = (axis == kX) ? 1 : 0; i < vertex_coord.size(); i += 3) {
     double coord = vertex_coord[i];
 
     if (axis == kX) {

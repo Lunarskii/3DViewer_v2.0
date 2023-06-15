@@ -63,7 +63,7 @@ TEST(Model, Move) {
   model->Transform(strategy, value, axis_y);
   model->Transform(strategy, value, axis_z);
 
-  for (int i = 0; i < vertex_copy.size(); i++) {
+  for (std::size_t i = 0; i < vertex_copy.size(); i++) {
     EXPECT_DOUBLE_EQ(model->GetVertexCoord()[i], vertex_copy[i] + 1);
   }
 }
@@ -83,7 +83,7 @@ TEST(Model, Rotate) {
   model->Transform(strategy, value, axis_y);
   model->Transform(strategy, value, axis_z);
 
-  for (int i = 0; i < vertex_copy.size(); i++) {
+  for (std::size_t i = 0; i < vertex_copy.size(); i++) {
     if (vertex_copy[i] != 0) {
       EXPECT_FALSE(model->GetVertexCoord()[i] == vertex_copy[i]);
     }
@@ -103,7 +103,7 @@ TEST(Model, Scale) {
   double value = 5;
   model->Transform(strategy, value, axis_x);
 
-  for (int i = 0; i < vertex_copy.size(); i++) {
+  for (std::size_t i = 0; i < vertex_copy.size(); i++) {
     EXPECT_DOUBLE_EQ(model->GetVertexCoord()[i], vertex_copy[i] * 5);
   }
 }
