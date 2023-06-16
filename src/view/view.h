@@ -68,13 +68,13 @@ class Facade : public QObject {
   Facade() : ui_(nullptr) {}
   explicit Facade(Ui::View* ui) : ui_(ui) {}
 
-  void MoveModel(QString& sliderName);
-  void RotateModel(QString& sliderName);
-  void ScaleModel(QString& sliderName);
+  void MoveModel(QString& slider_name);
+  void RotateModel(QString& slider_name);
+  void ScaleModel(QString& slider_name);
   void Transform(QSlider* slider);
 
  signals:
-  void SetTransform(int strategyType, double value, int axis);
+  void SetTransform(int strategy_type, double value, int axis);
 
  private:
   Ui::View* ui_;
@@ -90,7 +90,7 @@ public:
   friend class Facade;
 
 signals:
-  void SetModel(QString fileName);
+  void SetModel(QString file_name);
 
 private slots:
   void HandleSolution_(std::vector<int>* vertex_index_,
@@ -141,9 +141,9 @@ private:
   QPoint click_pos_;
   bool left_btn_pressed_;
   bool right_btn_pressed;
-  void mouseMoveEvent(QMouseEvent* cursorPosition) override;
+  void mouseMoveEvent(QMouseEvent* cursor_position) override;
   void mousePressEvent(QMouseEvent* event) override;
-  void mouseReleaseEvent(QMouseEvent* cursorPosition) override;
+  void mouseReleaseEvent(QMouseEvent* cursor_position) override;
   void wheelEvent(QWheelEvent* event) override;
 
   // Other

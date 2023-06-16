@@ -35,8 +35,7 @@ void Model::VertexParser_(const std::string& line) {
 void Model::EdgesParser_(const std::string& line) {
   std::istringstream iss(line);
   std::string token;
-  int first = 0, firstIndex = 0;
-  int index = 0;
+  int first = 0, first_index = 0, index = 0;
 
   while (std::getline(iss, token, ' ')) {
     sscanf(token.c_str(), "%d", &index);
@@ -46,21 +45,21 @@ void Model::EdgesParser_(const std::string& line) {
 
     if (first == 0) {
       vertex_index_.push_back(index);
-      firstIndex = index;
+      first_index = index;
       first = 1;
     } else {
       vertex_index_.insert(vertex_index_.end(), {index, index});
     }
   }
-  vertex_index_.push_back(firstIndex);
+  vertex_index_.push_back(first_index);
 }
 
-void Model::SetFileName(const std::string& filename) {
-  if (filename.size() <= 3 ||
-      filename.compare(filename.size() - 4, 4, ".obj")) {
+void Model::SetFileName(const std::string& file_name) {
+  if (file_name.size() <= 3 ||
+      file_name.compare(file_name.size() - 4, 4, ".obj")) {
     error_code_ = kFileWrongExtension;
   } else {
-    filename_ = filename;
+    filename_ = file_name;
     error_code_ = 0;
   }
   vertex_coord_.clear();
@@ -73,13 +72,13 @@ std::vector<int>& Model::GetVertexIndex() { return vertex_index_; }
 
 std::vector<double>& Model::GetVertexCoord() { return vertex_coord_; }
 
-void Model::Transform(int& strategyType, double& value,
+void Model::Transform(int& strategy_type, double& value,
                       transformation_t& axis) {
-  if (strategyType == kMove) {
+  if (strategy_type == kMove) {
     TransformationModel_.SetStrategy(new MoveStrategy());
-  } else if (strategyType == kRotate) {
+  } else if (strategy_type == kRotate) {
     TransformationModel_.SetStrategy(new RotateStrategy());
-  } else if (strategyType == kScale) {
+  } else if (strategy_type == kScale) {
     TransformationModel_.SetStrategy(new ScaleStrategy());
   }
   TransformationModel_.PerformTransformation(vertex_coord_, value, axis);

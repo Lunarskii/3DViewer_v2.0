@@ -1,11 +1,8 @@
 #ifndef CPP4_3DVIEWER_V2_0_MODEL_MODEL_H_
 #define CPP4_3DVIEWER_V2_0_MODEL_MODEL_H_
 
-#include <cstring>
 #include <fstream>
-#include <iostream>
 #include <sstream>
-#include <string>
 
 #include "tranformation.h"
 
@@ -16,20 +13,17 @@ enum error_list {
 };
 
 class Model {
- public:
+public:
   void Parser();
+  void SetFileName(const std::string& file_name);
+  void Transform(int& strategy_type, double& value, transformation_t& axis);
 
-  void SetFileName(const std::string& fileName);
   int GetError();
   std::vector<int>& GetVertexIndex();
   std::vector<double>& GetVertexCoord();
-  void Transform(int& strategyType, double& value, transformation_t& axis);
-
   static Model& GetInstance();
-
- private:
+private:
   Model() = default;
-
   void VertexParser_(const std::string& line);
   void EdgesParser_(const std::string& line);
 

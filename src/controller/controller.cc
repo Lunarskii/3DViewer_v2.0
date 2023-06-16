@@ -1,17 +1,15 @@
 #include "controller.h"
 
-void Controller::SetFileName_(const QString& fileName) {
-  model_->SetFileName(fileName.toStdString());
+void Controller::SetFileName_(const QString& file_name) {
+  model_->SetFileName(file_name.toStdString());
   model_->Parser();
 
-  if (GetError() == 0) {
+  if (model_->GetError() == 0) {
     emit SolutionReady(&GetVertexIndex(), &GetVertexCoord());
   } else {
     emit ErrorHasOccured();
   }
 }
-
-int Controller::GetError() { return model_->GetError(); }
 
 std::vector<int>& Controller::GetVertexIndex() {
   return model_->GetVertexIndex();
@@ -21,7 +19,7 @@ std::vector<double>& Controller::GetVertexCoord() {
   return model_->GetVertexCoord();
 }
 
-void Controller::Transform_(int strategyType, double value, int axis) {
-  auto tempAxis = static_cast<transformation_t>(axis);
-  model_->Transform(strategyType, value, tempAxis);
+void Controller::Transform_(int strategy_type, double value, int axis) {
+  auto temp_axis = static_cast<transformation_t>(axis);
+  model_->Transform(strategy_type, value, temp_axis);
 }

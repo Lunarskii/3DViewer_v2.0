@@ -4,8 +4,6 @@ void View::initializeGL() {
   glEnable(GL_DEPTH_TEST);
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
-
-  // инициализирую начальный цвет viewport
   glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 }
 
@@ -13,11 +11,9 @@ void View::resizeGL(int w, int h) {
   glViewport(0, 0, w, h);
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  resize(1440, 1080);
 }
 
 void View::paintGL() {
-  resize(1440, 1080);
   glClearColor(settings_.bg_color.redF(), settings_.bg_color.greenF(),
                settings_.bg_color.blueF(), 1.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -73,7 +69,7 @@ void View::SetEdges_() {
 
   glLineWidth(settings_.edge_width);
   glColor3f(settings_.edge_color.redF(), settings_.edge_color.greenF(),
-            settings_.edge_color.blueF());  // setting the edge color
+            settings_.edge_color.blueF());
   glDrawElements(GL_LINES, count_vertex_index_, GL_UNSIGNED_INT, vertex_index_);
 }
 
