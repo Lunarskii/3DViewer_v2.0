@@ -1,5 +1,7 @@
 #include "controller.h"
 
+namespace s21 {
+
 void Controller::SetFileName_(const QString& file_name) {
   model_->SetFileName(file_name.toStdString());
   model_->Parser();
@@ -23,3 +25,5 @@ void Controller::Transform_(int strategy_type, double value, int axis) {
   auto temp_axis = static_cast<transformation_t>(axis);
   model_->Transform(strategy_type, value, temp_axis);
 }
+
+}  // namespace s21

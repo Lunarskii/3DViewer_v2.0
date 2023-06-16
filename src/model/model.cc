@@ -1,5 +1,7 @@
 #include "model.h"
 
+namespace s21 {
+
 void Model::Parser() {
   if (error_code_ != kFileWrongExtension) {
     std::ifstream file(filename_);
@@ -88,3 +90,5 @@ typename Model::Model& Model::GetInstance() {
   static Model instance;
   return instance;
 }
+
+}  // namespace s21

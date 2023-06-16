@@ -1,5 +1,7 @@
 #include "view.h"
 
+namespace s21 {
+
 void View::SaveSettings_() {
   // saving color settings_
   last_settings_->setValue("background_color", settings_.bg_color.name());
@@ -94,3 +96,5 @@ void View::RestoreSettings_() {
     ui_->comboBox_disp_method->setCurrentIndex(2);
   }
 }
+
+}  // namespace s21

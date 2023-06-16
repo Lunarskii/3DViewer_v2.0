@@ -1,5 +1,7 @@
 #include "view.h"
 
+namespace s21 {
+
 void View::mouseMoveEvent(QMouseEvent *cursor_position) {
   if (left_btn_pressed_) {
     int rotate_x = (cursor_position->pos().y() - click_pos_.y()) / 3;
@@ -48,3 +50,5 @@ void View::wheelEvent(QWheelEvent *event) {
   ui_->horizontalSlider_scale->setValue(ui_->horizontalSlider_scale->value() +
                                         offset);
 }
+
+}  // namespace s21

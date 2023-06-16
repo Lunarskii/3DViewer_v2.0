@@ -1,5 +1,7 @@
 #include "view.h"
 
+namespace s21 {
+
 void Facade::MoveModel(QString &slider_name) {
   double rate = 0;
   if (slider_name == "horizontalSlider_move_x") {
@@ -52,3 +54,5 @@ void Facade::Transform(QSlider *slider) {
   RotateModel(slider_name);
   ScaleModel(slider_name);
 }
+
+}  // namespace s21

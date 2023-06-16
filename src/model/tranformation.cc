@@ -1,5 +1,7 @@
 #include "tranformation.h"
 
+namespace s21 {
+
 void MoveStrategy::Transform(std::vector<double> &vertex_coord, double &step,
                              transformation_t &axis) {
   for (std::size_t i = axis; i < vertex_coord.size(); i += 3) {
@@ -47,3 +49,5 @@ void Strategy::PerformTransformation(std::vector<double> &vertex_coord,
   strategy_->Transform(vertex_coord, value, axis);
   delete strategy_;
 }
+
+}  // namespace s21

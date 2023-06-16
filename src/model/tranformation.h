@@ -4,6 +4,8 @@
 #include <cmath>
 #include <vector>
 
+namespace s21 {
+
 enum transformation_t {
   kX = 0,
   kY = 1,
@@ -44,5 +46,7 @@ class Strategy {
  private:
   TransformationStrategy* strategy_;
 };
+
+}  // namespace s21
 
 #endif  // CPP4_3DVIEWER_V2_0_MODEL_TRANSFORMATION_H_

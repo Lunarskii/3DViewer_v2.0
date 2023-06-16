@@ -4,6 +4,8 @@
 #include "../model/model.h"
 #include "../view/view.h"
 
+namespace s21 {
+
 class Controller : public QObject {
   Q_OBJECT
 
@@ -32,5 +34,7 @@ private:
   Model* model_;
   View* view_;
 };
+
+}  // namespace s21
 
 #endif  // CPP4_3DVIEWER_V2_0_CONTROLLER_CONTROLLER_H_

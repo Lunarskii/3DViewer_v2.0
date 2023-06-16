@@ -1,5 +1,7 @@
 #include "view.h"
 
+namespace s21 {
+
 void View::SaveGif_() {
   frames_ = 0;
   gif_ = new QGifImage;
@@ -42,3 +44,5 @@ void View::SaveJpeg_() {
   grabFramebuffer().save(pathScreenshot, "jpeg");
   ui_->tabWidget_save_format->setCurrentIndex(0);
 }
+
+}  // namespace s21

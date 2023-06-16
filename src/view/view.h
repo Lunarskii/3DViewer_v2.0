@@ -17,6 +17,15 @@
 #include "QtGifImage/gifimage/qgifimage.h"
 #include "ui_view.h"
 
+QT_BEGIN_NAMESPACE
+namespace Ui {
+class View;
+class Facade;
+}  // namespace Ui
+QT_END_NAMESPACE
+
+namespace s21 {
+
 enum Settings {
   // projection type
   kParallel = 1,
@@ -52,13 +61,6 @@ struct SettingsInfo {
   QColor vertex_color;
   QColor bg_color;
 };
-
-QT_BEGIN_NAMESPACE
-namespace Ui {
-class View;
-class Facade;
-}  // namespace Ui
-QT_END_NAMESPACE
 
 class Facade : public QObject {
   Q_OBJECT
@@ -152,5 +154,7 @@ private:
 public:
   Facade* facade;
 };
+
+}  // namespace s21
 
 #endif  // CPP4_3DVIEWER_V2_0_VIEW_VIEW_H_

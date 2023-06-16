@@ -2,6 +2,8 @@
 
 #include <QMessageBox>
 
+namespace s21 {
+
 View::View(QWidget *parent)
     : QOpenGLWidget(parent), ui_(new Ui::View), facade(new Facade(ui_)) {
   setlocale(LC_NUMERIC, "C");
@@ -174,3 +176,5 @@ void View::Record_(QAbstractButton *button) {
   else if (button == ui_->pushButton_gif)
     SaveGif_();
 }
+
+}  // namespace s21

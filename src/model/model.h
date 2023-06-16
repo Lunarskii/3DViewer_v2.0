@@ -6,6 +6,8 @@
 
 #include "tranformation.h"
 
+namespace s21 {
+
 enum error_list {
   kFileWrongExtension = 1,
   kFailedToOpen = 2,
@@ -33,5 +35,7 @@ private:
   int error_code_{};
   Strategy TransformationModel_;
 };
+
+}  // namespace s21
 
 #endif  // CPP4_3DVIEWER_V2_0_MODEL_MODEL_H_

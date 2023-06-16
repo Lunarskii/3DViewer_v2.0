@@ -1,5 +1,7 @@
 #include "view.h"
 
+namespace s21 {
+
 void View::initializeGL() {
   glEnable(GL_DEPTH_TEST);
   glMatrixMode(GL_MODELVIEW);
@@ -96,3 +98,5 @@ void View::SetProjectionType_() {
     glTranslated(0, 0, -10);
   }
 }
+
+}  // namespace s21

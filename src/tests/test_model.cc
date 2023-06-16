@@ -1,10 +1,8 @@
 #include "test_core.h"
 
-using namespace std;
-
 TEST(Model, CorrectFile) {
-  Model *model;
-  model = &Model::GetInstance();
+  s21::Model *model;
+  model = &s21::Model::GetInstance();
 
   model->SetFileName("tests/models/cub.obj");
   model->Parser();
@@ -15,49 +13,49 @@ TEST(Model, CorrectFile) {
 }
 
 TEST(Model, WrongExtension) {
-  Model *model;
-  model = &Model::GetInstance();
+  s21::Model *model;
+  model = &s21::Model::GetInstance();
 
   model->SetFileName("Makefile");
   model->Parser();
 
-  EXPECT_EQ(model->GetError(), kFileWrongExtension);
+  EXPECT_EQ(model->GetError(), s21::kFileWrongExtension);
   EXPECT_TRUE(model->GetVertexCoord().empty());
   EXPECT_TRUE(model->GetVertexIndex().empty());
 }
 
 TEST(Model, FailedToOpen) {
-  Model *model;
-  model = &Model::GetInstance();
+  s21::Model *model;
+  model = &s21::Model::GetInstance();
 
   model->SetFileName("qwerty.obj");
   model->Parser();
 
-  EXPECT_EQ(model->GetError(), kFailedToOpen);
+  EXPECT_EQ(model->GetError(), s21::kFailedToOpen);
   EXPECT_TRUE(model->GetVertexCoord().empty());
   EXPECT_TRUE(model->GetVertexIndex().empty());
 }
 
 TEST(Model, IncorrectFile) {
-  Model *model;
-  model = &Model::GetInstance();
+  s21::Model *model;
+  model = &s21::Model::GetInstance();
 
   model->SetFileName("tests/models/incorrect.obj");
   model->Parser();
 
-  EXPECT_EQ(model->GetError(), kIncorrectData);
+  EXPECT_EQ(model->GetError(), s21::kIncorrectData);
 }
 
 TEST(Model, Move) {
-  Model *model;
-  model = &Model::GetInstance();
+  s21::Model *model;
+  model = &s21::Model::GetInstance();
 
   model->SetFileName("tests/models/cub.obj");
   model->Parser();
 
   std::vector<double> vertex_copy(model->GetVertexCoord());
-  auto axis_x = kX, axis_y = kY, axis_z = kZ;
-  int strategy = kMove;
+  auto axis_x = s21::kX, axis_y = s21::kY, axis_z = s21::kZ;
+  int strategy = s21::kMove;
   double value = 1;
   model->Transform(strategy, value, axis_x);
   model->Transform(strategy, value, axis_y);
@@ -69,15 +67,15 @@ TEST(Model, Move) {
 }
 
 TEST(Model, Rotate) {
-  Model *model;
-  model = &Model::GetInstance();
+  s21::Model *model;
+  model = &s21::Model::GetInstance();
 
   model->SetFileName("tests/models/cub.obj");
   model->Parser();
 
   std::vector<double> vertex_copy(model->GetVertexCoord());
-  auto axis_x = kX, axis_y = kY, axis_z = kZ;
-  int strategy = kRotate;
+  auto axis_x = s21::kX, axis_y = s21::kY, axis_z = s21::kZ;
+  int strategy = s21::kRotate;
   double value = 5;
   model->Transform(strategy, value, axis_x);
   model->Transform(strategy, value, axis_y);
@@ -91,15 +89,15 @@ TEST(Model, Rotate) {
 }
 
 TEST(Model, Scale) {
-  Model *model;
-  model = &Model::GetInstance();
+  s21::Model *model;
+  model = &s21::Model::GetInstance();
 
   model->SetFileName("tests/models/cub.obj");
   model->Parser();
 
   std::vector<double> vertex_copy(model->GetVertexCoord());
-  auto axis_x = kX;
-  int strategy = kScale;
+  auto axis_x = s21::kX;
+  int strategy = s21::kScale;
   double value = 5;
   model->Transform(strategy, value, axis_x);
 
