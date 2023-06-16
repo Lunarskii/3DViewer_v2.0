@@ -9,7 +9,6 @@
 #include <QMouseEvent>    // library for receiving mouse signals
 #include <QOpenGLWidget>  // library for using widgets
 #include <QPalette>
-#include <QScrollArea>  //
 #include <QSettings>    // library for saving and restoring settings_
 #include <QTimer>       // library for time counting
 #include <QWheelEvent>  // library for receiving mouse wheel signals
