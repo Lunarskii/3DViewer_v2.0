@@ -46,23 +46,25 @@ void View::RestoreSettings_() {
   int tempVertexSize = last_settings_->value("vertex_size", -1).toInt();
 
   // restoring color settings_
+  QString prev_style(
+      "border-radius: 3px;\nborder: 1px solid rgb(110, 105, 157);\n");
   if (tempBackgroundColor != "-1") {
     settings_.bg_color.setNamedColor(tempBackgroundColor);
     QColor color(tempBackgroundColor);
     ui_->pushButton_bg_color->setStyleSheet(
-        QString("background-color: %1").arg(color.name()));
+        QString(prev_style + "background-color: %1").arg(color.name()));
   }
   if (tempEdgeColor != "-1") {
     settings_.edge_color.setNamedColor(tempEdgeColor);
     QColor color(tempEdgeColor);
     ui_->pushButton_edges_color->setStyleSheet(
-        QString("background-color: %1").arg(color.name()));
+        QString(prev_style + "background-color: %1").arg(color.name()));
   }
   if (tempVertexColor != "-1") {
     settings_.vertex_color.setNamedColor(tempVertexColor);
     QColor color(tempVertexColor);
     ui_->pushButton_vertex_color->setStyleSheet(
-        QString("background-color: %1").arg(color.name()));
+        QString(prev_style + "background-color: %1").arg(color.name()));
   }
 
   // restoring projection settings_

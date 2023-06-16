@@ -15,7 +15,7 @@ enum error_list {
 };
 
 class Model {
-public:
+ public:
   void Parser();
   void SetFileName(const std::string& file_name);
   void Transform(int& strategy_type, double& value, transformation_t& axis);
@@ -24,7 +24,8 @@ public:
   std::vector<int>& GetVertexIndex();
   std::vector<double>& GetVertexCoord();
   static Model& GetInstance();
-private:
+
+ private:
   Model() = default;
   void VertexParser_(const std::string& line);
   void EdgesParser_(const std::string& line);
