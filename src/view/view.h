@@ -84,29 +84,28 @@ class Facade : public QObject {
 class View : public QOpenGLWidget {
   Q_OBJECT
 
- public:
+public:
   explicit View(QWidget* parent = nullptr);
   ~View() override;
   friend class Facade;
 
- signals:
+signals:
   void SetModel(QString fileName);
 
- public slots:
-  void HandleSolution(std::vector<int>* vertex_index_,
+private slots:
+  void HandleSolution_(std::vector<int>* vertex_index_,
                       std::vector<double>* vertex_coord_);
-  void HandleError();
-
- private slots:
+  void HandleError_();
   void OpenFileBtnClicked_();
   void ClearSliders_();
   void TransformModel_();
   void Record_(QAbstractButton* button);
   void SetColor_(QAbstractButton* button);
   void ChangeTab_(QAbstractButton* button);
+  void ChangeSaveFormatTab_();
   void SaveImage_();
 
- private:
+private:
   Ui::View* ui_;
   int* vertex_index_{nullptr};
   double* vertex_coord_{nullptr};
@@ -151,8 +150,7 @@ class View : public QOpenGLWidget {
   void InitDefaultSettings_();
   void ConnectSlotSignals_();
 
- public:  //  для использования в коннекте контроллера, пока другого способа не
-          //  нашел
+public:
   Facade* facade;
 };
 

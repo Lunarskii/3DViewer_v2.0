@@ -22,6 +22,7 @@ void View::SaveImage_() {
     gif_->save(pathGIF);
     delete timer_;
     delete gif_;
+    ui_->tabWidget_save_format->setCurrentIndex(0);
   }
   frames_++;
 }
@@ -31,6 +32,7 @@ void View::SaveBmp_() {
       this, ("Save as BMP"), "image.bmp", "BMP Image Files (*.bmp)");
 
   grabFramebuffer().save(pathScreenshot, "bmp");
+  ui_->tabWidget_save_format->setCurrentIndex(0);
 }
 
 void View::SaveJpeg_() {
@@ -38,4 +40,5 @@ void View::SaveJpeg_() {
       this, ("Save as JPEG"), "image.jpeg", "JPEG Image Files (*.jpeg)");
 
   grabFramebuffer().save(pathScreenshot, "jpeg");
+  ui_->tabWidget_save_format->setCurrentIndex(0);
 }

@@ -7,6 +7,7 @@ View::View(QWidget *parent)
   setlocale(LC_NUMERIC, "C");
   ui_->setupUi(this);
   this->resize(1440, 1080);
+  ui_->tabWidget_save_format->tabBar()->hide();
   InitDefaultSettings_();
   ConnectSlotSignals_();
   last_settings_ = new QSettings("SAVE_3DVIEWER", "3DViewer", this);
@@ -28,6 +29,8 @@ void View::ConnectSlotSignals_() {
   // connect change tab
   connect(ui_->buttonGroupTabs, SIGNAL(buttonClicked(QAbstractButton *)), this,
           SLOT(ChangeTab_(QAbstractButton *)));
+  connect(ui_->saveAsButton, SIGNAL(clicked()), this,
+          SLOT(ChangeSaveFormatTab_()));
 
   // connect save format
   connect(ui_->buttonGroupImg, SIGNAL(buttonClicked(QAbstractButton *)), this,
@@ -103,6 +106,11 @@ void View::ChangeTab_(QAbstractButton *button) {
   }
 }
 
+void View::ChangeSaveFormatTab_()
+{
+    ui_->tabWidget_save_format->setCurrentIndex(1);
+}
+
 void View::ClearSliders_() {
   QSlider *sliders[] = {
       ui_->horizontalSlider_move_x,   ui_->horizontalSlider_move_y,
@@ -130,7 +138,7 @@ void View::OpenFileBtnClicked_() {
   }
 }
 
-void View::HandleSolution(std::vector<int> *vertex_index,
+void View::HandleSolution_(std::vector<int> *vertex_index,
                           std::vector<double> *vertex_coord) {
   vertex_index_ = vertex_index->data();
   vertex_coord_ = vertex_coord->data();
@@ -142,7 +150,7 @@ void View::HandleSolution(std::vector<int> *vertex_index,
   update();
 }
 
-void View::HandleError()
+void View::HandleError_()
 {
   vertex_index_ = nullptr;
   vertex_coord_ = nullptr;
