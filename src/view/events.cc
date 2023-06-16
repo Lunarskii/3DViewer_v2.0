@@ -51,4 +51,27 @@ void View::wheelEvent(QWheelEvent *event) {
                                         offset);
 }
 
+void View::dragEnterEvent(QDragEnterEvent* event)
+{
+  if (event->mimeData()->hasUrls()) event->acceptProposedAction();
+}
+
+void View::dropEvent(QDropEvent* event)
+{
+  const QMimeData* mime_data = event->mimeData();
+
+  if (mime_data->hasUrls())
+  {
+      QList<QUrl> url_list = mime_data->urls();
+      QString filepath = url_list[0].toLocalFile();
+
+      ClearSliders_();
+      emit SetModel(filepath);
+      ui_->label_filename->setText((QFileInfo(filepath)).fileName());
+      ui_->label_filename->setStyleSheet(QString("background-color: %1").arg(QColor(58, 81, 113).name()));
+
+      event->acceptProposedAction();
+  }
+}
+
 }  // namespace s21

@@ -10,6 +10,7 @@ View::View(QWidget *parent)
   ui_->setupUi(this);
   this->resize(1440, 1080);
   ui_->tabWidget_save_format->tabBar()->hide();
+  setAcceptDrops(true);
   InitDefaultSettings_();
   ConnectSlotSignals_();
   last_settings_ = new QSettings("SAVE_3DVIEWER", "3DViewer", this);

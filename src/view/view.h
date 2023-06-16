@@ -14,6 +14,11 @@
 #include <QWheelEvent>  // library for receiving mouse wheel signals
 #include <QWidget>      // library for using widgets
 
+// drag and drop
+#include <QDragEnterEvent>
+#include <QDropEvent>
+#include <QMimeData>
+
 #include "QtGifImage/gifimage/qgifimage.h"
 #include "ui_view.h"
 
@@ -146,6 +151,8 @@ private:
   void mousePressEvent(QMouseEvent* event) override;
   void mouseReleaseEvent(QMouseEvent* cursor_position) override;
   void wheelEvent(QWheelEvent* event) override;
+  void dragEnterEvent(QDragEnterEvent* event) override;
+  void dropEvent(QDropEvent* event) override;
 
   // Other
   void InitDefaultSettings_();
