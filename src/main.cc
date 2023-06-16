@@ -4,9 +4,9 @@
 
 int main(int argc, char *argv[]) {
   QApplication a(argc, argv);
-  View view;
+  s21::View view;
   view.setWindowTitle("3D Viewer");
-  Controller controller(&view);
+  s21::Controller controller(&view);
 
   QObject::connect(
       &controller,
