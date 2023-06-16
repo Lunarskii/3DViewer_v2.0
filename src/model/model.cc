@@ -19,6 +19,7 @@ void Model::Parser() {
         EdgesParser_(std::string(line.begin() + 2, line.end()));
       }
     }
+    Normalize_();
     file.close();
   }
 }
@@ -84,6 +85,18 @@ void Model::Transform(int& strategy_type, double& value,
     TransformationModel_.SetStrategy(new ScaleStrategy());
   }
   TransformationModel_.PerformTransformation(vertex_coord_, value, axis);
+}
+
+void Model::Normalize_() {
+  double max_value = 0;
+  for (double value : vertex_coord_) {
+    if (value > max_value) max_value = value;
+  }
+  if (max_value > 10) {
+    for (double& value : vertex_coord_) {
+      value = value / max_value;
+    }
+  }
 }
 
 typename Model::Model& Model::GetInstance() {

@@ -29,6 +29,7 @@ class Model {
   Model() = default;
   void VertexParser_(const std::string& line);
   void EdgesParser_(const std::string& line);
+  void Normalize_();
 
   std::string filename_;
   std::vector<double> vertex_coord_{};
