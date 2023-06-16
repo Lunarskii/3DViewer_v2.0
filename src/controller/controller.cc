@@ -1,6 +1,6 @@
 #include "controller.h"
 
-void Controller::SetFileName(const QString& fileName) {
+void Controller::SetFileName_(const QString& fileName) {
   model_->SetFileName(fileName.toStdString());
   model_->Parser();
 
@@ -21,7 +21,7 @@ std::vector<double>& Controller::GetVertexCoord() {
   return model_->GetVertexCoord();
 }
 
-void Controller::Transform(int strategyType, double value, int axis) {
+void Controller::Transform_(int strategyType, double value, int axis) {
   auto tempAxis = static_cast<transformation_t>(axis);
   model_->Transform(strategyType, value, tempAxis);
 }
