@@ -2,20 +2,20 @@
 #define CPP4_3DVIEWER_V2_0_VIEW_VIEW_H_
 
 #include <QButtonGroup>
-#include <QColor>      
-#include <QColorDialog> 
-#include <QFileDialog>  
-#include <QKeyEvent>   
-#include <QMouseEvent>  
-#include <QOpenGLWidget> 
-#include <QPalette>
-#include <QSettings>  
-#include <QTimer>    
-#include <QWheelEvent> 
-#include <QWidget>
+#include <QColor>
+#include <QColorDialog>
 #include <QDragEnterEvent>
 #include <QDropEvent>
+#include <QFileDialog>
+#include <QKeyEvent>
 #include <QMimeData>
+#include <QMouseEvent>
+#include <QOpenGLWidget>
+#include <QPalette>
+#include <QSettings>
+#include <QTimer>
+#include <QWheelEvent>
+#include <QWidget>
 
 #include "QtGifImage/gifimage/qgifimage.h"
 #include "ui_view.h"

@@ -145,7 +145,7 @@ void View::HandleSolution_(std::vector<int> *vertex_index,
   vertex_coord_ = vertex_coord->data();
   count_vertex_index_ = static_cast<int>(vertex_index->size());
   count_vertex_coord_ = static_cast<int>(vertex_coord->size());
-  QString info = "Count of vertex: %1\nCount of facets: %2";
+  QString info = "Count of vertex: %1\nCount of edges: %2";
   ui_->label_file_info->setText(
       info.arg(count_vertex_coord_ / 3).arg(count_vertex_index_ / 4));
   update();
