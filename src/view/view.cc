@@ -81,18 +81,23 @@ void View::SetColor_(QAbstractButton *button) {
   QColor color = QColorDialog::getColor();
 
   if (color.isValid()) {
+    QString prev_style(
+        "border-radius: 3px;\nborder: 1px solid rgb(110, 105, 157);\n");
     if (button == ui_->pushButton_bg_color) {
       settings_.bg_color = color;
       ui_->pushButton_bg_color->setStyleSheet(
-          QString("background-color: %1").arg(settings_.bg_color.name()));
+          QString(prev_style + "background-color: %1")
+              .arg(settings_.bg_color.name()));
     } else if (button == ui_->pushButton_edges_color) {
       settings_.edge_color = color;
       ui_->pushButton_edges_color->setStyleSheet(
-          QString("background-color: %1").arg(settings_.edge_color.name()));
+          QString(prev_style + "background-color: %1")
+              .arg(settings_.edge_color.name()));
     } else if (button == ui_->pushButton_vertex_color) {
       settings_.vertex_color = color;
       ui_->pushButton_vertex_color->setStyleSheet(
-          QString("background-color: %1").arg(settings_.vertex_color.name()));
+          QString(prev_style + "background-color: %1")
+              .arg(settings_.vertex_color.name()));
     }
 
     update();
@@ -109,9 +114,8 @@ void View::ChangeTab_(QAbstractButton *button) {
   }
 }
 
-void View::ChangeSaveFormatTab_()
-{
-    ui_->tabWidget_save_format->setCurrentIndex(1);
+void View::ChangeSaveFormatTab_() {
+  ui_->tabWidget_save_format->setCurrentIndex(1);
 }
 
 void View::ClearSliders_() {
@@ -142,7 +146,7 @@ void View::OpenFileBtnClicked_() {
 }
 
 void View::HandleSolution_(std::vector<int> *vertex_index,
-                          std::vector<double> *vertex_coord) {
+                           std::vector<double> *vertex_coord) {
   vertex_index_ = vertex_index->data();
   vertex_coord_ = vertex_coord->data();
   count_vertex_index_ = static_cast<int>(vertex_index->size());
@@ -153,8 +157,7 @@ void View::HandleSolution_(std::vector<int> *vertex_index,
   update();
 }
 
-void View::HandleError_()
-{
+void View::HandleError_() {
   vertex_index_ = nullptr;
   vertex_coord_ = nullptr;
   count_vertex_index_ = 0;

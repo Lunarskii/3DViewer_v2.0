@@ -9,9 +9,8 @@ namespace s21 {
 class Controller : public QObject {
   Q_OBJECT
 
-public:
-  explicit Controller(View* view)
-      : model_(&Model::GetInstance()), view_(view) {
+ public:
+  explicit Controller(View* view) : model_(&Model::GetInstance()), view_(view) {
     QObject::connect(view_, SIGNAL(SetModel(QString)), this,
                      SLOT(SetFileName_(QString)));
     QObject::connect(view_->facade, SIGNAL(SetTransform(int, double, int)),
@@ -21,16 +20,16 @@ public:
   std::vector<int>& GetVertexIndex();
   std::vector<double>& GetVertexCoord();
 
-signals:
+ signals:
   void SolutionReady(std::vector<int>* vertex_index,
                      std::vector<double>* vertex_coord);
   void ErrorHasOccured();
 
-private slots:
+ private slots:
   void SetFileName_(const QString& file_name);
   void Transform_(int strategy_type, double value, int axis = kX);
 
-private:
+ private:
   Model* model_;
   View* view_;
 };

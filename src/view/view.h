@@ -90,17 +90,17 @@ class Facade : public QObject {
 class View : public QOpenGLWidget {
   Q_OBJECT
 
-public:
+ public:
   explicit View(QWidget* parent = nullptr);
   ~View() override;
   friend class Facade;
 
-signals:
+ signals:
   void SetModel(QString file_name);
 
-private slots:
+ private slots:
   void HandleSolution_(std::vector<int>* vertex_index_,
-                      std::vector<double>* vertex_coord_);
+                       std::vector<double>* vertex_coord_);
   void HandleError_();
   void OpenFileBtnClicked_();
   void ClearSliders_();
@@ -111,7 +111,7 @@ private slots:
   void ChangeSaveFormatTab_();
   void SaveImage_();
 
-private:
+ private:
   Ui::View* ui_;
   int* vertex_index_{nullptr};
   double* vertex_coord_{nullptr};
@@ -158,7 +158,7 @@ private:
   void InitDefaultSettings_();
   void ConnectSlotSignals_();
 
-public:
+ public:
   Facade* facade;
 };
 
