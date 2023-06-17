@@ -2,19 +2,17 @@
 #define CPP4_3DVIEWER_V2_0_VIEW_VIEW_H_
 
 #include <QButtonGroup>
-#include <QColor>         // library for using colors
-#include <QColorDialog>   // library for dialog windows
-#include <QFileDialog>    // library for dialog windows
-#include <QKeyEvent>      // library for receiving keyboard signals
-#include <QMouseEvent>    // library for receiving mouse signals
-#include <QOpenGLWidget>  // library for using widgets
+#include <QColor>      
+#include <QColorDialog> 
+#include <QFileDialog>  
+#include <QKeyEvent>   
+#include <QMouseEvent>  
+#include <QOpenGLWidget> 
 #include <QPalette>
-#include <QSettings>    // library for saving and restoring settings_
-#include <QTimer>       // library for time counting
-#include <QWheelEvent>  // library for receiving mouse wheel signals
-#include <QWidget>      // library for using widgets
-
-// drag and drop
+#include <QSettings>  
+#include <QTimer>    
+#include <QWheelEvent> 
+#include <QWidget>
 #include <QDragEnterEvent>
 #include <QDropEvent>
 #include <QMimeData>
@@ -32,13 +30,10 @@ QT_END_NAMESPACE
 namespace s21 {
 
 enum Settings {
-  // projection type
   kParallel = 1,
   kCentral = 2,
-  // edge type
   kSolid = 1,
   kDashed = 2,
-  // vertex type
   kCircle = 1,
   kSquare = 2,
   kNoVertex = 3,

@@ -25,21 +25,17 @@ View::~View() {
 }
 
 void View::ConnectSlotSignals_() {
-  // connect file opening
   connect(ui_->pushButton_open_file, SIGNAL(clicked()), this,
           SLOT(OpenFileBtnClicked_()));
 
-  // connect change tab
   connect(ui_->buttonGroupTabs, SIGNAL(buttonClicked(QAbstractButton *)), this,
           SLOT(ChangeTab_(QAbstractButton *)));
   connect(ui_->saveAsButton, SIGNAL(clicked()), this,
           SLOT(ChangeSaveFormatTab_()));
 
-  // connect save format
   connect(ui_->buttonGroupImg, SIGNAL(buttonClicked(QAbstractButton *)), this,
           SLOT(Record_(QAbstractButton *)));
 
-  // connect transform
   std::vector<QSlider *> transform_sliders = {
       ui_->horizontalSlider_move_x,   ui_->horizontalSlider_move_y,
       ui_->horizontalSlider_move_z,   ui_->horizontalSlider_rotate_x,
@@ -50,7 +46,6 @@ void View::ConnectSlotSignals_() {
     connect(slider, SIGNAL(valueChanged(int)), this, SLOT(TransformModel_()));
   }
 
-  // connect settings
   connect(ui_->horizontalSlider_vert_size, SIGNAL(valueChanged(int)), this,
           SLOT(update()));
   connect(ui_->horizontalSlider_edges_thick, SIGNAL(valueChanged(int)), this,
@@ -67,7 +62,6 @@ void View::ConnectSlotSignals_() {
 }
 
 void View::InitDefaultSettings_() {
-  // setting the color
   QColor bgColor = ui_->pushButton_bg_color->palette().button().color();
   QColor eColor = ui_->pushButton_edges_color->palette().button().color();
   QColor vColor = ui_->pushButton_vertex_color->palette().button().color();
@@ -153,7 +147,7 @@ void View::HandleSolution_(std::vector<int> *vertex_index,
   count_vertex_coord_ = static_cast<int>(vertex_coord->size());
   QString info = "Count of vertex: %1\nCount of facets: %2";
   ui_->label_file_info->setText(
-      info.arg(count_vertex_coord_ / 3).arg(count_vertex_index_ / 8));
+      info.arg(count_vertex_coord_ / 3).arg(count_vertex_index_ / 4));
   update();
 }
 
