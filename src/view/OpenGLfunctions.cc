@@ -91,10 +91,10 @@ void View::SetVertices_() {
 
 void View::SetProjectionType_() {
   if (settings_.projection_type == kParallel) {
-    glOrtho(-5, 8.3, -5, 5, -100, 100);
+    glOrtho(-5, 11.5, -5, 5, -100, 100);
     glTranslated(2, 0, -10);
   } else if (settings_.projection_type == kCentral) {
-    glFrustum(-1, 1.67, -1, 1, 1, 15);
+    glFrustum(-1, 2.55, -1, 1, 1, 15);
     glTranslated(0, 0, -10);
   }
 }
